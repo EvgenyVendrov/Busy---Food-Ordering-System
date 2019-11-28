@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "84655703629",
+    "firebase_url": "https://busy-abf43.firebaseio.com",
+    "project_id": "busy-abf43",
+    "storage_bucket": "busy-abf43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84655703629:android:621563d824607accfebe04",
+        "android_client_info": {
+          "package_name": "com.example.busy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84655703629-p3ckl1m2hk5evufe8f3v3v2sejk4he3k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.busy",
+            "certificate_hash": "b5f109c2612c6ee37ca6b51d84d5ae679d44ba20"
+          }
+        },
+        {
+          "client_id": "84655703629-2k6m1fhlsh3t6qkea2bd8it085btd067.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMIYETAwzrpj4ELG3478hUN7DQudjxuZw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84655703629-2k6m1fhlsh3t6qkea2bd8it085btd067.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
