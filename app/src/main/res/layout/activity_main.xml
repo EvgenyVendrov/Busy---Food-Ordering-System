@@ -21,12 +21,14 @@
 
     <Button
         android:id="@+id/signUpEmail"
+        style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="368dp"
         android:layout_height="74dp"
         android:background="@android:color/white"
-        android:text="Sign up with Email"
+        android:text="Sign in with Email"
+        android:textAllCaps="false"
         android:textColor="@android:color/tertiary_text_light"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/background"
         app:layout_constraintHorizontal_bias="0.496"
@@ -46,17 +48,17 @@
 
     <TextView
         android:id="@+id/signInText"
-        android:layout_width="313dp"
-        android:layout_height="38dp"
+        android:layout_width="406dp"
+        android:layout_height="40dp"
         android:text="TextView"
         android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/background"
         app:layout_constraintVertical_bias="0.769"
-        tools:text="Already have an acount? Sign in here" />
+        tools:text="Doesn't have an acount? Sign up here" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

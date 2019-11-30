@@ -21,58 +21,78 @@
 
     <EditText
         android:id="@+id/EmailLog"
-        android:layout_width="214dp"
-        android:layout_height="42dp"
+        android:layout_width="256dp"
+        android:layout_height="62dp"
         android:background="@android:color/white"
         android:ems="10"
         android:hint="Email Address"
         android:inputType="textEmailAddress"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.242" />
+        app:layout_constraintVertical_bias="0.451" />
 
     <EditText
         android:id="@+id/passwordLog"
-        android:layout_width="215dp"
-        android:layout_height="43dp"
+        android:layout_width="259dp"
+        android:layout_height="61dp"
         android:background="@android:color/white"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="@+id/background"
         app:layout_constraintTop_toBottomOf="@+id/EmailLog"
         app:layout_constraintVertical_bias="0.066" />
 
     <Button
-        android:id="@+id/loginBottom"
-        android:layout_width="165dp"
-        android:layout_height="62dp"
-        android:background="@android:color/holo_blue_light"
+        android:id="@+id/loginBotton"
+        android:layout_width="153dp"
+        android:layout_height="63dp"
+        android:background="@android:color/white"
         android:text="Login"
+        android:textAllCaps="false"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/background"
-        app:layout_constraintTop_toTopOf="@+id/background" />
+        app:layout_constraintTop_toTopOf="@+id/background"
+        app:layout_constraintVertical_bias="0.714" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="73dp"
-        android:layout_height="29dp"
-        android:text="Sign up"
-        android:textAllCaps="true"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:layout_width="404dp"
+        android:layout_height="37dp"
+        android:text="Doesn't have an acount? Sign up here"
+        android:textAllCaps="false"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="24sp"
         android:textStyle="bold"
+        app:fontFamily="casual"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/background"
-        app:layout_constraintTop_toBottomOf="@+id/loginBottom"
-        app:layout_constraintVertical_bias="0.049" />
+        app:layout_constraintTop_toBottomOf="@+id/loginBotton"
+        app:layout_constraintVertical_bias="0.098" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="177dp"
+        android:layout_height="87dp"
+        android:text="Log In"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="?attr/actionBarSize"
+        android:textStyle="bold"
+        app:fontFamily="casual"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/background"
+        app:layout_constraintVertical_bias="0.1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
