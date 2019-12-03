@@ -1,14 +1,16 @@
-package com.example.busy;
+package com.example.busy.restaurant;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Home_users extends AppCompatActivity {
+import com.example.busy.R;
+
+public class signUp_rest extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_users);
+        setContentView(R.layout.activity_sign_up_rest);
     }
 }

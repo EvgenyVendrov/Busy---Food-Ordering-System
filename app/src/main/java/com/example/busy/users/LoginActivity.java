@@ -1,14 +1,16 @@
-package com.example.busy;
+package com.example.busy.users;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class signUpActivity extends AppCompatActivity {
+import com.example.busy.R;
+
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_login);
     }
 }
