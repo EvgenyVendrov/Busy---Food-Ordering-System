@@ -54,7 +54,7 @@ public class signUpActivity extends AppCompatActivity implements View.OnClickLis
 
 
         if(FirstName.isEmpty()){
-            editTextFirstName.setError("First Name Requierd");
+            editTextFirstName.setError("First Name Required");
             editTextFirstName.requestFocus();
             return;
         }
