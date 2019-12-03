@@ -91,6 +91,7 @@
         android:id="@+id/firstNameText"
         android:layout_width="356dp"
         android:layout_height="56dp"
+        android:layout_marginTop="212dp"
         android:background="@android:color/background_light"
         android:ems="10"
         android:hint="First Name"
@@ -103,7 +104,7 @@
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/background"
-        app:layout_constraintVertical_bias="0.959" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/goToLogInText"

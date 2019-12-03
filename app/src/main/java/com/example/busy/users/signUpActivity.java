@@ -3,14 +3,13 @@ package com.example.busy.users;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.busy.R;
-import com.example.busy.Users_Form;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -92,10 +91,14 @@ public class signUpActivity extends AppCompatActivity implements View.OnClickLis
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(signUpActivity.this, "logged in", Toast.LENGTH_SHORT).show();
-                                    } else {
+                                        Toast.makeText(signUpActivity.this, "Sign up successfully", Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(signUpActivity.this, Home_users.class);
+                                        startActivity(i);
+                                    }
+
+                                    else {
                                         //display a faliure messege
-                                        Toast.makeText(signUpActivity.this, "culdnt logged in",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(signUpActivity.this, "Error, couldn't sign up",Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });

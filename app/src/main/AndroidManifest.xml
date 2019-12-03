@@ -9,10 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".restaurant.logIn_rest"></activity>
+        <activity
+            android:name=".restaurant.HOME_restaurant"
+            android:label="@string/title_activity_home_restaurant"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".users.Home_users"
+            android:label="@string/title_activity_home_users"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".restaurant.logIn_rest" />
         <activity android:name=".restaurant.signUp_rest" />
-        <activity android:name=".restaurant.HOME_restaurant" />
-        <activity android:name=".users.Home_users" />
         <activity android:name=".users.signUpActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
