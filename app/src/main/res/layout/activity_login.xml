@@ -69,7 +69,7 @@
         app:layout_constraintVertical_bias="0.714" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/signUp_text"
         android:layout_width="383dp"
         android:layout_height="78dp"
         android:text="Doesn't have an acount? Sign up"
@@ -85,7 +85,7 @@
         app:layout_constraintVertical_bias="0.098" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/LogIn_logo"
         android:layout_width="225dp"
         android:layout_height="119dp"
         android:text="Log In"
