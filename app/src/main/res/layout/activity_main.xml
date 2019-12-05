@@ -56,8 +56,8 @@
 
     <TextView
         android:id="@+id/restaurant_owner_text"
-        android:layout_width="376dp"
-        android:layout_height="43dp"
+        android:layout_width="371dp"
+        android:layout_height="68dp"
         android:text="Restaurant owner? Click Here"
         android:textAppearance="@style/AppTheme"
         android:textColor="@color/common_google_signin_btn_text_dark_default"

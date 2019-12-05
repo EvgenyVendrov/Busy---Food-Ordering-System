@@ -51,7 +51,7 @@
     <TextView
         android:id="@+id/LogIn_text"
         android:layout_width="389dp"
-        android:layout_height="43dp"
+        android:layout_height="79dp"
         android:text="Already a member? Click Here"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="24sp"
