@@ -20,7 +20,7 @@ public class signUpActivity extends AppCompatActivity implements View.OnClickLis
     private EditText editTextFirstName;
     private EditText editTextLastName;
     private EditText editTextEmail;
-    private EditText editTextPass;
+    private EditText editTextPassword;
     private FirebaseAuth mAuth;
 
 
@@ -33,7 +33,7 @@ public class signUpActivity extends AppCompatActivity implements View.OnClickLis
         editTextFirstName = findViewById(R.id.firstNameText);
         editTextLastName = findViewById(R.id.lastNameText);
         editTextEmail = findViewById(R.id.emailText);
-        editTextPass = findViewById(R.id.passwordText);
+        editTextPassword = findViewById(R.id.passwordText);
         findViewById(R.id.signUpButton).setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
     }
@@ -50,7 +50,7 @@ public class signUpActivity extends AppCompatActivity implements View.OnClickLis
         final String FirstName = editTextFirstName.getText().toString().trim();
         final String LastName =  editTextLastName.getText().toString().trim();
         final String Email = editTextEmail.getText().toString().trim();
-        String password = editTextPass.getText().toString().trim();
+        final String Password = editTextPassword.getText().toString().trim();
 
 
         if(FirstName.isEmpty()){
@@ -68,24 +68,24 @@ public class signUpActivity extends AppCompatActivity implements View.OnClickLis
             editTextEmail.requestFocus();
             return;
         }
-        if (password.isEmpty()){
-            editTextPass.setError("password is required");
-            editTextPass.requestFocus();
+        if (Password.isEmpty()){
+            editTextPassword.setError("password is required");
+            editTextPassword.requestFocus();
             return;
         }
-        if (password.length() < 6){
-            editTextPass.setError("password length shuld be higer than 6");
-            editTextPass.requestFocus();
+        if (Password.length() < 6){
+            editTextPassword.setError("password length shuld be higer than 6");
+            editTextPassword.requestFocus();
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(Email, password)
+        mAuth.createUserWithEmailAndPassword(Email, Password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             //we will store the additional fileds in firebase database
-                            Users_Form user = new Users_Form(FirstName,Email,LastName);
+                            Users_Form user = new Users_Form(FirstName,Email,LastName,Password);
                             FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).setValue(user)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

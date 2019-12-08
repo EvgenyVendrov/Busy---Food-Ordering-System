@@ -4,12 +4,13 @@ public class Users_Form {
     private String FirstName;
     private String LastName;
     private String Email;
-    private final String Type = "User";
+    private  String Password;
 
-    public Users_Form(String FirstName, String Email, String LastName){
+    public Users_Form(String FirstName, String Email, String LastName, String Password){
         this.Email=Email;
-        this.FirstName=FirstName;
+        this.FirstName = FirstName;
         this.LastName = LastName;
+        this.Password = Password;
 
     }
 
@@ -37,7 +38,11 @@ public class Users_Form {
         Email = email;
     }
 
-    public String getType() {
-        return Type;
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
     }
 }

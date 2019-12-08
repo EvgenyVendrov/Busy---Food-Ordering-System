@@ -54,21 +54,4 @@
         app:layout_constraintTop_toTopOf="@+id/background"
         app:layout_constraintVertical_bias="0.82" />
 
-    <TextView
-        android:id="@+id/restaurant_owner_text"
-        android:layout_width="371dp"
-        android:layout_height="68dp"
-        android:text="Restaurant owner? Click Here"
-        android:textAppearance="@style/AppTheme"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="24sp"
-        android:textStyle="bold|italic"
-        app:fontFamily="serif"
-        app:layout_constraintBottom_toBottomOf="@+id/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUpText"
-        app:layout_constraintVertical_bias="0.437" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

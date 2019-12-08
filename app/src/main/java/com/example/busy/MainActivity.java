@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.busy.restaurant.logIn_rest;
 import com.example.busy.users.LoginActivity;
 import com.example.busy.users.signUpActivity;
 
@@ -29,16 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-        //Restaurant Owner text view
-        TextView rest=findViewById(R.id.restaurant_owner_text);
-        rest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, logIn_rest.class);
-                startActivity(i);
-            }
-        });
+        
 
         //Sign in Button
         Button signIn = findViewById(R.id.signInEmail);
