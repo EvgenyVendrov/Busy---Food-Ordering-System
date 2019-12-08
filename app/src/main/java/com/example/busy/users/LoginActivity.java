@@ -46,17 +46,17 @@ public class LoginActivity extends AppCompatActivity {
         password_ID = findViewById(R.id.passwordLog);
         BTN_login = findViewById(R.id.loginBotton);
 
-        mAuth_SL = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser mUser = mAuth.getCurrentUser();
-                if(mUser != null){
-                    Toast.makeText(LoginActivity.this,"Log In Succesfull",Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(LoginActivity.this,Home_users.class);
-                    startActivity(i);
-                }
-            }
-        };
+//        mAuth_SL = new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                FirebaseUser mUser = mAuth.getCurrentUser();
+//                if(mUser != null){
+//                    Toast.makeText(LoginActivity.this,"Log In Succesfull",Toast.LENGTH_LONG).show();
+//                    Intent i = new Intent(LoginActivity.this,Home_users.class);
+//                    startActivity(i);
+//                }
+//            }
+//        };
         BTN_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this,"Login Error",Toast.LENGTH_LONG).show();
                             }
                             else {
+                                Toast.makeText(LoginActivity.this,"Log In Succesfull",Toast.LENGTH_LONG).show();
                                 Intent i_home = new Intent(LoginActivity.this,Home_users.class);
                                 startActivity(i_home);
                             }
@@ -92,9 +93,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(mAuth_SL);
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        mAuth.addAuthStateListener(mAuth_SL);
+//    }
 }
