@@ -23,6 +23,10 @@
         <activity android:name=".users.Filter_popup"
             android:theme="@style/AppTheme.customTheme"
             ></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
