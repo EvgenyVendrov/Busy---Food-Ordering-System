@@ -9,11 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".restaurant.HOME_restaurant"></activity>
-        <activity
-            android:name=".users.Home_users"
-            android:label="@string/title_activity_home_users"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".users.Home_users"></activity>
+        <activity android:name=".restaurant.HOME_restaurant" />
         <activity android:name=".users.signUpActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
