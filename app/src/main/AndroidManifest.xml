@@ -20,7 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".users.LoginActivity" />
-        <activity android:name=".users.Filter_popup"/>
+        <activity android:name=".users.Filter_popup"
+            android:theme="@style/AppTheme.customTheme"
+            ></activity>
     </application>
 
 </manifest>
