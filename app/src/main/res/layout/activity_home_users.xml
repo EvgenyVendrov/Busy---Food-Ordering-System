@@ -5,4 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".users.Home_users"/>
+    tools:context=".users.Home_users">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/wood" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
