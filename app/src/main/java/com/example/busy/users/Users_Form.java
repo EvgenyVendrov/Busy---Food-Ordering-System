@@ -13,6 +13,7 @@ public class Users_Form {
         this.Password = Password;
 
     }
+    public Users_Form(){}
 
     public String getFirstName() {
         return FirstName;
