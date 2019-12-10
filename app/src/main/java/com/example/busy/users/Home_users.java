@@ -48,7 +48,7 @@ public class Home_users extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 u = dataSnapshot.child(user.getUid()).getValue(Users_Form.class);
                 TextView Hello_Name = findViewById(R.id.hello_name);
-                Hello_Name.setText("Hello" + u.getFirstName());
+                Hello_Name.setText("Hello, " + u.getFirstName());
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
