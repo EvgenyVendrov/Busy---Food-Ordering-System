@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".users.Home_users"></activity>
+        <activity android:name=".users.personal_settings"></activity>
+        <activity android:name=".users.Home_users" />
         <activity android:name=".restaurant.HOME_restaurant" />
         <activity android:name=".users.signUpActivity" />
         <activity android:name=".MainActivity">
@@ -20,9 +21,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".users.LoginActivity" />
-        <activity android:name=".users.Filter_popup"
-            android:theme="@style/AppTheme.customTheme"
-            ></activity>
+        <activity
+            android:name=".users.Filter_popup"
+            android:theme="@style/AppTheme.customTheme" />
 
         <meta-data
             android:name="preloaded_fonts"
