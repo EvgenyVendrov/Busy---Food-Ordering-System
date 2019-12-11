@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class Shop {
     private int order_id;
-    private ArrayList<Orders> orders;
+    private ArrayList<Orders> _Orders;
 
     public Shop(){
-        orders = new ArrayList<>();
+        _Orders = new ArrayList<>();
         this.order_id=0;
     }
 
@@ -17,17 +17,17 @@ public class Shop {
         return order_id;
     }
 
-    public ArrayList<Orders> Orders() {
-        return orders;
+    public ArrayList<Orders> get_Orders() {
+        return _Orders;
     }
 
     public Boolean add(Orders order){
         order_id++;
-        return Orders().add(order);
+        return get_Orders().add(order);
     }
 
     public Boolean remove(Orders order){
         order_id--;
-        return Orders().remove(order);
+        return get_Orders().remove(order);
     }
 }

@@ -4,7 +4,6 @@ public class Restaurant_Form {
     private String Name;
     private String Owner;
     private String Location;
-    private String Owner_Uid;
     private String Email;
     private String Phone;
     private Shop shop;
@@ -32,6 +31,10 @@ public class Restaurant_Form {
 
     public String getEmail() {
         return Email;
+    }
+
+    public Shop getShop() {
+        return shop;
     }
 
 }
