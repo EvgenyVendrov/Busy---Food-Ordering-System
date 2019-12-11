@@ -56,7 +56,7 @@ public class Signup_Restaurant extends AppCompatActivity {
         }
 
         else if (phone.isEmpty()){
-            phone_editext.setError("phon is empty");
+            phone_editext.setError("phone is empty");
             phone_editext.requestFocus();
             return;
         }
