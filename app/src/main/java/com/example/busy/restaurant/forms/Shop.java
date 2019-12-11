@@ -1,15 +1,13 @@
 package com.example.busy.restaurant.forms;
 
-import com.example.busy.restaurant.forms.Orders;
-
 import java.util.ArrayList;
 
 public class Shop {
     private int order_id;
-    private ArrayList<Orders> _Orders;
+    private ArrayList<Orders> orders;
 
     public Shop(){
-        _Orders = new ArrayList<>();
+        orders = new ArrayList<>();
         this.order_id=0;
     }
 
@@ -17,17 +15,17 @@ public class Shop {
         return order_id;
     }
 
-    public ArrayList<Orders> get_Orders() {
-        return _Orders;
+    public ArrayList<Orders> getorders() {
+        return orders;
     }
 
     public Boolean add(Orders order){
         order_id++;
-        return get_Orders().add(order);
+        return getorders().add(order);
     }
 
     public Boolean remove(Orders order){
         order_id--;
-        return get_Orders().remove(order);
+        return getorders().remove(order);
     }
 }
