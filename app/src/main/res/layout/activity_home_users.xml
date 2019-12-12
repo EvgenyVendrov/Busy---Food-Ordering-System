@@ -31,21 +31,20 @@
         app:fontFamily="serif"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.092" />
+        app:layout_constraintVertical_bias="0.068" />
 
     <ImageView
         android:id="@+id/personal"
-        android:layout_width="51dp"
-        android:layout_height="56dp"
+        android:layout_width="38dp"
+        android:layout_height="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.986"
+        app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17"
+        app:layout_constraintVertical_bias="0.151"
         app:srcCompat="@drawable/ic_person" />
 
     <ScrollView
@@ -82,5 +81,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.254" />
+
+    <Button
+        android:id="@+id/search"
+        android:layout_width="54dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="72dp"
+        android:drawableTop="@drawable/ic_search"
+        android:onClick="getData"
+        app:layout_constraintStart_toEndOf="@+id/Cities_spinner"
+        tools:layout_editor_absoluteY="163dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
