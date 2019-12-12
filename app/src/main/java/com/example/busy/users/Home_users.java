@@ -3,9 +3,11 @@ package com.example.busy.users;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Home_users extends AppCompatActivity implements View.OnClickListener {
+public class Home_users extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     Users_Form u;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();//the current online user
     DatabaseReference ref_users; //the reference for Users realtimedatabase
@@ -42,14 +44,15 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_users);
 
-        //filter button
-        Button filter = findViewById(R.id.Filter_Button);
-        filter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Home_users.this, Filter_popup.class));
-            }
-        });
+        //Cities Spinner
+        Spinner Cities_spinner = findViewById(R.id.Cities_spinner);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this,R.array.Cities ,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Cities_spinner.setAdapter(adapter);
+        Cities_spinner.setOnItemSelectedListener(this);
+
+
+        //INIT
         findViewById(R.id.personal).setOnClickListener(this); //click listener 0f personal settings
         listView = (ListView) findViewById(R.id.rest_view);
         ref_users = FirebaseDatabase.getInstance().getReference("Users"); //get reference to Users
@@ -105,4 +108,16 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
                 break;
         }
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
 }

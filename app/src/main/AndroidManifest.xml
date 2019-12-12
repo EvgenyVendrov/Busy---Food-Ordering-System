@@ -21,9 +21,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".users.LoginActivity" />
-        <activity
-            android:name=".users.Filter_popup"
-            android:theme="@style/AppTheme.customTheme" />
 
         <meta-data
             android:name="preloaded_fonts"

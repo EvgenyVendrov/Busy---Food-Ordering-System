@@ -92,6 +92,7 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_home_restaurant">HOME_restaurant</string>
+
     <string-array name="Cities">
         <item>Ariel</item>
         <item>Tel Aviv</item>
