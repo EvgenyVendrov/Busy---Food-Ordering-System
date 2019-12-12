@@ -32,8 +32,6 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();//the current online user
     DatabaseReference ref_users; //the reference for Users realtimedatabase
     DatabaseReference ref_rests; //the reference for Restaurant realtimedatabase
-
-
     ListView listView;
     ArrayList<String> rest_list = new ArrayList<>(); //will contains the data of all the restourounts
     ArrayAdapter<String> rest_adapter; //the addapter that will get the rest_list and will be added to the list view
@@ -77,16 +75,15 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //iterate on the Restourunt nodes
-               for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                   String str = ds.getValue().toString();
-                   rest_list.add(str);
-
-
-               }
-               //add the array(rest_list) on array addapter and then add the arraydapter to the list view
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String str = ds.getValue().toString();
+                    rest_list.add(str);
+                }
+                //add the array(rest_list) on array addapter and then add the arraydapter to the list view
                 rest_adapter = new ArrayAdapter<String>(Home_users.this, android.R.layout.simple_list_item_1, rest_list);
                 listView.setAdapter(rest_adapter);
             }
+
             //if there is an error pulling data from the data base show messege
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -97,10 +94,11 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
 
 
     }
+
     //click functoin on personal settings button
     @Override
-    public void onClick(View v){
-        switch (v.getId()){
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.personal:
                 Intent i = new Intent(Home_users.this, personal_settings.class);
                 startActivity(i);
