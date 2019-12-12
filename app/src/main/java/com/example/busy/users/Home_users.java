@@ -29,14 +29,14 @@ import java.util.ArrayList;
 
 public class Home_users extends AppCompatActivity implements View.OnClickListener {
     Users_Form u;
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    DatabaseReference ref_users;
-    DatabaseReference ref_rests;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();//the current online user
+    DatabaseReference ref_users; //the reference for Users realtimedatabase
+    DatabaseReference ref_rests; //the reference for Restaurant realtimedatabase
 
 
     ListView listView;
-    ArrayList<String> rest_list = new ArrayList<>();
-    ArrayAdapter<String> rest_adapter;
+    ArrayList<String> rest_list = new ArrayList<>(); //will contains the data of all the restourounts
+    ArrayAdapter<String> rest_adapter; //the addapter that will get the rest_list and will be added to the list view
 
 
     @Override
@@ -52,15 +52,16 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
                 startActivity(new Intent(Home_users.this, Filter_popup.class));
             }
         });
-        findViewById(R.id.personal).setOnClickListener(this);
+        findViewById(R.id.personal).setOnClickListener(this); //click listener 0f personal settings
         listView = (ListView) findViewById(R.id.rest_view);
-        ref_users = FirebaseDatabase.getInstance().getReference("Users");
-        ref_rests = FirebaseDatabase.getInstance().getReference("Restaurant");
+        ref_users = FirebaseDatabase.getInstance().getReference("Users"); //get reference to Users
+        ref_rests = FirebaseDatabase.getInstance().getReference("Restaurant"); //get reference to Restaurant
 
+        // show the name of the user on top of the page
         ref_users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                u = dataSnapshot.child(user.getUid()).getValue(Users_Form.class);
+                u = dataSnapshot.child(user.getUid()).getValue(Users_Form.class); // get user id of the current user
                 TextView Hello_Name = findViewById(R.id.hello_name);
                 Hello_Name.setText("Hello, " + u.getFirstName());
             }
@@ -71,25 +72,32 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
             }
         });
 
+        //show the testurouns in the database on the page
         ref_rests.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //   Restaurant_Form value = dataSnapshot.child("7f0r9dQy3yPYE0fxmPh4eJzb20A2").getValue(Restaurant_Form.class);
-                String name = dataSnapshot.child("7f0r9dQy3yPYE0fxmPh4eJzb20A2").getValue().toString();
-                String str = name;
-                rest_list.add(str);
+                //iterate on the Restourunt nodes
+               for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                   String str = ds.getValue().toString();
+                   rest_list.add(str);
+
+
+               }
+               //add the array(rest_list) on array addapter and then add the arraydapter to the list view
                 rest_adapter = new ArrayAdapter<String>(Home_users.this, android.R.layout.simple_list_item_1, rest_list);
                 listView.setAdapter(rest_adapter);
             }
-
+            //if there is an error pulling data from the data base show messege
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(Home_users.this, "cant show resturuonts", Toast.LENGTH_LONG).show();
 
             }
         });
 
 
     }
+    //click functoin on personal settings button
     @Override
     public void onClick(View v){
         switch (v.getId()){
