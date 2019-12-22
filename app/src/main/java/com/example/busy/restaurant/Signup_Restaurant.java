@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ public class Signup_Restaurant extends AppCompatActivity {
     private EditText owner_editext;
     private EditText location_editext;
     private EditText phone_editext;
+    private EditText email_edittext;
     private Button signup_btn;
     private FirebaseAuth mAuth;
 
@@ -36,15 +38,17 @@ public class Signup_Restaurant extends AppCompatActivity {
         location_editext = findViewById(R.id.Location_rest);
         phone_editext = findViewById(R.id.rest_phone);
         signup_btn = findViewById(R.id.signup_rest);
+        email_edittext = findViewById(R.id.rest_email);
         mAuth = FirebaseAuth.getInstance();
+
 
     }
     private void register_restaurant(){
         final FirebaseUser user = mAuth.getCurrentUser();
         final String rest_name = rest_name_editext.getText().toString().trim();
-        final String rest_owner = user.getDisplayName();
+        final String rest_owner = owner_editext.getText().toString().trim();
         final String location = location_editext.getText().toString().trim();
-        final String email = user.getEmail();
+        final String email = email_edittext.getText().toString().trim();
         final String phone = phone_editext.getText().toString().trim();
 
 
@@ -97,6 +101,10 @@ public class Signup_Restaurant extends AppCompatActivity {
                     }
                 });
 
+}
+
+public void onClick(View v){
+        register_restaurant();
 }
 
 
