@@ -3,16 +3,20 @@ package com.example.busy.restaurant;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.busy.R;
+import com.example.busy.restaurant.forms.Restaurant_Form;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Signup_Restaurant extends AppCompatActivity {
     private EditText rest_name_editext;
@@ -61,11 +65,35 @@ public class Signup_Restaurant extends AppCompatActivity {
             return;
         }
 
+
         mAuth.createUserWithEmailAndPassword(email, user.getUid())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //need to get user name from database
+                        if (task.isSuccessful()){
+                            Restaurant_Form rest = new Restaurant_Form(rest_name,rest_owner,location,email,phone);
+                            FirebaseDatabase.getInstance().getReference("Restaurant").child(user.getUid()).setValue(rest)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(Signup_Restaurant.this, "Sign up restaurant is successfull", Toast.LENGTH_SHORT).show();
+                                                Intent i = new Intent(Signup_Restaurant.this, HOME_restaurant.class);
+                                                startActivity(i);
+
+                                            }
+                                            else{
+                                                Toast.makeText(Signup_Restaurant.this, "Sign up failed", Toast.LENGTH_SHORT).show();
+
+                                            }
+                                        }
+                                    });
+                        }
+                        else{
+                            Toast.makeText(Signup_Restaurant.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+
+                        }
                     }
                 });
 
