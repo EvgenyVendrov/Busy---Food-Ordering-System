@@ -26,10 +26,10 @@
 
 
             <Button
-                android:id="@+id/sign_rest"
+                android:id="@+id/update_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="sign up your restaurant" />
+                android:text="update my profile" />
         </LinearLayout>
     </ScrollView>
 
