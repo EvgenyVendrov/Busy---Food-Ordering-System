@@ -12,6 +12,8 @@ import com.example.busy.users.LoginActivity;
 import com.example.busy.users.signUpActivity;
 
 public class MainActivity extends AppCompatActivity {
+    private TextView signUp;
+    private Button signIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Sign up text view
-        TextView signUp = findViewById(R.id.signUpText);
+        signUp = findViewById(R.id.signUpText);
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         
 
         //Sign in Button
-        Button signIn = findViewById(R.id.signInEmail);
+         signIn = findViewById(R.id.signInEmail);
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

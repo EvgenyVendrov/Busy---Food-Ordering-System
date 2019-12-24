@@ -12,7 +12,7 @@ import com.example.busy.restaurant.Signup_Restaurant;
 
 
 public class personal_settings extends AppCompatActivity implements View.OnClickListener {
-    Button rest_sign;
+    private Button rest_sign;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
