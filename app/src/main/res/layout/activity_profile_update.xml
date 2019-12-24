@@ -33,10 +33,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.11" />
+        app:layout_constraintVertical_bias="0.071" />
 
     <EditText
         android:id="@+id/NewName_editext"
@@ -49,9 +49,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.14" />
 
     <TextView
         android:id="@+id/CurrentEmail"
@@ -65,10 +66,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/update"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/your_name_textview"
-        app:layout_constraintVertical_bias="0.108" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/NewEmail_editext"
@@ -93,11 +94,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="160dp"
         android:onClick="onClick"
-        android:text="update"
+        android:text="update name/email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NewName_editext"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.459" />
 </androidx.constraintlayout.widget.ConstraintLayout>
