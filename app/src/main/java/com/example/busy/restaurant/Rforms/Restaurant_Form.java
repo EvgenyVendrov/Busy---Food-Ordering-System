@@ -1,4 +1,4 @@
-package com.example.busy.restaurant.forms;
+package com.example.busy.restaurant.Rforms;
 
 public class Restaurant_Form {
     private String Name;
