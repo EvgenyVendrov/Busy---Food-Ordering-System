@@ -25,9 +25,12 @@ public class profile_update extends AppCompatActivity implements View.OnClickLis
     private TextView user_email;
     private EditText new_name;
     private EditText new_email;
+    private EditText current_password;
+    private EditText new_password;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); //the current user in the database
     private DatabaseReference ref_users;
     private Button update_button;
+    private Button change_passwordbtn;
     private Users_Form u;
     private FirebaseAuth mAuth;
 
@@ -60,21 +63,57 @@ public class profile_update extends AppCompatActivity implements View.OnClickLis
         new_name = (EditText) findViewById(R.id.NewName_editext);
         new_email = (EditText) findViewById(R.id.NewEmail_editext);
         update_button = (Button) findViewById(R.id.update);
+        current_password = (EditText) findViewById(R.id.current_password);
+        new_password = (EditText) findViewById(R.id.new_password);
+        change_passwordbtn = (Button) findViewById(R.id.change_password);
     }
     @Override
-    public void onClick(View v){ //click function on update button
-        String name = new_name.getText().toString().trim(); //the name the user entered in the edittext name
-        String email = new_email.getText().toString().trim(); //the email the user enter in the editext email
-        if (!name.isEmpty()){ //if nsme is not empty change the name in the real time database
-            ref_users.child(user.getUid()).child("firstName").setValue(name);
-            Toast.makeText(profile_update.this, "name updated", Toast.LENGTH_SHORT).show();
-        }
-        if (!email.isEmpty()){ //if email is not empty change email in the real time database and in the auth
-            ref_users.child(user.getUid()).child("email").setValue(email);
-            user.updateEmail(email);
-            Toast.makeText(profile_update.this, "email is updated", Toast.LENGTH_SHORT).show();
+    public void onClick(View v) { //click function on update button
+        switch (v.getId()) {
+            case R.id.update:
+                String name = new_name.getText().toString().trim(); //the name the user entered in the edittext name
+                String email = new_email.getText().toString().trim(); //the email the user enter in the editext email
+                if (!name.isEmpty()) { //if nsme is not empty change the name in the real time database
+                    ref_users.child(user.getUid()).child("firstName").setValue(name);
+                    Toast.makeText(profile_update.this, "name updated", Toast.LENGTH_SHORT).show();
+                }
+                if (!email.isEmpty()) { //if email is not empty change email in the real time database and in the auth
+                    ref_users.child(user.getUid()).child("email").setValue(email);
+                    user.updateEmail(email);
+                    Toast.makeText(profile_update.this, "email is updated", Toast.LENGTH_SHORT).show();
+            }
+                break;
+            case R.id.change_password:
+                changepassword();
 
-
         }
+    }
+
+    private void changepassword() {
+        String password = current_password.getText().toString().trim();
+        if(password.isEmpty()){
+            current_password.setError("current password is emtpy");
+            current_password.requestFocus();
+            return;
+        }
+        if(!password.equals(u.getPassword())){
+           current_password.setError("wrong password");
+           current_password.requestFocus();
+           return;
+       }
+        String new_userpass = new_password.getText().toString().trim();
+        if(new_userpass.isEmpty()){
+            new_password.setError("new password is empty");
+            new_password.requestFocus();
+            return;
+        }
+        if (new_userpass.equals(password)){
+            new_password.setError("the new password is the same as the old one");
+            new_password.requestFocus();
+            return;
+        }
+        user.updatePassword(new_userpass);
+        ref_users.child(user.getUid()).child("password").setValue(new_userpass);
+        Toast.makeText(profile_update.this, "passwored changed succefuly", Toast.LENGTH_SHORT).show();
     }
 }
