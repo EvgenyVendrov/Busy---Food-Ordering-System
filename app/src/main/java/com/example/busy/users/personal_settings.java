@@ -40,7 +40,7 @@ public class personal_settings extends AppCompatActivity implements View.OnClick
                 startActivity(i);
                 break;
             case R.id.Logout:
-                mAuth.signOut(;
+                mAuth.signOut();
 
 
         }
