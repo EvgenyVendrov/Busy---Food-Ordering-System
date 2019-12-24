@@ -1,4 +1,4 @@
-package com.example.busy.users;
+package com.example.busy;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.busy.R;
+import com.example.busy.restaurant.Signup_Restaurant;
+import com.example.busy.users.Home_users;
 import com.example.busy.users.Uform.Users_Form;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,6 +27,9 @@ public class signUpActivity extends AppCompatActivity implements View.OnClickLis
     private EditText editTextPassword;
     private FirebaseAuth mAuth;
 
+    private Switch aSwitch;
+    private Boolean flag=false;
+
 
 
     @Override
@@ -37,6 +43,17 @@ public class signUpActivity extends AppCompatActivity implements View.OnClickLis
         editTextPassword = findViewById(R.id.passwordText);
         findViewById(R.id.signUpButton).setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
+
+        aSwitch = (Switch)findViewById(R.id.switch2);
+        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked == true) {flag=true;}
+                else {flag=false;}
+            }
+        });
+
+
     }
 
     @Override
@@ -93,8 +110,14 @@ public class signUpActivity extends AppCompatActivity implements View.OnClickLis
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(signUpActivity.this, "Sign up successfully", Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(signUpActivity.this, Home_users.class);
-                                        startActivity(i);
+                                        if(flag==false){
+                                            Intent i = new Intent(signUpActivity.this, Home_users.class);
+                                            startActivity(i);
+                                        }
+                                        else{
+                                            Intent i = new Intent(signUpActivity.this, Signup_Restaurant.class);
+                                            startActivity(i);
+                                        }
                                     }
 
                                     else {

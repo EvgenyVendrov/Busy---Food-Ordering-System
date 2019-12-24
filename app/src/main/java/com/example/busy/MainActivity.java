@@ -8,12 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.busy.users.LoginActivity;
-import com.example.busy.users.signUpActivity;
-
 public class MainActivity extends AppCompatActivity {
     private TextView signUp;
-    private Button signIn;
+    private Button logInBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         
 
         //Sign in Button
-         signIn = findViewById(R.id.signInEmail);
-        signIn.setOnClickListener(new View.OnClickListener() {
+         logInBtn = findViewById(R.id.LogInEmail);
+        logInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, LoginActivity.class);

@@ -13,7 +13,7 @@
         <activity android:name=".users.personal_settings"></activity>
         <activity android:name=".users.Home_users" />
         <activity android:name=".restaurant.HOME_restaurant" />
-        <activity android:name=".users.signUpActivity" />
+        <activity android:name=".signUpActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".users.LoginActivity" />
+        <activity android:name=".LoginActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
