@@ -2,39 +2,36 @@ package com.example.busy.restaurant.Rforms;
 
 public class Restaurant_Form {
     private String Name;
-    private String Owner;
     private String Location;
-    private String Email;
     private String Phone;
-    private Shop shop;
 
-    public Restaurant_Form(String Name, String Owner, String Location, String Email, String Phone) {
+    public Restaurant_Form(String Name, String Location, String Phone) {
         this.Name = Name;
-        this.Owner = Owner;
         this.Location = Location;
-        this.Email = Email;
         this.Phone = Phone;
-        shop = new Shop();
     }
 
-    public String getRest_Name() {
+    public String getName() {
         return Name;
     }
 
-    public String getOwner() {
-        return Owner;
+    public void setName(String name) {
+        Name = name;
     }
 
     public String getLocation() {
         return Location;
     }
 
-    public String getEmail() {
-        return Email;
+    public void setLocation(String location) {
+        Location = location;
     }
 
-    public Shop getShop() {
-        return shop;
+    public String getPhone() {
+        return Phone;
     }
 
+    public void setPhone(String phone) {
+        Phone = phone;
+    }
 }

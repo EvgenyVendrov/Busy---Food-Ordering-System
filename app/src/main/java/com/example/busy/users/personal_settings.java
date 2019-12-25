@@ -1,11 +1,11 @@
 package com.example.busy.users;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.busy.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +28,7 @@ public class personal_settings extends AppCompatActivity implements View.OnClick
         findViewById(R.id.Logout).setOnClickListener(this);
 
     }
+
     @Override
     public void onClick(View v) { //the click function on view
         switch (v.getId()) {
