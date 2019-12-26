@@ -78,7 +78,7 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
 
 
 
-        //show the testurouns in the database on the page
+        //show the resturouns in the database on the page
        searchbtn = findViewById(R.id.search);
 
 
@@ -86,18 +86,33 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
 
     public void getData(View v) {
 
-        Query query = ref_rests.orderByChild("location").equalTo(text);
+        Query query = ref_rests.orderByChild("location").equalTo(text);// order the database by location
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()) {
-                    String str = dataSnapshot.getValue().toString();
-                    rest_list.add(str);
-                    rest_adapter = new ArrayAdapter<String>(Home_users.this, android.R.layout.simple_list_item_1, rest_list);
-                    listView.setAdapter(rest_adapter);
+                if (!rest_list.isEmpty()) {
+                    rest_list.clear();
+                    rest_adapter.clear();
+                    listView.clearAnimation();
+                }
+
+                if(dataSnapshot.exists()) { //if there is a restourants in this area
+                    String str;
+                    for(DataSnapshot db : dataSnapshot.getChildren()){
+                        str = db.child("name").getValue(String.class); //get name of the restourants
+                        rest_list.add(str);
+                    }
+                        rest_adapter = new ArrayAdapter<String>(Home_users.this, R.layout.cutsumefont, rest_list);
+                        listView.setAdapter(rest_adapter);
+
+
+
                 }
                 else{
-                    Toast.makeText(Home_users.this, "No Restaurant in this location! ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Home_users.this, "No Restaurant in this location! ", Toast.LENGTH_LONG).show();
+                    rest_list.add("no restourants here");
+                    rest_adapter = new ArrayAdapter<String>(Home_users.this, R.layout.cutsumefont, rest_list);
+                    listView.setAdapter(rest_adapter);
                 }
             }
 
