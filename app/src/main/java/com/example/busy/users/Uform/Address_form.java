@@ -14,6 +14,20 @@ public class Address_form {
         this.Phone_num = Phone_num;
     }
 
+    public Address_form() {
+        this.City = "";
+        this.House_num = "";
+        this.Phone_num = "";
+        this.Street = "";
+    }
+
+    public Address_form(Address_form address) {
+        this.Street = address.Street;
+        this.City = address.City;
+        this.Phone_num = address.Phone_num;
+        this.House_num = address.House_num;
+    }
+
 
     public String getCity() {
         return City;

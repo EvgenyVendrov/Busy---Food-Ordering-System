@@ -6,7 +6,7 @@ public class Users_Form {
     private String Email;
     private String Password;
     private String owner;
-    private String Address;
+    private Address_form Address;
 
     public Users_Form(String FirstName, String Email, String LastName, String Password, String owner) {
         this.Email = Email;
@@ -14,11 +14,17 @@ public class Users_Form {
         this.LastName = LastName;
         this.Password = Password;
         this.owner = owner;
-        this.Address = null;
+        this.Address = new Address_form();
 
     }
 
     public Users_Form() {
+        this.Address = new Address_form();
+        this.owner = "";
+        this.Email = "";
+        this.FirstName = "";
+        this.LastName = "";
+        this.Password = "";
     }
 
     public String getFirstName() {
@@ -61,11 +67,11 @@ public class Users_Form {
         this.owner = owner;
     }
 
-    public String getAddress() {
+    public Address_form getAddress() {
         return Address;
     }
 
-    public void setAddress(String address) {
-        Address = address;
+    public void setAddress(Address_form address) {
+        Address = new Address_form(address);
     }
 }
