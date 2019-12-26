@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fooodi"
-    tools:context=".users.Address_Users">
+    tools:context=".users.Profile_Update.Edit_address">
 
     <EditText
         android:id="@+id/CityET"
