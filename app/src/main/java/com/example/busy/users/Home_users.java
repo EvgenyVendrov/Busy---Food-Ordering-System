@@ -39,6 +39,7 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
     private Button searchbtn;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +59,15 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
         ref_users = FirebaseDatabase.getInstance().getReference("Users"); //get reference to Users
         ref_rests = FirebaseDatabase.getInstance().getReference("Restaurant"); //get reference to Restaurant
 
+
         // show the name of the user on top of the page
-        ref_users.addListenerForSingleValueEvent(new ValueEventListener() {
+       ref_users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 u = dataSnapshot.child(user.getUid()).getValue(Users_Form.class); // get user id of the current user
                 TextView Hello_Name = findViewById(R.id.hello_name);
                 Hello_Name.setText("Hello, " + u.getFirstName());
+
             }
 
             @Override
@@ -72,6 +75,8 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
                 Toast.makeText(Home_users.this, "" + databaseError.toString(), Toast.LENGTH_LONG).show();
             }
         });
+
+
 
         //show the testurouns in the database on the page
        searchbtn = findViewById(R.id.search);
@@ -81,7 +86,7 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
 
     public void getData(View v) {
 
-        Query query = ref_rests.orderByChild("Location").equalTo(text);
+        Query query = ref_rests.orderByChild("location").equalTo(text);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
