@@ -11,19 +11,18 @@
         android:id="@+id/EmailLog"
         android:layout_width="356dp"
         android:layout_height="56dp"
-        android:layout_marginTop="184dp"
         android:background="@android:color/white"
         android:ems="10"
         android:hint="Email Address"
         android:inputType="textEmailAddress"
         android:textSize="24sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/passwordLog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.322" />
+        app:layout_constraintVertical_bias="0.953" />
 
     <EditText
         android:id="@+id/passwordLog"
@@ -35,12 +34,12 @@
         android:inputType="textPassword"
         android:textSize="24sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/loginBotton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.633" />
+        app:layout_constraintVertical_bias="0.923" />
 
     <Button
         android:id="@+id/loginBotton"
@@ -79,7 +78,6 @@
         android:id="@+id/LogIn_logo"
         android:layout_width="225dp"
         android:layout_height="119dp"
-        android:layout_marginBottom="236dp"
         android:text="Log In"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="@android:dimen/notification_large_icon_height"

@@ -12,27 +12,29 @@
         android:layout_width="252dp"
         android:layout_height="38dp"
         android:text="Hello, Name"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="24sp"
-        android:textStyle="bold|italic"
+        android:textStyle="italic"
+        android:typeface="normal"
         app:fontFamily="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.176" />
+        app:layout_constraintVertical_bias="0.172" />
 
     <ImageView
         android:id="@+id/personal"
-        android:layout_width="37dp"
-        android:layout_height="51dp"
+        android:layout_width="56dp"
+        android:layout_height="58dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.07"
+        app:layout_constraintVertical_bias="0.073"
         app:srcCompat="@drawable/ic_person" />
 
     <ScrollView
@@ -60,7 +62,7 @@
 
     <Spinner
         android:id="@+id/Cities_spinner"
-        android:layout_width="169dp"
+        android:layout_width="221dp"
         android:layout_height="48dp"
         android:background="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,15 +74,16 @@
 
     <Button
         android:id="@+id/search"
-        android:layout_width="65dp"
-        android:layout_height="54dp"
+        android:layout_width="54dp"
+        android:layout_height="48dp"
+        android:background="@color/common_google_signin_btn_text_dark_default"
         android:drawableTop="@drawable/ic_search"
         android:onClick="getData"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.257" />
+        app:layout_constraintVertical_bias="0.256" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
