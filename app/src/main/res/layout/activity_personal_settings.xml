@@ -99,31 +99,16 @@
         app:layout_constraintVertical_bias="0.953" />
 
     <TextView
-        android:id="@+id/Last_view"
-        android:layout_width="356dp"
-        android:layout_height="70dp"
-        android:text="Last Name: name"
-        android:textAlignment="textStart"
-        android:textColor="@color/design_default_color_primary_dark"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/Email_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
         android:id="@+id/Name_view"
         android:layout_width="356dp"
         android:layout_height="67dp"
+        android:layout_marginTop="56dp"
         android:text="First Name: name"
         android:textAlignment="textStart"
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/Last_view"
+        app:layout_constraintBottom_toTopOf="@+id/Email_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"

@@ -38,8 +38,6 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
     private String text;
     private Button searchbtn;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,16 +50,14 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
         Cities_spinner.setAdapter(adapter);
         Cities_spinner.setOnItemSelectedListener(this);
 
-
         //INIT
         findViewById(R.id.personal).setOnClickListener(this); //click listener 0f personal settings
         listView = (ListView) findViewById(R.id.rest_view);
         ref_users = FirebaseDatabase.getInstance().getReference("Users"); //get reference to Users
         ref_rests = FirebaseDatabase.getInstance().getReference("Restaurant"); //get reference to Restaurant
 
-
         // show the name of the user on top of the page
-       ref_users.addListenerForSingleValueEvent(new ValueEventListener() {
+        ref_users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 u = dataSnapshot.child(user.getUid()).getValue(Users_Form.class); // get user id of the current user
@@ -76,16 +72,11 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
             }
         });
 
-
-
         //show the resturouns in the database on the page
-       searchbtn = findViewById(R.id.search);
-
-
+        searchbtn = findViewById(R.id.search);
     }
 
     public void getData(View v) {
-
         Query query = ref_rests.orderByChild("location").equalTo(text);// order the database by location
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -96,26 +87,23 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
                     listView.clearAnimation();
                 }
 
-                if(dataSnapshot.exists()) { //if there is a restourants in this area
+                if (dataSnapshot.exists()) { //if there is a restourants in this area
                     String str;
-                    for(DataSnapshot db : dataSnapshot.getChildren()){
+                    for (DataSnapshot db : dataSnapshot.getChildren()) {
                         str = db.child("name").getValue(String.class); //get name of the restourants
                         rest_list.add(str);
                     }
-                        rest_adapter = new ArrayAdapter<String>(Home_users.this, R.layout.cutsumefont, rest_list);
-                        listView.setAdapter(rest_adapter);
+                    rest_adapter = new ArrayAdapter<String>(Home_users.this, R.layout.cutsumefont, rest_list);
+                    listView.setAdapter(rest_adapter);
 
 
-
-                }
-                else{
+                } else {
                     Toast.makeText(Home_users.this, "No Restaurant in this location! ", Toast.LENGTH_LONG).show();
                     rest_list.add("no restourants here");
                     rest_adapter = new ArrayAdapter<String>(Home_users.this, R.layout.cutsumefont, rest_list);
                     listView.setAdapter(rest_adapter);
                 }
             }
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
