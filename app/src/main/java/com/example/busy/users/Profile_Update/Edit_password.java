@@ -43,9 +43,7 @@ public class Edit_password extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(Edit_password.this, "Error ocured", Toast.LENGTH_SHORT).show();
-
-
+                Toast.makeText(Edit_password.this, "Error occurred", Toast.LENGTH_SHORT).show();
             }
         });
 

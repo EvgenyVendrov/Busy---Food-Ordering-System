@@ -4,6 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/food"
     tools:context=".users.Profile_Update.Edit_name">
+
+
+    <EditText
+        android:id="@+id/new_first_name"
+        android:layout_width="315dp"
+        android:layout_height="57dp"
+        android:ems="10"
+        android:hint="New First Name"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.448" />
+
+    <EditText
+        android:id="@+id/new_last_name"
+        android:layout_width="315dp"
+        android:layout_height="57dp"
+        android:ems="10"
+        android:hint="New Last Name"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.575" />
+
+    <Button
+        android:id="@+id/change_name"
+        android:layout_width="247dp"
+        android:layout_height="70dp"
+        android:text="Change Name"
+        android:textAllCaps="false"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.768" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
