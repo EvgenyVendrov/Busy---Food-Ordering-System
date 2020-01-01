@@ -4,11 +4,15 @@ public class Restaurant_Form {
     private String Name;
     private String Location;
     private String Phone;
+    private String type;
+
 
     public Restaurant_Form(String Name, String Location, String Phone) {
         this.Name = Name;
         this.Location = Location;
         this.Phone = Phone;
+        this.type = "";
+
     }
 
     public String getName() {

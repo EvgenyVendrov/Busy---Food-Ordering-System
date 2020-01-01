@@ -55,7 +55,9 @@
             <ListView
                 android:id="@+id/rest_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:divider="#F2141313"
+                android:dividerHeight="1dp" />
         </LinearLayout>
     </ScrollView>
 
