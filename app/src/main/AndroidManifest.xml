@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".users.Profile_Update.Edit_password"></activity>
-        <activity android:name=".users.Profile_Update.Edit_email" />
         <activity android:name=".users.Profile_Update.Edit_name" />
         <activity android:name=".users.Profile_Update.Edit_address" />
         <activity android:name=".users.profile_update" />

@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.busy.MainActivity;
 import com.example.busy.R;
 import com.example.busy.users.Profile_Update.Edit_address;
-import com.example.busy.users.Profile_Update.Edit_email;
 import com.example.busy.users.Profile_Update.Edit_name;
 import com.example.busy.users.Profile_Update.Edit_password;
 import com.example.busy.users.Uform.Address_form;
@@ -84,15 +83,6 @@ public class personal_settings extends AppCompatActivity {
             }
         });
 
-        //EDIT EMAIL BUTTON
-        edit_email.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i_EE = new Intent(personal_settings.this, Edit_email.class);
-                startActivity(i_EE);
-            }
-        });
-
         //EDIT FIRST NAME BUTTON
         edit_fn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +91,6 @@ public class personal_settings extends AppCompatActivity {
                 startActivity(i_EF);
             }
         });
-
 
         //EDIT PASSWORD BUTTON
         edit_pass.setOnClickListener(new View.OnClickListener() {
@@ -112,6 +101,7 @@ public class personal_settings extends AppCompatActivity {
             }
         });
 
+        //LOGOUT BUTTON
         logout_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
