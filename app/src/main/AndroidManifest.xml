@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".users.Profile_Update.Edit_password"></activity>
+        <activity android:name=".restaurant.Restaurant_page"></activity>
+        <activity android:name=".users.Profile_Update.Edit_password" />
         <activity android:name=".users.Profile_Update.Edit_name" />
         <activity android:name=".users.Profile_Update.Edit_address" />
         <activity android:name=".users.profile_update" />
