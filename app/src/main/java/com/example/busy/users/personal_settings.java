@@ -51,11 +51,11 @@ public class personal_settings extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Users_Form curr_user = dataSnapshot.child(user.getUid()).getValue(Users_Form.class);
                 Address_form curr_add = curr_user.getAddress();
-                edit_fn.setText( "Name: " + curr_user.getFirstName() + " " + curr_user.getLastName());
+                edit_fn.setText("Name: " + curr_user.getFirstName() + " " + curr_user.getLastName());
                 edit_email.setText("Email: " + curr_user.getEmail());
                 edit_pass.setText("password: " + curr_user.getPassword());
-                edit_address.setText("address: city: " + curr_add.getCity() + " street: " + curr_add.getStreet() + " house number: " +curr_add.getHouse_num()
-                + " phone number: " + curr_add.getPhone_num());
+                edit_address.setText("address: city: " + curr_add.getCity() + " street: " + curr_add.getStreet() + " house number: " + curr_add.getHouse_num()
+                        + " phone number: " + curr_add.getPhone_num());
             }
 
             @Override

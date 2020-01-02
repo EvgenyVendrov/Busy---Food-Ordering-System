@@ -24,22 +24,6 @@
         app:layout_constraintVertical_bias="0.516" />
 
     <EditText
-        android:id="@+id/Location_rest"
-        android:layout_width="356dp"
-        android:layout_height="56dp"
-        android:background="@android:color/white"
-        android:ems="10"
-        android:hint="location"
-        android:inputType="textPersonName"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.622" />
-
-    <EditText
         android:id="@+id/rest_phone"
         android:layout_width="356dp"
         android:layout_height="56dp"
@@ -85,5 +69,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.143" />
+
+    <Spinner
+        android:textSize="24sp"
+        android:id="@+id/Cities_spinner"
+        android:layout_width="356dp"
+        android:layout_height="56dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.622" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

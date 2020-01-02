@@ -3,7 +3,10 @@ package com.example.busy.restaurant;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,11 +19,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Signup_Restaurant extends AppCompatActivity implements View.OnClickListener {
+public class Signup_Restaurant extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     private EditText rest_name_editext;
-    private EditText location_editext;
     private EditText phone_editext;
     private String UID;
+    private String city="Ariel";
 
 
     @Override
@@ -29,29 +32,32 @@ public class Signup_Restaurant extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_signup__restaurant);
 
         rest_name_editext = findViewById(R.id.rest_name);
-        location_editext = findViewById(R.id.Location_rest);
         phone_editext = findViewById(R.id.rest_phone);
         findViewById(R.id.next_btn).setOnClickListener(this);
         UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 
+        //Cities Spinner
+        Spinner Cities_spinner = findViewById(R.id.Cities_spinner);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.Cities, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Cities_spinner.setAdapter(adapter);
+        Cities_spinner.setOnItemSelectedListener(this);
+
     }
 
     private void register_restaurant() {
         final String rest_name = rest_name_editext.getText().toString().trim();
-        final String location = location_editext.getText().toString().trim();
+        final String location = city;
         final String phone = phone_editext.getText().toString().trim();
 
 
-        if (location.isEmpty()) {
-            location_editext.setError("Location is required");
-            location_editext.requestFocus();
+         if (rest_name.isEmpty()) {
+            rest_name_editext.setError("Restaurant Name is required");
+            rest_name_editext.requestFocus();
             return;
-        } else if (rest_name.isEmpty()) {
-             rest_name_editext.setError("Restaurant Name is required");
-             rest_name_editext.requestFocus();
-             return;
-        } else if (phone.isEmpty()) {
+        }
+         if (phone.isEmpty()) {
             phone_editext.setError("Phone is empty");
             phone_editext.requestFocus();
             return;
@@ -84,6 +90,17 @@ public class Signup_Restaurant extends AppCompatActivity implements View.OnClick
                 register_restaurant();
                 break;
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        city = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(), city, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
 

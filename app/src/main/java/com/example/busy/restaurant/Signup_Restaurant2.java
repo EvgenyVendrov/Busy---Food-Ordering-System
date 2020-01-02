@@ -105,9 +105,9 @@ public class Signup_Restaurant2 extends AppCompatActivity implements View.OnClic
             kosher = "yes";
         }
 
-        FirebaseDatabase.getInstance().getReference("Restaurant").child(UID).child("Kosher").setValue(kosher);
-        FirebaseDatabase.getInstance().getReference("Restaurant").child(UID).child("Type").setValue(type);
-        FirebaseDatabase.getInstance().getReference("Restaurant").child(UID).child("Description").setValue(description)
+        FirebaseDatabase.getInstance().getReference("Restaurant").child(UID).child("kosher").setValue(kosher);
+        FirebaseDatabase.getInstance().getReference("Restaurant").child(UID).child("type").setValue(type);
+        FirebaseDatabase.getInstance().getReference("Restaurant").child(UID).child("description").setValue(description)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
