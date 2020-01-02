@@ -17,7 +17,6 @@
         <activity android:name=".restaurant.Signup_Restaurant" />
         <activity android:name=".users.personal_settings" />
         <activity android:name=".users.Home_users" />
-        <activity android:name=".restaurant.HOME_restaurant" />
         <activity android:name=".signUpActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
