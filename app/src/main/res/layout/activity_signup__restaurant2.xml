@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/marble"
+    tools:context=".restaurant.Signup_Restaurant2">
+
+    <CheckBox
+        android:id="@+id/regular_CB"
+        android:layout_width="113dp"
+        android:layout_height="39dp"
+        android:fontFamily="casual"
+        android:text="Regular"
+        android:textColor="@android:color/black"
+        android:textSize="17dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/vege_CB"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.257" />
+
+    <CheckBox
+        android:id="@+id/NoKosher_CB"
+        android:layout_width="130dp"
+        android:layout_height="39dp"
+        android:fontFamily="casual"
+        android:text="Not Kosher"
+        android:textColor="@android:color/black"
+        android:textSize="17dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.785"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_text"
+        app:layout_constraintVertical_bias="0.194" />
+
+    <CheckBox
+        android:id="@+id/kosher_CB"
+        android:layout_width="113dp"
+        android:layout_height="39dp"
+        android:fontFamily="casual"
+        android:text="Kosher"
+        android:textColor="@android:color/black"
+        android:textSize="17dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/NoKosher_CB"
+        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_text"
+        app:layout_constraintVertical_bias="0.197" />
+
+    <CheckBox
+        android:id="@+id/vegan_CB"
+        android:layout_width="113dp"
+        android:layout_height="39dp"
+        android:fontFamily="casual"
+        android:text="Vegan"
+        android:textColor="@android:color/black"
+        android:textSize="17dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toEndOf="@+id/vege_CB"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.257" />
+
+    <CheckBox
+        android:id="@+id/vege_CB"
+        android:layout_width="128dp"
+        android:layout_height="39dp"
+        android:fontFamily="casual"
+        android:text="Vegetarian"
+        android:textColor="@android:color/black"
+        android:textSize="17dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.257" />
+
+    <EditText
+        android:id="@+id/description_text"
+        android:layout_width="369dp"
+        android:layout_height="138dp"
+        android:background="@color/colorPrimary"
+        android:hint="Add a short description"
+        android:inputType="textMultiLine"
+        android:lines="8"
+        android:maxLines="10"
+        android:minLines="6"
+        android:scrollbars="vertical"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vege_CB"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <Button
+        android:id="@+id/finish_btn"
+        android:layout_width="203dp"
+        android:layout_height="72dp"
+        android:fontFamily="serif"
+        android:text="Finish"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.847" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

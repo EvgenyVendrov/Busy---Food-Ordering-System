@@ -31,7 +31,7 @@ public class Signup_Restaurant extends AppCompatActivity implements View.OnClick
         rest_name_editext = findViewById(R.id.rest_name);
         location_editext = findViewById(R.id.Location_rest);
         phone_editext = findViewById(R.id.rest_phone);
-        findViewById(R.id.signup_rest).setOnClickListener(this);
+        findViewById(R.id.next_btn).setOnClickListener(this);
         UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 
@@ -64,8 +64,7 @@ public class Signup_Restaurant extends AppCompatActivity implements View.OnClick
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(Signup_Restaurant.this, "Sign up restaurant is successfull", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(Signup_Restaurant.this, HOME_restaurant.class);
+                            Intent i = new Intent(Signup_Restaurant.this, Signup_Restaurant2.class);
                             startActivity(i);
 
                         } else {
@@ -81,7 +80,7 @@ public class Signup_Restaurant extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.signup_rest:
+            case R.id.next_btn:
                 register_restaurant();
                 break;
         }

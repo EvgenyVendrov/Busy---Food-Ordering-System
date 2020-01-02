@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wood"
+    android:background="@drawable/marble"
     tools:context=".restaurant.Signup_Restaurant">
 
     <EditText
@@ -56,12 +56,14 @@
         app:layout_constraintVertical_bias="0.724" />
 
     <Button
-        android:id="@+id/signup_rest"
+        android:id="@+id/next_btn"
         android:layout_width="275dp"
         android:layout_height="70dp"
+        android:fontFamily="serif"
         android:onClick="onClick"
-        android:text="Signup Restaurant"
+        android:text="Next"
         android:textSize="24sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
