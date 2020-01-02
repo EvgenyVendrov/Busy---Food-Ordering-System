@@ -9,8 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".restaurant.Signup_Restaurant2"></activity>
+        <activity android:name=".restaurant.update.Edit_Phone"></activity>
+        <activity android:name=".restaurant.update.Edit_Name" />
+        <activity android:name=".restaurant.update.Edit_Location" />
+        <activity android:name=".restaurant.update.Edit_Type" />
+        <activity android:name=".restaurant.update.Edit_Kosher" />
+        <activity android:name=".restaurant.update.Edit_Desc" />
+        <activity android:name=".restaurant.Signup_Restaurant2" />
         <activity android:name=".restaurant.Restaurant_page" />
+        <activity android:name=".restaurant.HOME_restaurant" />
+        <activity android:name=".restaurant.update.rest_update" />
         <activity android:name=".users.Profile_Update.Edit_password" />
         <activity android:name=".users.Profile_Update.Edit_name" />
         <activity android:name=".users.Profile_Update.Edit_address" />

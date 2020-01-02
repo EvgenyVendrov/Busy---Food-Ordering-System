@@ -13,7 +13,6 @@ import com.example.busy.restaurant.update.rest_update;
 public class HOME_restaurant extends AppCompatActivity {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

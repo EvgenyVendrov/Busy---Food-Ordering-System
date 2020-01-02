@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.busy.restaurant.HOME_restaurant;
 import com.example.busy.users.Home_users;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -80,13 +81,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 owner = dataSnapshot.child(UID).child("owner").getValue().toString(); // get user id of the current user
-                                Intent i;
+
                                 if (owner.equals("no")) {
-                                    i = new Intent(LoginActivity.this, Home_users.class);
+
+                                   Intent i = new Intent(LoginActivity.this, Home_users.class);
                                     startActivity(i);
                                 } else {
-                                    i = new Intent(LoginActivity.this, HOME_restaurant.class);
-                                    startActivity(i);
+                                    Intent j = new Intent(LoginActivity.this, HOME_restaurant.class);
+                                    startActivity(j);
                                 }
                             }
 

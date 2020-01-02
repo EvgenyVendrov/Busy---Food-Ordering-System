@@ -40,6 +40,8 @@ public class personal_settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_settings);
+
+
         ref_users = FirebaseDatabase.getInstance().getReference("Users");
         edit_address = findViewById(R.id.Address_view);
         edit_email = findViewById(R.id.Email_view);
