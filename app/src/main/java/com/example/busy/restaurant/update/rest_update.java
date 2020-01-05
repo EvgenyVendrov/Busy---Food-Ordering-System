@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.busy.MainActivity;
 import com.example.busy.R;
 import com.example.busy.restaurant.Add_Dish;
+import com.example.busy.restaurant.Display_Menu;
 import com.example.busy.restaurant.Rforms.Restaurant_Form;
 import com.example.busy.users.Home_users;
 import com.example.busy.users.Profile_Update.Edit_address;
@@ -38,6 +39,7 @@ public class rest_update extends AppCompatActivity {
     private DatabaseReference ref_users;
     private Button logout_btn;
     private Button add_dishbtn;
+    private Button display_menubtn;
 
 
     @Override
@@ -55,6 +57,7 @@ public class rest_update extends AppCompatActivity {
         edit_Phone = findViewById(R.id.Phone_view);
         logout_btn = findViewById(R.id.Logout_btn);
         add_dishbtn = findViewById(R.id.add_tomenu);
+        display_menubtn = findViewById(R.id.view_Menu);
         //this will make the relevant rest data to appear in the activity
         ref_users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -143,5 +146,13 @@ public class rest_update extends AppCompatActivity {
                 startActivity(i_add_dish);
             }
         });
+        display_menubtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i_display_menu = new Intent(rest_update.this, Display_Menu.class);
+                startActivity(i_display_menu);
+            }
+        });
+
     }
 }
