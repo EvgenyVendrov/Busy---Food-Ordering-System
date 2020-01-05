@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.busy.MainActivity;
 import com.example.busy.R;
+import com.example.busy.restaurant.Add_Dish;
 import com.example.busy.restaurant.Rforms.Restaurant_Form;
 import com.example.busy.users.Home_users;
 import com.example.busy.users.Profile_Update.Edit_address;
@@ -36,6 +37,7 @@ public class rest_update extends AppCompatActivity {
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private DatabaseReference ref_users;
     private Button logout_btn;
+    private Button add_dishbtn;
 
 
     @Override
@@ -52,7 +54,7 @@ public class rest_update extends AppCompatActivity {
         edit_Name = findViewById(R.id.Name_view);
         edit_Phone = findViewById(R.id.Phone_view);
         logout_btn = findViewById(R.id.Logout_btn);
-
+        add_dishbtn = findViewById(R.id.add_tomenu);
         //this will make the relevant rest data to appear in the activity
         ref_users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -132,6 +134,13 @@ public class rest_update extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 Intent i_LO = new Intent(rest_update.this, MainActivity.class);
                 startActivity(i_LO);
+            }
+        });
+        add_dishbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i_add_dish = new Intent(rest_update.this, Add_Dish.class);
+                startActivity(i_add_dish);
             }
         });
     }

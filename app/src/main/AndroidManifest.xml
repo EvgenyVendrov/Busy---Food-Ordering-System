@@ -15,6 +15,7 @@
         <activity android:name=".restaurant.update.Edit_Type" />
         <activity android:name=".restaurant.update.Edit_Kosher" />
         <activity android:name=".restaurant.update.Edit_Desc" />
+        <activity android:name=".restaurant.Add_Dish" />
         <activity android:name=".restaurant.Signup_Restaurant2" />
         <activity android:name=".restaurant.Restaurant_page" />
         <activity android:name=".restaurant.HOME_restaurant" />
