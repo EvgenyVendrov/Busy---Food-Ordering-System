@@ -43,6 +43,10 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_users);
 
+
+        findViewById(R.id.filter_btn).setOnClickListener(this);
+
+
         //Cities Spinner
         Spinner Cities_spinner = findViewById(R.id.Cities_spinner);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.Cities, android.R.layout.simple_spinner_item);
@@ -50,11 +54,13 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
         Cities_spinner.setAdapter(adapter);
         Cities_spinner.setOnItemSelectedListener(this);
 
+
         //INIT
         findViewById(R.id.personal).setOnClickListener(this); //click listener 0f personal settings
         listView = (ListView) findViewById(R.id.rest_view);
         ref_users = FirebaseDatabase.getInstance().getReference("Users"); //get reference to Users
         ref_rests = FirebaseDatabase.getInstance().getReference("Restaurant"); //get reference to Restaurant
+
 
         // show the name of the user on top of the page
         ref_users.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -63,9 +69,7 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
                 u = dataSnapshot.child(user.getUid()).getValue(Users_Form.class); // get user id of the current user
                 TextView Hello_Name = findViewById(R.id.hello_name);
                 Hello_Name.setText("Hello, " + u.getFirstName());
-
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Toast.makeText(Home_users.this, "" + databaseError.toString(), Toast.LENGTH_LONG).show();
@@ -99,7 +103,7 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
 
                 } else {
                     Toast.makeText(Home_users.this, "No Restaurant in this location! ", Toast.LENGTH_LONG).show();
-                    rest_list.add("no restourants here");
+                    rest_list.add("no restaurants here");
                     rest_adapter = new ArrayAdapter<String>(Home_users.this, R.layout.cutsumefont, rest_list);
                     listView.setAdapter(rest_adapter);
                 }
@@ -121,6 +125,11 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
                 Intent i = new Intent(Home_users.this, personal_settings.class);
                 startActivity(i);
                 break;
+
+            case R.id.filter_btn:
+                Intent j = new Intent(Home_users.this, filter_u.class);
+                startActivity(j);
+                break;
         }
     }
 
@@ -129,10 +138,7 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
         text = parent.getItemAtPosition(position).toString();
         Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
     }
-
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
+    public void onNothingSelected(AdapterView<?> parent) { }
 
 }
