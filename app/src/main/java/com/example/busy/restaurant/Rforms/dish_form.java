@@ -3,6 +3,7 @@ package com.example.busy.restaurant.Rforms;
 public class dish_form {
     private String dish_name;
     private String dish_discription;
+
     private double price;
 
     public dish_form(double price,String dish_name, String dish_discription) {
@@ -30,4 +31,16 @@ public class dish_form {
             return false;
         }
     }
+    public String to_string(){
+        String str =   dish_name +", price: " + price + ", discription: " + dish_discription;
+        return  str;
+    }
+
+    public void setDish_(String dish_name, dish_form temp_dish) {
+        this.dish_name = dish_name;
+        this.price = temp_dish.getPrice();
+        this.dish_discription = temp_dish.dish_discription;
+    }
+
+
 }

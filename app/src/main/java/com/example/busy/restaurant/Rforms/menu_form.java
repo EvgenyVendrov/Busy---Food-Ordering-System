@@ -94,4 +94,69 @@ public class menu_form {
     public boolean add_desert_dish(dish_form desert){
         return deserts_list.add(desert);
     }
+    public int get_numof_dishes(){
+        int sum = starters_list.size() + drink_list.size() + main_list.size() + deserts_list.size();
+        return sum;
+    }
+    public boolean remove_dish(String name, String type){
+        if (type == "Starters"){
+            for (int i = 0; i < starters_list.size(); i++){
+                String str = starters_list.get(i).getDish_name();
+                if (str.equals(name)){
+                    dish_form temp = starters_list.get(i);
+                    starters_list.remove(temp);
+                    return true;
+                }
+            }
+            return false;
+        }
+        else if (type == "Mains"){
+            for (int i = 0; i < main_list.size(); i++){
+                String str = main_list.get(i).getDish_name();
+                if (str.equals(name)){
+                    dish_form temp = main_list.get(i);
+                    main_list.remove(temp);
+                    return true;
+                }
+            }
+            return false;
+        }
+        else if (type == "Drink"){
+            for (int i = 0; i < drink_list.size(); i++){
+                String str = drink_list.get(i).getDish_name();
+                if (str.equals(name)){
+                    dish_form temp = drink_list.get(i);
+                    drink_list.remove(temp);
+                    return true;
+                }
+            }
+            return false;
+        }
+        else if (type == "Deserts"){
+            for (int i = 0; i < deserts_list.size(); i++){
+                String str = deserts_list.get(i).getDish_name();
+                if (str.equals(name)){
+                    dish_form temp = deserts_list.get(i);
+                    deserts_list.remove(temp);
+                    return true;
+                }
+            }
+            return false;
+        }
+        else{
+            return false;
+        }
+    }
+    public void clear_starters(){
+        starters_list.clear();
+    }
+    public void clear_mains(){
+        main_list.clear();
+    }
+    public void clear_drink(){
+        drink_list.clear();
+    }
+    public void clea_deserts(){
+        deserts_list.clear();
+    }
 }
