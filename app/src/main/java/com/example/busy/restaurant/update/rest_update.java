@@ -9,11 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.busy.MainActivity;
 import com.example.busy.R;
 import com.example.busy.restaurant.Add_Dish;
 import com.example.busy.restaurant.Display_Menu;
+import com.example.busy.restaurant.HOME_restaurant;
 import com.example.busy.restaurant.Rforms.Restaurant_Form;
 import com.example.busy.users.Home_users;
 import com.example.busy.users.Profile_Update.Edit_address;
@@ -40,6 +42,7 @@ public class rest_update extends AppCompatActivity {
     private Button logout_btn;
     private Button add_dishbtn;
     private Button display_menubtn;
+    private ImageView ret_btn;
 
 
     @Override
@@ -58,6 +61,8 @@ public class rest_update extends AppCompatActivity {
         logout_btn = findViewById(R.id.Logout_btn);
         add_dishbtn = findViewById(R.id.add_tomenu);
         display_menubtn = findViewById(R.id.view_Menu);
+        ret_btn = findViewById(R.id.return_btn);
+
         //this will make the relevant rest data to appear in the activity
         ref_users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -76,6 +81,15 @@ public class rest_update extends AppCompatActivity {
 
             }
         });
+        //return BUTTON clicked
+        ret_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i_back = new Intent(rest_update.this, HOME_restaurant.class);
+                startActivity(i_back);
+            }
+        });
+
         //EDIT DESCRIPTION BUTTON
         edit_description.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,8 +121,7 @@ public class rest_update extends AppCompatActivity {
         edit_Location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i_EL = new Intent(rest_update.this, Edit_Location.class);
-                startActivity(i_EL);
+                Toast.makeText(getApplicationContext(), "YOU CANNOT CHANGE RESTAURANT LOCATION", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -31,7 +31,7 @@ public class Edit_address extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.GO_button).setOnClickListener(this);
         UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        City = findViewById(R.id.CityET);
+        City = findViewById(R.id.city_ET);
         Street = findViewById(R.id.Address_ET);
         House_num = findViewById(R.id.HN_ET);
         Phone_num = findViewById(R.id.Phone_ET);
@@ -61,6 +61,11 @@ public class Edit_address extends AppCompatActivity implements View.OnClickListe
         }
         if (phone.isEmpty()) {
             Phone_num.setError("No Phone number given");
+            Phone_num.requestFocus();
+            return;
+        }
+        if (phone.matches("[0-9]+") == false && phone.length() < 8) {
+            Phone_num.setError("phone provided is not valid!");
             Phone_num.requestFocus();
             return;
         }

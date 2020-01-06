@@ -9,10 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".restaurant.Display_Menu"></activity>
-        <activity android:name=".restaurant.update.Edit_Phone" />
+        <activity android:name=".restaurant.update.Edit_Phone"></activity>
+        <activity android:name=".restaurant.Display_Menu" />
         <activity android:name=".restaurant.update.Edit_Name" />
-        <activity android:name=".restaurant.update.Edit_Location" />
         <activity android:name=".restaurant.update.Edit_Type" />
         <activity android:name=".restaurant.update.Edit_Kosher" />
         <activity android:name=".restaurant.update.Edit_Desc" />
