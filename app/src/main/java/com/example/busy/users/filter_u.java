@@ -123,7 +123,6 @@ public class filter_u extends AppCompatActivity implements AdapterView.OnItemSel
         _i.putExtra("filter", FM);
         Toast.makeText(this, "Go!", Toast.LENGTH_LONG).show();
         startActivity(_i);
-        finish();
     }
 
 
