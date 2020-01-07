@@ -103,6 +103,7 @@
         android:id="@+id/go_btn_filter"
         android:layout_width="124dp"
         android:layout_height="65dp"
+        android:onClick="onClick"
         android:text="Go!"
         android:textAllCaps="false"
         android:textSize="40dp"

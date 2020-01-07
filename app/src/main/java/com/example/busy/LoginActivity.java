@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.busy.restaurant.HOME_restaurant;
 import com.example.busy.users.Home_users;
+import com.example.busy.users.Uform.filter_form;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -83,8 +84,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 owner = dataSnapshot.child(UID).child("owner").getValue().toString(); // get user id of the current user
 
                                 if (owner.equals("no")) {
-
-                                   Intent i = new Intent(LoginActivity.this, Home_users.class);
+                                    filter_form FM = new filter_form();
+                                    Intent i = new Intent(LoginActivity.this, Home_users.class);
+                                    i.putExtra("filter", FM);
                                     startActivity(i);
                                 } else {
                                     Intent j = new Intent(LoginActivity.this, HOME_restaurant.class);

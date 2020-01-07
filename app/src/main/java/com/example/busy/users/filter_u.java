@@ -100,19 +100,29 @@ public class filter_u extends AppCompatActivity implements AdapterView.OnItemSel
     }
 
     public void makeFilter() {
-        if (type_regCB.isChecked()) type = "Regular";
-        else if (type_veganCB.isChecked()) type = "Vagan";
-        else type = "vegetarian";
+        if (type_regCB.isChecked()) {
+            type = "Regular";
+        } else if (type_veganCB.isChecked()) {
+            type = "Vegan";
+        } else if (type_vegeCB.isChecked()) {
+            type = "Vegetarian";
+        } else {
+            type = "";
+        }
 
-        if (kosherCB.isChecked()) kosher = "Yes";
-        else kosher = "No";
+        if (kosherCB.isChecked()) {
+            kosher = "yes";
+        } else if (notKosherCB.isChecked()) {
+            kosher = "no";
+        } else {
+            type = "";
+        }
 
-        filter_form FM = new filter_form(city,kosher,type);
-
+        filter_form FM = new filter_form(city, kosher, type);
         Intent _i = new Intent(this, Home_users.class);
-        _i.putExtra("filter",FM);
+        _i.putExtra("filter", FM);
+        Toast.makeText(this, "Go!", Toast.LENGTH_LONG).show();
         startActivity(_i);
-
     }
 
 

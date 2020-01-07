@@ -3,11 +3,8 @@ package com.example.busy.users;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.busy.R;
 import com.example.busy.users.Uform.Users_Form;
+import com.example.busy.users.Uform.filter_form;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Home_users extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class Home_users extends AppCompatActivity implements View.OnClickListener {
     private Users_Form u;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();//the current online user
     private DatabaseReference ref_users; //the reference for Users realtimedatabase
@@ -35,27 +33,15 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
     private ListView listView;
     private ArrayList<String> rest_list = new ArrayList<>(); //will contains the data of all the restourounts
     private ArrayAdapter<String> rest_adapter; //the addapter that will get the rest_list and will be added to the list view
-    private String text;
-    private Button searchbtn;
+    public  filter_form Ufm = new filter_form();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_users);
 
-
-        findViewById(R.id.filter_btn).setOnClickListener(this);
-
-
-        //Cities Spinner
-        Spinner Cities_spinner = findViewById(R.id.Cities_spinner);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.Cities, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Cities_spinner.setAdapter(adapter);
-        Cities_spinner.setOnItemSelectedListener(this);
-
-
         //INIT
+        findViewById(R.id.filter_btn).setOnClickListener(this);
         findViewById(R.id.personal).setOnClickListener(this); //click listener 0f personal settings
         listView = (ListView) findViewById(R.id.rest_view);
         ref_users = FirebaseDatabase.getInstance().getReference("Users"); //get reference to Users
@@ -70,18 +56,23 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
                 TextView Hello_Name = findViewById(R.id.hello_name);
                 Hello_Name.setText("Hello, " + u.getFirstName());
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Toast.makeText(Home_users.this, "" + databaseError.toString(), Toast.LENGTH_LONG).show();
             }
         });
 
-        //show the resturouns in the database on the page
-        searchbtn = findViewById(R.id.search);
+        this.getData();
+
     }
 
-    public void getData(View v) {
-        Query query = ref_rests.orderByChild("location").equalTo(text);// order the database by location
+    public void getData() {
+
+        Intent i = getIntent();
+        final filter_form fm =(filter_form) i.getSerializableExtra("filter");
+
+        Query query = ref_rests.orderByChild("location").equalTo(fm.getCity());// order the database by location
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -92,10 +83,26 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
                 }
 
                 if (dataSnapshot.exists()) { //if there is a restourants in this area
-                    String str;
+                    String rest_string, rest_kosher, rest_type;
                     for (DataSnapshot db : dataSnapshot.getChildren()) {
-                        str = db.child("name").getValue(String.class); //get name of the restourants
-                        rest_list.add(str);
+                        //getting the current restaurant info
+                        rest_kosher = db.child("kosher").getValue(String.class);
+                        rest_type = db.child("type").getValue(String.class);
+
+                        //checking if the info of the current restaurant is matching to the filter info
+                        if (rest_kosher.equals(fm.getKosher()) && rest_type.equals(fm.getType())) {
+                            rest_string = db.child("name").getValue(String.class); //get name of the restourants
+                            rest_list.add(rest_string);
+                        } else if (fm.getType().isEmpty() && fm.getKosher().isEmpty()) {
+                            rest_string = db.child("name").getValue(String.class); //get name of the restourants
+                            rest_list.add(rest_string);
+                        } else if (rest_kosher.equals(fm.getKosher()) && fm.getType().isEmpty()) {
+                            rest_string = db.child("name").getValue(String.class); //get name of the restourants
+                            rest_list.add(rest_string);
+                        } else if (rest_type.equals(fm.getType()) && fm.getKosher().isEmpty()){
+                            rest_string = db.child("name").getValue(String.class); //get name of the restourants
+                            rest_list.add(rest_string);
+                        }
                     }
                     rest_adapter = new ArrayAdapter<String>(Home_users.this, R.layout.cutsumefont, rest_list);
                     listView.setAdapter(rest_adapter);
@@ -132,13 +139,5 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
                 break;
         }
     }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
-    }
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) { }
 
 }

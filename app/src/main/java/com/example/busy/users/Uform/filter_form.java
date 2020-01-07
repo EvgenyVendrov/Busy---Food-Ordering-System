@@ -10,7 +10,7 @@ public class filter_form implements Serializable {
     private String type;
 
     public filter_form() {
-        this.city = "Ariel";
+        this.city = "Tel Aviv";
         this.kosher = "";
         this.type = "";
     }
