@@ -115,7 +115,7 @@ public class filter_u extends AppCompatActivity implements AdapterView.OnItemSel
         } else if (notKosherCB.isChecked()) {
             kosher = "no";
         } else {
-            type = "";
+            kosher = "";
         }
 
         filter_form FM = new filter_form(city, kosher, type);
@@ -123,6 +123,7 @@ public class filter_u extends AppCompatActivity implements AdapterView.OnItemSel
         _i.putExtra("filter", FM);
         Toast.makeText(this, "Go!", Toast.LENGTH_LONG).show();
         startActivity(_i);
+        finish();
     }
 
 
