@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.busy.Admin.home_admin;
 import com.example.busy.restaurant.HOME_restaurant;
 import com.example.busy.users.Home_users;
 import com.example.busy.users.Uform.filter_form;
@@ -83,7 +84,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 owner = dataSnapshot.child(UID).child("owner").getValue().toString(); // get user id of the current user
 
-                                if (owner.equals("no")) {
+                                if (owner.equals("admin")) {
+                                    Intent k = new Intent(LoginActivity.this, home_admin.class);
+                                    startActivity(k);
+                                } else if (owner.equals("no")) {
                                     filter_form FM = new filter_form();
                                     Intent i = new Intent(LoginActivity.this, Home_users.class);
                                     i.putExtra("filter", FM);
