@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".users.user_orders_history"></activity>
+        <activity android:name=".users.Make_Order"></activity>
+        <activity android:name=".users.user_orders_history" />
         <activity
             android:name=".users.filter_u"
             android:theme="@style/AppTheme.popupTheme" />

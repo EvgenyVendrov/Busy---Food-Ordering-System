@@ -1,25 +1,69 @@
 package com.example.busy.restaurant;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.busy.R;
 import com.example.busy.restaurant.Rforms.Restaurant_Form;
+import com.example.busy.users.Make_Order;
 import com.example.busy.users.Uform.filter_form;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Restaurant_page extends AppCompatActivity {
-    private TextView amitai;
-    private Restaurant_Form rset;
+    private Restaurant_Form rest;
+    private DatabaseReference rest_database;
+    private TextView rest_info;
+    private Button menubtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_page);
 
-        amitai = findViewById(R.id.amitai_test);
         Intent i = getIntent();
+        final String name =(String) i.getSerializableExtra("rest_name");
+
+        rest_info = findViewById(R.id.restname_Rest_page);
+        rest_database = FirebaseDatabase.getInstance().getReference("Restaurant");
+        rest_database.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    for (DataSnapshot snep : dataSnapshot.getChildren()){
+                        if (snep.child("name").getValue().equals(name)){
+                            rest = snep.getValue(Restaurant_Form.class);
+                        }
+                    }
+                    String show ="Name: " + rest.getName() + "\n" + "Location: " + rest.getLocation() + "\n" + "phone: " + rest.getPhone()
+                            + "\n" + "kosher: " + rest.getKosher() + "\n" + rest.getType() + "\n" +"\n" + rest.getDescription();
+                    rest_info.setText(show);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        menubtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Restaurant_page.this, Make_Order.class);
+                startActivity(i);
+            }
+        });
 
     }
 }

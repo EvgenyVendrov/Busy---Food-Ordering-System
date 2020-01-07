@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/whitebg"
+    tools:context=".users.Make_Order">
+
+    <TextView
+        android:id="@+id/Menu_Make_Order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="173dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="175dp"
+        android:layout_marginBottom="581dp"
+        android:text="Menu"
+        android:textColor="@android:color/black"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/entrees_CB_rest"
+        android:layout_width="115dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginBottom="32dp"
+        android:text="Entrees"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@+id/drinks_CB_rest"
+        app:layout_constraintEnd_toStartOf="@+id/mainDish_CB_rest"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <CheckBox
+        android:id="@+id/mainDish_CB_rest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="18dp"
+        android:text="Main Dishes"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@+id/drinks_CB_rest"
+        app:layout_constraintEnd_toStartOf="@+id/desserts_CB_rest"
+        app:layout_constraintStart_toEndOf="@+id/entrees_CB_rest"
+        app:layout_constraintTop_toBottomOf="@+id/Menu_Make_Order" />
+
+    <CheckBox
+        android:id="@+id/drinks_CB_rest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="470dp"
+        android:text="Drinks"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editOrd_CB_rest"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainDish_CB_rest" />
+
+    <CheckBox
+        android:id="@+id/desserts_CB_rest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="10dp"
+        android:text="Desserts"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@+id/editOrd_CB_rest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mainDish_CB_rest"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/editOrd_CB_rest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="461dp"
+        android:text="Edit Your Order"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/drinks_CB_rest"
+        app:layout_constraintTop_toBottomOf="@+id/desserts_CB_rest" />
+
+    <ScrollView
+        android:id="@+id/dishes_SV_rest"
+        android:layout_width="415dp"
+        android:layout_height="282dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="168dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editOrd_CB_rest">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/totalOrd_TV_rest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="282dp"
+        android:layout_marginBottom="111dp"
+        android:text="Total Order: 0"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dishes_SV_rest"
+        app:layout_constraintVertical_bias="0.571" />
+
+    <Button
+        android:id="@+id/placeOrd_btn_rest"
+        android:layout_width="123dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="233dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="31dp"
+        android:text="Place Order"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dishes_SV_rest" />
+</androidx.constraintlayout.widget.ConstraintLayout>

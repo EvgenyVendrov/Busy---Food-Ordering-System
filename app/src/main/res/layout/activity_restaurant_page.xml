@@ -7,19 +7,6 @@
     android:background="@drawable/whitebg"
     tools:context=".restaurant.Restaurant_page">
 
-    <TextView
-        android:id="@+id/rest_name_rest_page"
-        android:layout_width="403dp"
-        android:layout_height="151dp"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.045" />
-
     <Button
         android:id="@+id/menu_rest_page"
         android:layout_width="match_parent"
@@ -29,24 +16,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rest_name_rest_page"
-        app:layout_constraintVertical_bias="0.841" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.941" />
 
     <TextView
-        android:id="@+id/amitai_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="169dp"
-        android:layout_marginTop="43dp"
-        android:layout_marginEnd="142dp"
-        android:layout_marginBottom="312dp"
-        android:text="TextView"
+        android:id="@+id/restname_Rest_page"
+        android:layout_width="409dp"
+        android:layout_height="556dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginBottom="264dp"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/menu_rest_page"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rest_name_rest_page" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
