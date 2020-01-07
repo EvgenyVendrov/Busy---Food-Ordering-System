@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class Display_Menu extends AppCompatActivity implements View.OnClickListe
     private DatabaseReference ref_menus;
     private TextView menu_name;
     private menu_form data_menu;
+    private Button add_dish_display_menu;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     ArrayList<String> arr;
     addapter_display_menu addapter;
@@ -93,6 +95,10 @@ public class Display_Menu extends AppCompatActivity implements View.OnClickListe
                     }
                     addapter = new addapter_display_menu(arr,Display_Menu.this,type_dish,data_menu); // intilize addapter
                     list.setAdapter(addapter); //show the addapter
+                    data_menu.clear_mains();
+                    data_menu.clear_starters();
+                    data_menu.clear_drink();
+                    data_menu.clea_deserts();
                 }
             }
             @Override

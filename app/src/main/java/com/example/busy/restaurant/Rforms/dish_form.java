@@ -36,8 +36,8 @@ public class dish_form {
         return  str;
     }
 
-    public void setDish_(String dish_name, dish_form temp_dish) {
-        this.dish_name = dish_name;
+    public void setDish_( dish_form temp_dish) {
+        this.dish_name = temp_dish.getDish_name();
         this.price = temp_dish.getPrice();
         this.dish_discription = temp_dish.dish_discription;
     }

@@ -8,10 +8,9 @@
     tools:context=".restaurant.Restaurant_page">
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/rest_name_rest_page"
         android:layout_width="403dp"
         android:layout_height="151dp"
-        android:text="TextView"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="50dp"
@@ -20,5 +19,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.045" />
+
+    <Button
+        android:id="@+id/menu_rest_page"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rest_name_rest_page"
+        app:layout_constraintVertical_bias="0.841" />
+
+    <TextView
+        android:id="@+id/amitai_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="169dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="142dp"
+        android:layout_marginBottom="312dp"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/menu_rest_page"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rest_name_rest_page" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

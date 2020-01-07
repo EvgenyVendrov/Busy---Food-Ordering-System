@@ -159,4 +159,34 @@ public class menu_form {
     public void clea_deserts(){
         deserts_list.clear();
     }
+    public void replace_dish(String name ,dish_form dish){
+        if (starters_list.contains(dish)){
+            for (int i = 0; i < starters_list.size(); i++){
+                if (starters_list.get(i).getDish_name().equals(name)){
+                    starters_list.set(i, dish);
+                }
+            }
+        }
+       else if (main_list.contains(dish)){
+            for (int i = 0; i < main_list.size(); i++){
+                if (main_list.get(i).getDish_name().equals(name)){
+                    main_list.set(i, dish);
+                }
+            }
+        }
+        else if (drink_list.contains(dish)){
+            for (int i = 0; i < drink_list.size(); i++){
+                if (drink_list.get(i).getDish_name().equals(name)){
+                    drink_list.set(i, dish);
+                }
+            }
+        }
+        else if (deserts_list.contains(dish)){
+            for (int i = 0; i < deserts_list.size(); i++){
+                if (deserts_list.get(i).getDish_name().equals(name)){
+                    deserts_list.set(i, dish);
+                }
+            }
+        }
+    }
 }
