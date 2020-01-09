@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wood"
-    tools:context=".restaurant.HOME_restaurant" >
+    android:background="@drawable/whitebg"
+    tools:context=".restaurant.HOME_restaurant">
 
     <ImageView
         android:id="@+id/rest_settings"
@@ -14,10 +14,10 @@
         android:layout_marginTop="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintHorizontal_bias="0.008"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.098"
+        app:layout_constraintVertical_bias="0.083"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
@@ -25,6 +25,8 @@
         style="@android:style/Widget.DeviceDefault.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textFontWeight="1000000"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,4 +35,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.061"
         tools:visibility="visible" />
+
+    <ScrollView
+        android:id="@+id/scrollView_home_rst"
+        android:layout_width="405dp"
+        android:layout_height="209dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/activeOrders_rest_listView"
+                android:layout_width="match_parent"
+                android:layout_height="202dp"
+                android:visibility="visible" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/activeOrders_rest_textView"
+        android:layout_width="135dp"
+        android:layout_height="32dp"
+        android:text="Active Orders:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textFontWeight="100000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.288" />
 </androidx.constraintlayout.widget.ConstraintLayout>

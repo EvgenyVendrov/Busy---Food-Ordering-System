@@ -9,13 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".users.OrderHistoryUser"></activity>
+        <activity android:name=".users.OrderPage" />
+
         <receiver android:name=".Admin.MyBroadcastReceiver">
             <intent-filter>
-                <action android:name="com.example.busy.CUSTOM_INTENT"></action>
+                <action android:name="com.example.busy.CUSTOM_INTENT" />
             </intent-filter>
         </receiver>
-        <activity android:name=".Admin.home_admin"></activity>
-        <activity android:name=".users.Place_Order"></activity>
+
+        <activity android:name=".Admin.home_admin" />
+        <activity android:name=".users.Place_Order" />
         <activity android:name=".users.Make_Order" />
         <activity android:name=".users.user_orders_history" />
         <activity

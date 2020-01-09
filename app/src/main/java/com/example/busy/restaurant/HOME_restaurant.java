@@ -6,10 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.busy.R;
+import com.example.busy.restaurant.OrderForm.OrderForm;
 import com.example.busy.restaurant.Rforms.Restaurant_Form;
 import com.example.busy.restaurant.update.rest_update;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,9 +22,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class HOME_restaurant extends AppCompatActivity {
 
-private TextView welcometxt;
+    private TextView welcometxt;
+    private ListView activeOrders_listView;
+    private ArrayList<OrderForm> activeOrders_list = new ArrayList<>();
+    private ArrayAdapter<OrderForm> activeOrders_adapter;
+    private String UID;
 
 
     @Override
@@ -28,13 +38,15 @@ private TextView welcometxt;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_restaurant);
 
+        activeOrders_listView = findViewById(R.id.activeOrders_rest_listView);
         welcometxt = findViewById(R.id.infoAboutUser_rest_text);
         FirebaseDatabase.getInstance().getReference("Restaurant").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Restaurant_Form curr_user = dataSnapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).getValue(Restaurant_Form.class);
                 String rest_name = curr_user.getName();
-                welcometxt.setText("welcome, "+rest_name+" owner");
+                UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                welcometxt.setText("welcome, " + rest_name + " owner");
             }
 
             @Override
@@ -42,7 +54,41 @@ private TextView welcometxt;
 
             }
         });
-        welcometxt.setText("");
+
+        FirebaseDatabase.getInstance().getReference().child("Orders")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (!activeOrders_list.isEmpty()) {
+                            activeOrders_list.clear();
+                            activeOrders_adapter.clear();
+                            activeOrders_listView.clearAnimation();
+                        }
+                        if (dataSnapshot.exists()) {
+//                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                                String order_num = snapshot.child("order_number").getValue(String.class);
+//                                String rest_id = snapshot.child("rest_id").getValue(String.class);
+//                                String client_id = snapshot.child("client_id").getValue(String.class);
+//                                String status = snapshot.child("status").getValue(String.class);
+//                                OrderForm curr_order = new OrderForm(order_num,rest_id,client_id,status);
+//                                if (curr_order.getRest_id().equals(UID) && curr_order.getStatus().equals("active"))
+//                                    activeOrders_list.add(curr_order);
+//                          }
+                            OrderForm order_num =dataSnapshot.child("Orders").child("").getValue(OrderForm.class);
+                            Toast.makeText(HOME_restaurant.this, "fuck", Toast.LENGTH_LONG).show();
+
+                            //activeOrders_adapter = new ArrayAdapter<OrderForm>(HOME_restaurant.this, R.layout.cutsumefont, activeOrders_list);
+                            //activeOrders_listView.setAdapter(activeOrders_adapter);
+                        } else {
+                            Toast.makeText(HOME_restaurant.this, "no orders for this rest yet ", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+
         //listener to move to the settings activity when the image is clicked
         ImageView restSettings = findViewById(R.id.rest_settings);
         restSettings.setOnClickListener(new View.OnClickListener() {

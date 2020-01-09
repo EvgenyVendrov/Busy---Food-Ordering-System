@@ -72,7 +72,7 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent i_restpage = new Intent(Home_users.this, Restaurant_page.class);
                 //
-                i_restpage.putExtra("rest_uid",rest_f.get(i).getUID());
+                i_restpage.putExtra("rest_uid", rest_f.get(i).getUID());
                 startActivity(i_restpage);
             }
         });
@@ -81,7 +81,7 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
     public void getData() {
 
         Intent i = getIntent();
-        final filter_form fm =(filter_form) i.getSerializableExtra("filter");
+        final filter_form fm = (filter_form) i.getSerializableExtra("filter");
 
         Query query = ref_rests.orderByChild("location").equalTo(fm.getCity());// order the database by location
         query.addValueEventListener(new ValueEventListener() {
@@ -117,7 +117,7 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
                             Restaurant_Form temp_rest = db.getValue(Restaurant_Form.class);
                             rest_f.add(temp_rest);
                             rest_list.add(rest_string);
-                        } else if (rest_type.equals(fm.getType()) && fm.getKosher().isEmpty()){
+                        } else if (rest_type.equals(fm.getType()) && fm.getKosher().isEmpty()) {
                             rest_string = db.child("name").getValue(String.class); //get name of the restourants
                             Restaurant_Form temp_rest = db.getValue(Restaurant_Form.class);
                             rest_f.add(temp_rest);
@@ -157,7 +157,13 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
                 Intent j = new Intent(Home_users.this, filter_u.class);
                 startActivity(j);
                 break;
+
+            case R.id.oreders_btn_user:
+                Intent z = new Intent(Home_users.this, OrderPage.class);
+                startActivity(z);
+                break;
         }
     }
+
 
 }
