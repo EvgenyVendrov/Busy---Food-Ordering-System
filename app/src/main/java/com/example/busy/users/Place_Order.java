@@ -75,6 +75,7 @@ public class Place_Order extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
     }
 
     private void string_to_dishes_array() {
