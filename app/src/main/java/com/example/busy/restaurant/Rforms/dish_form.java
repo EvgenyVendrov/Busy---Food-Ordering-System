@@ -26,7 +26,7 @@ public class dish_form {
 
     @Override
     public String toString() {
-        String str =   dish_name +", price: " + price + ", discription: " + dish_discription;
+        String str =   dish_name +" , price: " + price +" " + " , discription: " + dish_discription;
        return  str;
     }
 

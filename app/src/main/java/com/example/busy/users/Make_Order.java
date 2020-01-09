@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,7 +42,7 @@ public class Make_Order extends AppCompatActivity implements View.OnClickListene
     private String user_uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     private OrderForm order;
     private TextView totalptv;
-    private double total_price;
+    private Button placeorderbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +53,12 @@ public class Make_Order extends AppCompatActivity implements View.OnClickListene
         drinkbox = findViewById(R.id.drinks_CB_rest);
         desertbox = findViewById(R.id.desserts_CB_rest);
         editbox = findViewById(R.id.editOrd_CB_rest);
+        placeorderbtn = findViewById(R.id.placeOrd_btn_rest);
         listview = findViewById(R.id.Listview_Make_Order);
         totalptv = findViewById(R.id.totalOrd_TV_rest);
         Intent i = getIntent();
         rest_uid = (String) i.getSerializableExtra("rest_uid");
-        String ordernum = rest_uid + user_uid +(Math.random()*10000);
+        String ordernum = rest_uid + user_uid +((int)Math.random()*10000);
         order = new OrderForm(ordernum,rest_uid,user_uid,"active");
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -72,6 +74,31 @@ public class Make_Order extends AppCompatActivity implements View.OnClickListene
                     listview.setAdapter(dish_addapter);
                     totalptv.setText("Total price: " + order.getTotal_price());
                 }
+            }
+        });
+        placeorderbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String ordernum = order.getOrder_num();
+                String restid = order.getRest_id();
+                String clientid = order.getClient_id();
+                String status = order.getStatus();
+                Intent i = new Intent(Make_Order.this, Place_Order.class);
+                Bundle extras = new Bundle();
+                extras.putString("order_id",ordernum);
+                extras.putString("rest_id",restid);
+                extras.putString("client_id",clientid);
+                extras.putString("status",status);
+                extras.putDouble("price",order.getTotal_price());
+                ArrayList<String> dishes = new ArrayList<>();
+
+                for (int j = 0;j < order.getDishs_orderd().size(); j++){
+                    dishes.add(order.getDishs_orderd().get(j).to_string());
+                }
+
+                extras.putStringArrayList("dishes",dishes);
+                i.putExtra("extras",extras);
+                startActivity(i);
             }
         });
     }
