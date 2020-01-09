@@ -12,6 +12,7 @@ import android.widget.ListView;
 import com.example.busy.R;
 import com.example.busy.restaurant.OrderForm.OrderForm;
 import com.example.busy.restaurant.Rforms.dish_form;
+import com.example.busy.users.Uform.Address_form;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -39,28 +40,29 @@ public class OrderPage extends AppCompatActivity implements View.OnClickListener
         ref_orders.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
-                    for (DataSnapshot snep : dataSnapshot.getChildren()){
-                        if (snep.child("client_id").getValue().equals(uid) && snep.child("status").getValue().equals("active")){
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot snep : dataSnapshot.getChildren()) {
+                        if (snep.child("client_id").getValue().equals(uid) && snep.child("status").getValue().equals("active")) {
                             String order_num = snep.child("order_num").getValue(String.class);
-                            String rest_id  = snep.child("rest_id").getValue(String.class);
+                            String rest_id = snep.child("rest_id").getValue(String.class);
                             String client_id = snep.child("client_id").getValue(String.class);
                             String status = snep.child("status").getValue(String.class);
                             double total_price = snep.child("total_price").getValue(double.class);
-                            OrderForm order = new OrderForm(order_num,rest_id,client_id,status);
+                            Address_form address_data = snep.child("user_address").getValue(Address_form.class);
+                            OrderForm order = new OrderForm(order_num, rest_id, client_id, status, address_data);
                             DataSnapshot dishes_orderd = snep.child("dishs_orderd");
-                            for (DataSnapshot child_dt : dishes_orderd.getChildren()){
+                            for (DataSnapshot child_dt : dishes_orderd.getChildren()) {
                                 double price = child_dt.child("price").getValue(double.class);
                                 String dish_name = child_dt.child("dish_name").getValue(String.class);
                                 String dish_discription = child_dt.child("dish_discription").getValue(String.class);
-                                dish_form dish = new dish_form(price,dish_name,dish_discription);
+                                dish_form dish = new dish_form(price, dish_name, dish_discription);
                                 order.addDish(dish);
                             }
                             orders_list.add(order);
                         }
                     }
                 }
-                addapter = new ArrayAdapter<OrderForm>(OrderPage.this,R.layout.cutsumefont,orders_list);
+                addapter = new ArrayAdapter<OrderForm>(OrderPage.this, android.R.layout.simple_list_item_1, orders_list);
                 listview.setAdapter(addapter);
             }
 
@@ -70,8 +72,8 @@ public class OrderPage extends AppCompatActivity implements View.OnClickListener
 
             }
         });
-
     }
+
 
     //click function on personal settings button
     @Override

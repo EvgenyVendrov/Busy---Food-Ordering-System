@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.busy.R;
 import com.example.busy.restaurant.OrderForm.OrderForm;
 import com.example.busy.restaurant.Rforms.dish_form;
+import com.example.busy.users.Uform.Address_form;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -21,16 +22,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class Place_Order extends AppCompatActivity {
-  private TextView ordernum_view;
-  private TextView totslprice_view;
-  private Button orderbtn;
-  private ListView listview;
-  private ArrayList<String> dishes_str = new ArrayList<>();
-  private ArrayList<dish_form> dishes = new ArrayList<>();
-  private ArrayAdapter<dish_form> addapter;
-  private double total_price;
-  private OrderForm order;
-  private final DatabaseReference ordersdata = FirebaseDatabase.getInstance().getReference("Orders");
+    private TextView ordernum_view;
+    private TextView totslprice_view;
+    private Button orderbtn;
+    private ListView listview;
+    private ArrayList<String> dishes_str = new ArrayList<>();
+    private ArrayList<dish_form> dishes = new ArrayList<>();
+    private ArrayAdapter<dish_form> addapter;
+    private double total_price;
+    private OrderForm order;
+    private final DatabaseReference ordersdata = FirebaseDatabase.getInstance().getReference("Orders");
+    private String City;
+    private String Street;
+    private String House_num;
+    private String Phone_num;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +53,17 @@ public class Place_Order extends AppCompatActivity {
         String client_id = extras.getString("client_id");
         String status = extras.getString("status");
         total_price = extras.getDouble("price");
+        City = extras.getString("City");
+        Street = extras.getString("Street");
+        House_num = extras.getString("House_num");
+        Phone_num = extras.getString("Phone_num");
+        Address_form address = new Address_form(City, Street, House_num, Phone_num);
         dishes_str.addAll(extras.getStringArrayList("dishes"));
-        order = new OrderForm(order_num,rest_id,client_id,status);
+        order = new OrderForm(order_num, rest_id, client_id, status, address);
         string_to_dishes_array();
         addapter = new ArrayAdapter<>(Place_Order.this, R.layout.cutsumefont, dishes);
         totslprice_view.setText("price: " + Double.toString(total_price));
-        ordernum_view.setText("order number"+ order_num.replaceAll("[^0-9]", ""));
+        ordernum_view.setText("order number" + order_num.replaceAll("[^0-9]", ""));
         listview.setAdapter(addapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -79,18 +89,18 @@ public class Place_Order extends AppCompatActivity {
     }
 
     private void string_to_dishes_array() {
-        for (int j = 0; j < dishes_str.size(); j++){
+        for (int j = 0; j < dishes_str.size(); j++) {
             String[] split = dishes_str.get(j).split(" ");
             String name = split[0];
             double price = Double.parseDouble(split[2].split(",")[0]);
             String desc = "";
-            if (split.length >= 5){
+            if (split.length >= 5) {
                 desc = split[4];
             }
-            dish_form dish = new dish_form(price,name,desc);
+            dish_form dish = new dish_form(price, name, desc);
             dishes.add(dish);
         }
-        for (int i = 0; i < dishes.size(); i++){
+        for (int i = 0; i < dishes.size(); i++) {
             order.addDish(dishes.get(i));
         }
     }
