@@ -1,6 +1,7 @@
 package com.example.busy.restaurant.OrderForm;
 
 import com.example.busy.restaurant.Rforms.dish_form;
+import com.example.busy.users.Uform.Address_form;
 
 import java.util.ArrayList;
 
@@ -11,17 +12,15 @@ public class OrderForm {
     private String client_id;
     private String status;
     private double total_price = 0;
-    private String user_phone;
-    private String user_address;
+    private Address_form user_address;
     private ArrayList<dish_form> dishs_orderd = new ArrayList<dish_form>();
 
-    public OrderForm(String order_num, String rest_id, String client_id, String status, String user_phone, String user_address) {
+    public OrderForm(String order_num, String rest_id, String client_id, String status, String city, String user_phone, String street, String houseNum) {
         this.client_id = client_id;
         this.order_num = order_num;
         this.rest_id = rest_id;
         this.status = status;
-        this.user_phone = user_phone;
-        this.user_address = user_address;
+        user_address = new Address_form(city, street, houseNum, user_phone);
     }
 
     public OrderForm(OrderForm ord) {
@@ -29,8 +28,7 @@ public class OrderForm {
         this.order_num = ord.order_num;
         this.rest_id = ord.rest_id;
         this.status = ord.status;
-        this.user_phone = ord.user_phone;
-        this.user_address = ord.user_address;
+        this.user_address = new Address_form(ord.user_address);
     }
 
     public void addDish(dish_form dish) {
@@ -44,8 +42,8 @@ public class OrderForm {
         String strToRet = "Order Number: " + order_num.replaceAll("[^0-9]", "") + ", " + "\n" +
                 "Status: " + status + ", " + "\n" +
                 "Client ID: " + client_id + ", " + "\n" +
-                "Client Phone: " + user_phone + ", " + "\n" +
-                "Client Address: " + user_address + ", " + "\n" +
+                "Client Phone: " + user_address.getPhone_num() + ", " + "\n" +
+                "Client Address: " + user_address.getStreet() + ", " + user_address.getHouse_num() + ", " + user_address.getCity() + "\n" +
                 "Rest ID: " + rest_id + ", " + "\n";
         strToRet += "Dishes: ";
         for (dish_form dish : dishs_orderd) {
@@ -85,14 +83,7 @@ public class OrderForm {
         return total_price;
     }
 
-    public String getUser_phone() {
-        return user_phone;
-    }
-
-
-    public String getUser_address() {
+    public Address_form getUser_address() {
         return user_address;
     }
-
-
 }
