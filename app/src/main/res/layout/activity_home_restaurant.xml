@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
+        android:onClick="onClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.008"
@@ -26,8 +27,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textFontWeight="1000000"
+        android:textColor="@android:color/black"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
@@ -38,13 +40,15 @@
 
     <ScrollView
         android:id="@+id/scrollView_home_rst"
-        android:layout_width="405dp"
-        android:layout_height="209dp"
+        android:layout_width="400dp"
+        android:layout_height="461dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="11dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/activeOrders_rest_textView">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,7 +58,7 @@
             <ListView
                 android:id="@+id/activeOrders_rest_listView"
                 android:layout_width="match_parent"
-                android:layout_height="202dp"
+                android:layout_height="match_parent"
                 android:visibility="visible" />
         </LinearLayout>
     </ScrollView>
@@ -73,4 +77,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.288" />
+
+    <Button
+        android:id="@+id/order_history_rest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="99dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="76dp"
+        android:onClick="onClick"
+        android:text="order history"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView_home_rst"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rest_settings"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
