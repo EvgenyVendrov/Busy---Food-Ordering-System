@@ -15,7 +15,7 @@ public class OrderForm {
     private Address_form user_address;
     private ArrayList<dish_form> dishs_orderd = new ArrayList<dish_form>();
 
-    public OrderForm(String order_num, String rest_id, String client_id, String status,Address_form users_add) {
+    public OrderForm(String order_num, String rest_id, String client_id, String status, Address_form users_add) {
         this.client_id = client_id;
         this.order_num = order_num;
         this.rest_id = rest_id;
@@ -41,10 +41,8 @@ public class OrderForm {
     public String toString() {
         String strToRet = "Order Number: " + order_num.replaceAll("[^0-9]", "") + ", " + "\n" +
                 "Status: " + status + ", " + "\n" +
-                "Client ID: " + client_id + ", " + "\n" +
                 "Client Phone: " + user_address.getPhone_num() + ", " + "\n" +
-                "Client Address: " + user_address.getStreet() + ", " + user_address.getHouse_num() + ", " + user_address.getCity() + "\n" +
-                "Rest ID: " + rest_id + ", " + "\n";
+                "Client Address: " + user_address.getStreet() + ", " + user_address.getHouse_num() + ", " + user_address.getCity() + "\n";
         strToRet += "Dishes: ";
         for (dish_form dish : dishs_orderd) {
             strToRet += dish.getDish_name();
