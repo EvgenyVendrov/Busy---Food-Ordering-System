@@ -16,6 +16,7 @@ import com.example.busy.R;
 import com.example.busy.restaurant.OrderForm.OrderForm;
 import com.example.busy.restaurant.Rforms.Restaurant_Form;
 import com.example.busy.restaurant.update.rest_update;
+import com.example.busy.users.Home_users;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class HOME_restaurant extends AppCompatActivity {
+public class HOME_restaurant extends AppCompatActivity implements View.OnClickListener {
 
     private TextView welcometxt;
     private ListView activeOrders_listView;
@@ -74,7 +75,7 @@ public class HOME_restaurant extends AppCompatActivity {
 //                                if (curr_order.getRest_id().equals(UID) && curr_order.getStatus().equals("active"))
 //                                    activeOrders_list.add(curr_order);
 //                          }
-                            OrderForm order_num =dataSnapshot.child("Orders").child("").getValue(OrderForm.class);
+                            OrderForm order_num = dataSnapshot.child("Orders").child("").getValue(OrderForm.class);
                             Toast.makeText(HOME_restaurant.this, "fuck", Toast.LENGTH_LONG).show();
 
                             //activeOrders_adapter = new ArrayAdapter<OrderForm>(HOME_restaurant.this, R.layout.cutsumefont, activeOrders_list);
@@ -91,12 +92,19 @@ public class HOME_restaurant extends AppCompatActivity {
 
         //listener to move to the settings activity when the image is clicked
         ImageView restSettings = findViewById(R.id.rest_settings);
-        restSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(HOME_restaurant.this, rest_update.class);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.order_history_rest:
+                Intent i = new Intent(HOME_restaurant.this, OrderHistoryRest.class);
                 startActivity(i);
-            }
-        });
+                break;
+            case R.id.rest_settings:
+                Intent j = new Intent(HOME_restaurant.this, rest_update.class);
+                startActivity(j);
+                break;
+        }
     }
 }

@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".users.OrderHistoryUser"></activity>
+        <activity android:name=".Admin.appStats"></activity>
+        <activity android:name=".restaurant.RestStaticstics" />
+        <activity android:name=".restaurant.OrderHistoryRest" />
+        <activity android:name=".users.OrderHistoryUser" />
         <activity android:name=".users.OrderPage" />
 
         <receiver android:name=".Admin.MyBroadcastReceiver">
