@@ -61,8 +61,17 @@ public class Make_Order extends AppCompatActivity implements View.OnClickListene
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                order.addDish(dish_menu.get(i));
-                totalptv.setText("Total Order: " + order.getTotal_price());
+                if (!editbox.isChecked()) {
+                    order.addDish(dish_menu.get(i));
+                    totalptv.setText("Total Order: " + order.getTotal_price());
+                }
+                else{
+                    order.removeDish(dish_menu.get(i));
+                    dish_menu.remove(i);
+                    dish_addapter = new ArrayAdapter<dish_form>(Make_Order.this, R.layout.cutsumefont, dish_menu);
+                    listview.setAdapter(dish_addapter);
+                    totalptv.setText("Total price: " + order.getTotal_price());
+                }
             }
         });
     }
