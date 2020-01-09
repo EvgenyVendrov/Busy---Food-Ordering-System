@@ -56,7 +56,7 @@ public class Edit_name extends AppCompatActivity implements View.OnClickListener
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(Edit_name.this, "successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Edit_name.this, "Edit successful", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(Edit_name.this, personal_settings.class);
                         startActivity(i);
                     }

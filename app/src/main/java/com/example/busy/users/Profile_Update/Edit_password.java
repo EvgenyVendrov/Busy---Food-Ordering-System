@@ -51,11 +51,11 @@ public class Edit_password extends AppCompatActivity implements View.OnClickList
     }
 
 
-    private void changepassword() {
+    private void change_password() {
         String password = current_password.getText().toString().trim();
-        String new_userpass = new_password.getText().toString().trim();
+        String new_user_pass = new_password.getText().toString().trim();
         if(password.isEmpty()){
-            current_password.setError("current password is emtpy");
+            current_password.setError("current password is empty");
             current_password.requestFocus();
             return;
         }
@@ -64,19 +64,19 @@ public class Edit_password extends AppCompatActivity implements View.OnClickList
             current_password.requestFocus();
             return;
         }
-        if(new_userpass.isEmpty()){
+        if(new_user_pass.isEmpty()){
             new_password.setError("new password is empty");
             new_password.requestFocus();
             return;
         }
-        if (new_userpass.equals(password)){
+        if (new_user_pass.equals(password)){
             new_password.setError("the new password is the same as the old one");
             new_password.requestFocus();
             return;
         }
-        user.updatePassword(new_userpass);
-        ref_users.child(user.getUid()).child("password").setValue(new_userpass);
-        Toast.makeText(Edit_password.this, "passwored changed succefuly", Toast.LENGTH_SHORT).show();
+        user.updatePassword(new_user_pass);
+        ref_users.child(user.getUid()).child("password").setValue(new_user_pass);
+        Toast.makeText(Edit_password.this, "Edit successful", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(Edit_password.this, personal_settings.class);
         startActivity(i);
     }
@@ -85,7 +85,7 @@ public class Edit_password extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.change_password:
-                changepassword();
+                change_password();
                 break;
         }
     }

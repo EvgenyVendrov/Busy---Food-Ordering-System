@@ -8,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +15,7 @@ import com.example.busy.R;
 import com.example.busy.users.Uform.filter_form;
 
 public class filter_u extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
-    private CheckBox type_regCB, type_vegeCB, type_veganCB, kosherCB, notKosherCB;
+    private CheckBox type_regCB, type_vegetarianCB, type_veganCB, kosherCB, notKosherCB;
     private String city = "Ariel", kosher, type;
 
     @Override
@@ -41,9 +40,9 @@ public class filter_u extends AppCompatActivity implements AdapterView.OnItemSel
         Cities_spinner.setOnItemSelectedListener(this);
 
 
-        //INIT CHECKBOXS AND SET PATTERN
+        //INIT CHECKBOXES AND SET PATTERN
         type_regCB = findViewById(R.id.reg_CB_filter);
-        type_vegeCB = findViewById(R.id.vegy_CB_filter);
+        type_vegetarianCB = findViewById(R.id.vegy_CB_filter);
         type_veganCB = findViewById(R.id.vegan_CB_filter);
         kosherCB = findViewById(R.id.kosher_CB_filter);
         notKosherCB = findViewById(R.id.noKosher_CB_filter);
@@ -54,12 +53,12 @@ public class filter_u extends AppCompatActivity implements AdapterView.OnItemSel
                 if (type_veganCB.isChecked()) {
                     type_veganCB.setChecked(false);
                 }
-                if (type_vegeCB.isChecked()) {
-                    type_vegeCB.setChecked(false);
+                if (type_vegetarianCB.isChecked()) {
+                    type_vegetarianCB.setChecked(false);
                 }
             }
         });
-        type_vegeCB.setOnClickListener(new View.OnClickListener() {
+        type_vegetarianCB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (type_veganCB.isChecked()) {
@@ -76,8 +75,8 @@ public class filter_u extends AppCompatActivity implements AdapterView.OnItemSel
                 if (type_regCB.isChecked()) {
                     type_regCB.setChecked(false);
                 }
-                if (type_vegeCB.isChecked()) {
-                    type_vegeCB.setChecked(false);
+                if (type_vegetarianCB.isChecked()) {
+                    type_vegetarianCB.setChecked(false);
                 }
             }
         });
@@ -104,7 +103,7 @@ public class filter_u extends AppCompatActivity implements AdapterView.OnItemSel
             type = "Regular";
         } else if (type_veganCB.isChecked()) {
             type = "Vegan";
-        } else if (type_vegeCB.isChecked()) {
+        } else if (type_vegetarianCB.isChecked()) {
             type = "Vegetarian";
         } else {
             type = "";
@@ -121,7 +120,6 @@ public class filter_u extends AppCompatActivity implements AdapterView.OnItemSel
         filter_form FM = new filter_form(city, kosher, type);
         Intent _i = new Intent(this, Home_users.class);
         _i.putExtra("filter", FM);
-        Toast.makeText(this, "Go!", Toast.LENGTH_LONG).show();
         startActivity(_i);
     }
 
@@ -130,7 +128,6 @@ public class filter_u extends AppCompatActivity implements AdapterView.OnItemSel
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         city = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(), city, Toast.LENGTH_SHORT).show();
     }
 
     @Override

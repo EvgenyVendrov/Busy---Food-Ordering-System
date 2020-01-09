@@ -63,7 +63,7 @@ public class signUpActivity extends AppCompatActivity implements View.OnClickLis
     protected void onStart() {
         super.onStart();
         if (mAuth.getCurrentUser() != null) {
-            //handle the alredy login user
+            //handle the already login user
         }
     }
 
@@ -101,7 +101,7 @@ public class signUpActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
         if (Password.length() < 6) {
-            editTextPassword.setError("password length shuld be higer than 6");
+            editTextPassword.setError("password length should be higher than 6");
             editTextPassword.requestFocus();
             return;
         }
@@ -111,7 +111,7 @@ public class signUpActivity extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            //we will store the additional fileds in firebase database
+                            //we will store the additional filled in fire base database
                             Users_Form user = new Users_Form(FirstName, Email, LastName, Password, Owner);
                             FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).setValue(user)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -129,7 +129,7 @@ public class signUpActivity extends AppCompatActivity implements View.OnClickLis
                                                     startActivity(i);
                                                 }
                                             } else {
-                                                //display a faliure messege
+                                                //display a failure message
                                                 Toast.makeText(signUpActivity.this, "Error, couldn't sign up", Toast.LENGTH_SHORT).show();
                                             }
                                         }

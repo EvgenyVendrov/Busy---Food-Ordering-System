@@ -71,11 +71,11 @@ public class Edit_address extends AppCompatActivity implements View.OnClickListe
         }
 
         Address_form AF = new Address_form(city, street, house, phone);
-        FirebaseDatabase.getInstance().getReference("Users").child(UID).child("Address").setValue(AF)
+        FirebaseDatabase.getInstance().getReference("Users").child(UID).child("address").setValue(AF)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(Edit_address.this, "successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Edit_address.this, "Edit successful", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(Edit_address.this, personal_settings.class);
                         startActivity(i);
                     }

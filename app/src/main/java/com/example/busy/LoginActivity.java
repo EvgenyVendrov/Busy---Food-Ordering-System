@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if (!task.isSuccessful()) {
                         Toast.makeText(LoginActivity.this, "Login Error", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(LoginActivity.this, "Log In Succesfull", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "Log In Successful", Toast.LENGTH_LONG).show();
 
                         ref_users = FirebaseDatabase.getInstance().getReference("Users"); //get reference to Users
                         UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
