@@ -11,13 +11,17 @@ public class OrderForm {
     private String client_id;
     private String status;
     private double total_price = 0;
+    private String user_phone;
+    private String user_address;
     private ArrayList<dish_form> dishs_orderd = new ArrayList<dish_form>();
 
-    public OrderForm(String order_num, String rest_id, String client_id, String status) {
+    public OrderForm(String order_num, String rest_id, String client_id, String status, String user_phone, String user_address) {
         this.client_id = client_id;
         this.order_num = order_num;
         this.rest_id = rest_id;
         this.status = status;
+        this.user_phone = user_phone;
+        this.user_address = user_address;
     }
 
     public OrderForm(OrderForm ord) {
@@ -25,6 +29,8 @@ public class OrderForm {
         this.order_num = ord.order_num;
         this.rest_id = ord.rest_id;
         this.status = ord.status;
+        this.user_phone = ord.user_phone;
+        this.user_address = ord.user_address;
     }
 
     public void addDish(dish_form dish) {
@@ -32,17 +38,30 @@ public class OrderForm {
         total_price += dish.getPrice();
     }
 
+    public String getUser_phone() {
+        return user_phone;
+    }
+
+
+
+    public String getUser_address() {
+        return user_address;
+    }
+
+
     @Override
     public String toString() {
         String strToRet = "Order Number: " + order_num.replaceAll("[^0-9]", "") + ", " + "\n" +
                 "Status: " + status + ", " + "\n" +
                 "Client ID: " + client_id + ", " + "\n" +
+                "Client Phone: " + user_phone + ", " + "\n" +
+                "Client Address: " + user_address + ", " + "\n" +
                 "Rest ID: " + rest_id + ", " + "\n";
         strToRet += "Dishes: ";
         for (dish_form dish : dishs_orderd) {
             strToRet += dish.getDish_name();
         }
-        strToRet+="\n";
+        strToRet += "\n";
         strToRet += "Total Price: " + total_price + "\n";
         return strToRet;
     }
