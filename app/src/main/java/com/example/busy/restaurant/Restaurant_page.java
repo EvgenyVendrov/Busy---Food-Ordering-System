@@ -25,7 +25,7 @@ public class Restaurant_page extends AppCompatActivity {
     private Restaurant_Form rest;
     private DatabaseReference rest_database;
     private FirebaseUser user;
-    private TextView rest_info;
+    private TextView rest_info, rest_name, rest_phone, rest_location, rest_kosher, rest_type;
     private Button menubtn;
     private String rest_uid;
 
@@ -36,8 +36,15 @@ public class Restaurant_page extends AppCompatActivity {
 
         Intent i = getIntent();
         final String uid = (String) i.getSerializableExtra("rest_uid");
+
         menubtn = findViewById(R.id.menu_rest_page);
         rest_info = findViewById(R.id.restname_Rest_page);
+        rest_name = findViewById(R.id.name_TV_restPage);
+        rest_phone = findViewById(R.id.phone_TV_restPage);
+        rest_location = findViewById(R.id.location_TV_restPage);
+        rest_kosher = findViewById(R.id.kosher_TV_restPage);
+        rest_type = findViewById(R.id.type_TV_restPage);
+
         rest_database = FirebaseDatabase.getInstance().getReference("Restaurant");
         rest_database.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -49,8 +56,18 @@ public class Restaurant_page extends AppCompatActivity {
                             rest_uid = uid;
                         }
                     }
-                    String show = "Name: " + rest.getName() + "\n" + "Location: " + rest.getLocation() + "\n" + "phone: " + rest.getPhone()
-                            + "\n" + "kosher: " + rest.getKosher() + "\n" + rest.getType() + "\n" + "\n" + rest.getDescription();
+
+                    String show = rest.getName();
+                    rest_name.setText(show);
+                    show = "Location: " + rest.getLocation();
+                    rest_location.setText(show);
+                    show = "phone: " + rest.getPhone();
+                    rest_phone.setText(show);
+                    show = "kosher: " + rest.getKosher();
+                    rest_kosher.setText(show);
+                    show = "type: " + rest.getType();
+                    rest_type.setText(show);
+                    show ="Description: "+"\n"+ rest.getDescription();
                     rest_info.setText(show);
 
                 }
@@ -71,7 +88,7 @@ public class Restaurant_page extends AppCompatActivity {
             }
         });
 
-        rest_info.setOnClickListener(new View.OnClickListener() {
+        rest_phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Uri u = Uri.parse("tel:" + rest.getPhone());

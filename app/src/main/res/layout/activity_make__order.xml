@@ -11,108 +11,98 @@
         android:id="@+id/Menu_Make_Order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="173dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="175dp"
-        android:layout_marginBottom="581dp"
+        android:fontFamily="casual"
         android:text="Menu"
+        android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="35sp"
-        android:textStyle="bold"
+        android:textSize="60sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.043" />
 
     <CheckBox
         android:id="@+id/entrees_CB_rest"
         android:layout_width="115dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginBottom="32dp"
+        android:layout_height="35dp"
         android:onClick="onClick"
         android:text="Entrees"
         android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/drinks_CB_rest"
-        app:layout_constraintEnd_toStartOf="@+id/mainDish_CB_rest"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Menu_Make_Order"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.201" />
 
     <CheckBox
         android:id="@+id/mainDish_CB_rest"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="18dp"
+        android:layout_height="35dp"
         android:onClick="onClick"
         android:text="Main Dishes"
         android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/drinks_CB_rest"
-        app:layout_constraintEnd_toStartOf="@+id/desserts_CB_rest"
-        app:layout_constraintStart_toEndOf="@+id/entrees_CB_rest"
-        app:layout_constraintTop_toBottomOf="@+id/Menu_Make_Order" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
 
     <CheckBox
         android:id="@+id/drinks_CB_rest"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="470dp"
+        android:layout_height="35dp"
         android:onClick="onClick"
         android:text="Drinks"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editOrd_CB_rest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.244"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainDish_CB_rest" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.254" />
 
     <CheckBox
         android:id="@+id/desserts_CB_rest"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="35dp"
         android:onClick="onClick"
         android:text="Desserts"
         android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/editOrd_CB_rest"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/mainDish_CB_rest"
-        app:layout_constraintTop_toTopOf="@+id/mainDish_CB_rest" />
+        app:layout_constraintHorizontal_bias="0.836"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
 
     <CheckBox
         android:id="@+id/editOrd_CB_rest"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="461dp"
+        android:layout_height="35dp"
         android:onClick="onClick"
         android:text="Edit Your Order"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/drinks_CB_rest"
-        app:layout_constraintTop_toBottomOf="@+id/desserts_CB_rest" />
+        app:layout_constraintHorizontal_bias="0.623"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.254" />
 
     <ScrollView
         android:id="@+id/dishes_SV_rest"
         android:layout_width="415dp"
-        android:layout_height="282dp"
+        android:layout_height="345dp"
         android:fillViewport="true"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="168dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editOrd_CB_rest">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.591">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -122,7 +112,7 @@
             <ListView
                 android:id="@+id/Listview_Make_Order"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="332dp" />
         </LinearLayout>
     </ScrollView>
 
@@ -130,32 +120,29 @@
         android:id="@+id/totalOrd_TV_rest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="282dp"
-        android:layout_marginBottom="111dp"
         android:text="Total Order: 0"
         android:textColor="@android:color/black"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dishes_SV_rest"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.839" />
 
     <Button
         android:id="@+id/placeOrd_btn_rest"
-        android:layout_width="123dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="233dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="63dp"
-        android:layout_marginBottom="31dp"
+        android:layout_width="240dp"
+        android:layout_height="83dp"
+        android:background="@color/colorPrimary"
+        android:fontFamily="casual"
         android:text="Place Order"
         android:textColor="@android:color/black"
+        android:textSize="30dp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dishes_SV_rest" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.974" />
 </androidx.constraintlayout.widget.ConstraintLayout>
