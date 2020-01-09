@@ -53,4 +53,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.843"
         tools:ignore="OnClick" />
+
+    <Button
+        android:id="@+id/appStats_admin_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="212dp"
+        android:layout_marginBottom="36dp"
+        android:text="go to app statistics"
+        app:layout_constraintBottom_toTopOf="@+id/broadcast_ET_admin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 </androidx.constraintlayout.widget.ConstraintLayout>
