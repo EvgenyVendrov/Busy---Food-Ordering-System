@@ -19,6 +19,7 @@ public class OrderForm {
         this.rest_id = rest_id;
         this.status = status;
     }
+
     public OrderForm(OrderForm ord) {
         this.client_id = ord.client_id;
         this.order_num = ord.order_num;
@@ -26,9 +27,14 @@ public class OrderForm {
         this.status = ord.status;
     }
 
-    public void addDish (dish_form dish){
+    public void addDish(dish_form dish) {
         this.dishs_orderd.add(dish);
         total_price += dish.getPrice();
+    }
+
+    public void removeDish(dish_form dish) {
+        this.dishs_orderd.remove(dish);
+        total_price -= dish.getPrice();
     }
 
     public String getClient_id() {
@@ -54,4 +60,6 @@ public class OrderForm {
     public double getTotal_price() {
         return total_price;
     }
+
+
 }
