@@ -64,7 +64,7 @@ public class Signup_Restaurant extends AppCompatActivity implements View.OnClick
         }
 
 
-        Restaurant_Form rest = new Restaurant_Form(rest_name, location, phone);
+        Restaurant_Form rest = new Restaurant_Form(rest_name, location, phone,UID);
         FirebaseDatabase.getInstance().getReference("Restaurant").child(UID).setValue(rest)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

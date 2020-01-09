@@ -29,14 +29,14 @@
         android:layout_width="115dp"
         android:layout_height="34dp"
         android:layout_marginStart="13dp"
-        android:layout_marginTop="124dp"
         android:layout_marginBottom="32dp"
+        android:onClick="onClick"
         android:text="Entrees"
         android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/drinks_CB_rest"
         app:layout_constraintEnd_toStartOf="@+id/mainDish_CB_rest"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Menu_Make_Order"
         app:layout_constraintVertical_bias="1.0" />
 
     <CheckBox
@@ -47,6 +47,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="18dp"
+        android:onClick="onClick"
         android:text="Main Dishes"
         android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/drinks_CB_rest"
@@ -62,6 +63,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="470dp"
+        android:onClick="onClick"
         android:text="Drinks"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -74,15 +76,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="132dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="10dp"
+        android:onClick="onClick"
         android:text="Desserts"
         android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/editOrd_CB_rest"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/mainDish_CB_rest"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/mainDish_CB_rest" />
 
     <CheckBox
         android:id="@+id/editOrd_CB_rest"
@@ -92,6 +94,7 @@
         android:layout_marginTop="26dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="461dp"
+        android:onClick="onClick"
         android:text="Edit Your Order"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -103,6 +106,7 @@
         android:id="@+id/dishes_SV_rest"
         android:layout_width="415dp"
         android:layout_height="282dp"
+        android:fillViewport="true"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="168dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -112,8 +116,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/Listview_Make_Order"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
     </ScrollView>
 
     <TextView

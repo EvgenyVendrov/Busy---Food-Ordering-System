@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.busy.R;
 import com.example.busy.restaurant.Restaurant_page;
+import com.example.busy.restaurant.Rforms.Restaurant_Form;
 import com.example.busy.users.Uform.Users_Form;
 import com.example.busy.users.Uform.filter_form;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +34,7 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
     private DatabaseReference ref_users; //the reference for Users realtimedatabase
     private DatabaseReference ref_rests; //the reference for Restaurant realtimedatabase
     private ListView listView;
+    private ArrayList<Restaurant_Form> rest_f = new ArrayList<>();
     private ArrayList<String> rest_list = new ArrayList<>(); //will contains the data of all the restourounts
     private ArrayAdapter<String> rest_adapter; //the addapter that will get the rest_list and will be added to the list view
 
@@ -69,7 +71,8 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent i_restpage = new Intent(Home_users.this, Restaurant_page.class);
-                i_restpage.putExtra("rest_name",rest_list.get(i));
+                //
+                i_restpage.putExtra("rest_uid",rest_f.get(i).getUID());
                 startActivity(i_restpage);
             }
         });
@@ -86,6 +89,7 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (!rest_list.isEmpty()) {
                     rest_list.clear();
+                    rest_f.clear();
                     rest_adapter.clear();
                     listView.clearAnimation();
                 }
@@ -100,15 +104,23 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
                         //checking if the info of the current restaurant is matching to the filter info
                         if (rest_kosher.equals(fm.getKosher()) && rest_type.equals(fm.getType())) {
                             rest_string = db.child("name").getValue(String.class); //get name of the restourants
+                            Restaurant_Form temp_rest = db.getValue(Restaurant_Form.class);
+                            rest_f.add(temp_rest);
                             rest_list.add(rest_string);
                         } else if (fm.getType().isEmpty() && fm.getKosher().isEmpty()) {
                             rest_string = db.child("name").getValue(String.class); //get name of the restourants
+                            Restaurant_Form temp_rest = db.getValue(Restaurant_Form.class);
+                            rest_f.add(temp_rest);
                             rest_list.add(rest_string);
                         } else if (rest_kosher.equals(fm.getKosher()) && fm.getType().isEmpty()) {
                             rest_string = db.child("name").getValue(String.class); //get name of the restourants
+                            Restaurant_Form temp_rest = db.getValue(Restaurant_Form.class);
+                            rest_f.add(temp_rest);
                             rest_list.add(rest_string);
                         } else if (rest_type.equals(fm.getType()) && fm.getKosher().isEmpty()){
                             rest_string = db.child("name").getValue(String.class); //get name of the restourants
+                            Restaurant_Form temp_rest = db.getValue(Restaurant_Form.class);
+                            rest_f.add(temp_rest);
                             rest_list.add(rest_string);
                         }
                     }

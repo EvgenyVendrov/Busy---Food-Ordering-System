@@ -23,6 +23,13 @@ public class dish_form {
     public double getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        String str =   dish_name +", price: " + price + ", discription: " + dish_discription;
+       return  str;
+    }
+
     public boolean check_equal(dish_form dish){
         if (this.getDish_name().equals(dish.getDish_name())){
             return true;

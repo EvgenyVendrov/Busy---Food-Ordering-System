@@ -14,6 +14,7 @@ import com.example.busy.R;
 import com.example.busy.restaurant.Rforms.Restaurant_Form;
 import com.example.busy.users.Make_Order;
 import com.example.busy.users.Uform.filter_form;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,16 +24,18 @@ import com.google.firebase.database.ValueEventListener;
 public class Restaurant_page extends AppCompatActivity {
     private Restaurant_Form rest;
     private DatabaseReference rest_database;
+    private FirebaseUser user;
     private TextView rest_info;
     private Button menubtn;
+    private String rest_uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_page);
 
         Intent i = getIntent();
-        final String name =(String) i.getSerializableExtra("rest_name");
-
+        final String uid =(String) i.getSerializableExtra("rest_uid");
+        menubtn = findViewById(R.id.menu_rest_page);
         rest_info = findViewById(R.id.restname_Rest_page);
         rest_database = FirebaseDatabase.getInstance().getReference("Restaurant");
         rest_database.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -40,8 +43,9 @@ public class Restaurant_page extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     for (DataSnapshot snep : dataSnapshot.getChildren()){
-                        if (snep.child("name").getValue().equals(name)){
+                        if (snep.child("uid").getValue().equals(uid)){
                             rest = snep.getValue(Restaurant_Form.class);
+                            rest_uid = uid;
                         }
                     }
                     String show ="Name: " + rest.getName() + "\n" + "Location: " + rest.getLocation() + "\n" + "phone: " + rest.getPhone()
@@ -61,6 +65,7 @@ public class Restaurant_page extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Restaurant_page.this, Make_Order.class);
+                i.putExtra("rest_uid",rest_uid);
                 startActivity(i);
             }
         });
