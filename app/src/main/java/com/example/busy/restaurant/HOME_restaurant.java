@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.busy.R;
 import com.example.busy.restaurant.OrderForm.OrderForm;
 import com.example.busy.restaurant.Rforms.Restaurant_Form;
+import com.example.busy.restaurant.Rforms.dish_form;
 import com.example.busy.restaurant.update.rest_update;
 import com.example.busy.users.Home_users;
 import com.google.firebase.auth.FirebaseAuth;
@@ -56,7 +57,7 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
             }
         });
 
-        FirebaseDatabase.getInstance().getReference().child("Orders")
+        FirebaseDatabase.getInstance().getReference("Orders")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -66,18 +67,25 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
                             activeOrders_listView.clearAnimation();
                         }
                         if (dataSnapshot.exists()) {
-//                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                                String order_num = snapshot.child("order_number").getValue(String.class);
-//                                String rest_id = snapshot.child("rest_id").getValue(String.class);
-//                                String client_id = snapshot.child("client_id").getValue(String.class);
-//                                String status = snapshot.child("status").getValue(String.class);
-//                                OrderForm curr_order = new OrderForm(order_num,rest_id,client_id,status);
-//                                if (curr_order.getRest_id().equals(UID) && curr_order.getStatus().equals("active"))
-//                                    activeOrders_list.add(curr_order);
-//                          }
-                            OrderForm order_num = dataSnapshot.child("Orders").child("").getValue(OrderForm.class);
-                            Toast.makeText(HOME_restaurant.this, "fuck", Toast.LENGTH_LONG).show();
-
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                String rest_id = snapshot.child("rest_id").getValue(String.class);
+                                String status = snapshot.child("status").getValue(String.class);
+                                if (!rest_id.equals(UID) && status.equals("active"))
+                                    continue;
+                                String order_num = snapshot.child("order_num").getValue(String.class);
+                                String client_id = snapshot.child("client_id").getValue(String.class);
+                                OrderForm curr_order = new OrderForm(order_num, rest_id, client_id, status);
+                                for (DataSnapshot snapshot_dish : snapshot.child("dishs_orderd").getChildren()) {
+                                    double price = snapshot_dish.child("price").getValue(double.class);
+                                    String dish_name = snapshot_dish.child("dish_name").getValue(String.class);
+                                    String dish_desc = snapshot_dish.child("dish_name").getValue(String.class);
+                                    dish_form curr_dish = new dish_form(price, dish_name, dish_desc);
+                                    curr_order.addDish(curr_dish);
+                                }
+                                activeOrders_list.add(curr_order);
+                            }
+                            activeOrders_adapter = new ArrayAdapter<OrderForm>(HOME_restaurant.this, android.R.layout.simple_list_item_1, activeOrders_list);
+                            activeOrders_listView.setAdapter(activeOrders_adapter);
                             //activeOrders_adapter = new ArrayAdapter<OrderForm>(HOME_restaurant.this, R.layout.cutsumefont, activeOrders_list);
                             //activeOrders_listView.setAdapter(activeOrders_adapter);
                         } else {

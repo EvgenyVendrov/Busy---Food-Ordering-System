@@ -32,6 +32,21 @@ public class OrderForm {
         total_price += dish.getPrice();
     }
 
+    @Override
+    public String toString() {
+        String strToRet = "Order Number: " + order_num.replaceAll("[^0-9]", "") + ", " + "\n" +
+                "Status: " + status + ", " + "\n" +
+                "Client ID: " + client_id + ", " + "\n" +
+                "Rest ID: " + rest_id + ", " + "\n";
+        strToRet += "Dishes: ";
+        for (dish_form dish : dishs_orderd) {
+            strToRet += dish.getDish_name();
+        }
+        strToRet+="\n";
+        strToRet += "Total Price: " + total_price + "\n";
+        return strToRet;
+    }
+
     public void removeDish(dish_form dish) {
         this.dishs_orderd.remove(dish);
         total_price -= dish.getPrice();
