@@ -38,16 +38,6 @@ public class OrderForm {
         total_price += dish.getPrice();
     }
 
-    public String getUser_phone() {
-        return user_phone;
-    }
-
-
-
-    public String getUser_address() {
-        return user_address;
-    }
-
 
     @Override
     public String toString() {
@@ -93,6 +83,15 @@ public class OrderForm {
 
     public double getTotal_price() {
         return total_price;
+    }
+
+    public String getUser_phone() {
+        return user_phone;
+    }
+
+
+    public String getUser_address() {
+        return user_address;
     }
 
 
