@@ -18,6 +18,7 @@ import com.example.busy.restaurant.Rforms.Restaurant_Form;
 import com.example.busy.restaurant.Rforms.dish_form;
 import com.example.busy.restaurant.update.rest_update;
 import com.example.busy.users.Home_users;
+import com.example.busy.users.Uform.Address_form;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -74,7 +75,8 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
                                     continue;
                                 String order_num = snapshot.child("order_num").getValue(String.class);
                                 String client_id = snapshot.child("client_id").getValue(String.class);
-                                OrderForm curr_order = new OrderForm(order_num, rest_id, client_id, status);
+                                Address_form users_add = snapshot.child("users_add").getValue(Address_form.class);
+                                OrderForm curr_order = new OrderForm(order_num, rest_id, client_id, status,users_add);
                                 for (DataSnapshot snapshot_dish : snapshot.child("dishs_orderd").getChildren()) {
                                     double price = snapshot_dish.child("price").getValue(double.class);
                                     String dish_name = snapshot_dish.child("dish_name").getValue(String.class);

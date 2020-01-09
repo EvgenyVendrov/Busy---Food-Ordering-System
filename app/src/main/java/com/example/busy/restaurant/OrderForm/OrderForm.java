@@ -15,12 +15,12 @@ public class OrderForm {
     private Address_form user_address;
     private ArrayList<dish_form> dishs_orderd = new ArrayList<dish_form>();
 
-    public OrderForm(String order_num, String rest_id, String client_id, String status, String city, String user_phone, String street, String houseNum) {
+    public OrderForm(String order_num, String rest_id, String client_id, String status,Address_form users_add) {
         this.client_id = client_id;
         this.order_num = order_num;
         this.rest_id = rest_id;
         this.status = status;
-        user_address = new Address_form(city, street, houseNum, user_phone);
+        user_address = new Address_form(users_add.getCity(), users_add.getStreet(), users_add.getHouse_num(), users_add.getPhone_num());
     }
 
     public OrderForm(OrderForm ord) {
