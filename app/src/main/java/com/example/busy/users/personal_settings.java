@@ -80,8 +80,7 @@ public class personal_settings extends AppCompatActivity {
         rtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(personal_settings.this, Home_users.class);
-                startActivity(i);
+                finish();
             }
         });
 

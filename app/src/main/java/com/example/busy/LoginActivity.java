@@ -9,11 +9,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.busy.Admin.home_admin;
 import com.example.busy.restaurant.HOME_restaurant;
 import com.example.busy.users.Home_users;
 import com.example.busy.users.Uform.filter_form;
+import com.example.busy.users.filter_u;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -87,14 +89,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 if (owner.equals("admin")) {
                                     Intent k = new Intent(LoginActivity.this, home_admin.class);
                                     startActivity(k);
-                                } else if (owner.equals("no")) {
-                                    filter_form FM = new filter_form();
+                                    finish();
+                                }
+
+                                else if (owner.equals("no")) {
                                     Intent i = new Intent(LoginActivity.this, Home_users.class);
-                                    i.putExtra("filter", FM);
                                     startActivity(i);
-                                } else {
+                                    finish();
+                                }
+
+                                else {
                                     Intent j = new Intent(LoginActivity.this, HOME_restaurant.class);
                                     startActivity(j);
+                                    finish();
                                 }
                             }
 

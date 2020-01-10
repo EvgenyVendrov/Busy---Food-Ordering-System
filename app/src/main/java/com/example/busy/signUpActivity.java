@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.busy.restaurant.Signup_Restaurant;
 import com.example.busy.users.Home_users;
@@ -121,8 +122,6 @@ public class signUpActivity extends AppCompatActivity implements View.OnClickLis
                                                 Toast.makeText(signUpActivity.this, "Sign up successfully", Toast.LENGTH_SHORT).show();
                                                 if (flag == false) {
                                                     Intent i = new Intent(signUpActivity.this, Home_users.class);
-                                                    filter_form FM = new filter_form();
-                                                    i.putExtra("filter", FM);
                                                     startActivity(i);
                                                 } else {
                                                     Intent i = new Intent(signUpActivity.this, Signup_Restaurant.class);

@@ -124,6 +124,7 @@ public class Make_Order extends AppCompatActivity implements View.OnClickListene
                 extras.putStringArrayList("dishes", dishes);
                 i.putExtra("extras", extras);
                 startActivity(i);
+                finish();
             }
         });
     }

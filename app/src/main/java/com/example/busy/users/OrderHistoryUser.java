@@ -39,6 +39,11 @@ public class OrderHistoryUser extends AppCompatActivity {
         ref_orders.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!orders_list.isEmpty()) {
+                    orders_list.clear();
+                    adapter.clear();
+                    listview.clearAnimation();
+                }
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot snep : dataSnapshot.getChildren()) {
                         if (snep.child("client_id").getValue().equals(uid) && snep.child("status").getValue().equals("done")) {
@@ -71,5 +76,11 @@ public class OrderHistoryUser extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.busy.R;
 import com.example.busy.users.Uform.filter_form;
@@ -118,11 +119,15 @@ public class filter_u extends AppCompatActivity implements AdapterView.OnItemSel
         }
 
         filter_form FM = new filter_form(city, kosher, type);
-        Intent _i = new Intent(this, Home_users.class);
-        _i.putExtra("filter", FM);
-        startActivity(_i);
-    }
 
+        Intent intent = new Intent("filter_Intent").putExtra("filter", FM);
+        LocalBroadcastManager.getInstance(filter_u.this).sendBroadcast(intent);
+
+//        Intent _i = new Intent(this, Home_users.class);
+//        _i.putExtra("filter", FM);
+//        startActivity(_i);
+        finish();
+    }
 
     // *** AdapterView.OnItemSelectedListener functions!! ***
     @Override
