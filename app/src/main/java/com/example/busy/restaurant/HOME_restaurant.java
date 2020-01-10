@@ -84,7 +84,9 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
                                         || status.equals("preparation") || status.equals("on the way")
                                         || status.equals("received")))
                                     continue;
-                                all_needed_data.add(snapshot);
+                                if (status.equals("unhandled")) {
+                                    all_needed_data.add(snapshot);
+                                }
                                 String order_num = snapshot.child("order_num").getValue(String.class);
                                 Address_form users_add = snapshot.child("user_address").getValue(Address_form.class);
                                 OrderForm curr_order = new OrderForm(order_num, rest_id, client_id, status, users_add);
@@ -168,7 +170,7 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
                     .setWhen(System.currentTimeMillis())
                     .setAutoCancel(true)
                     .setContentTitle("NEW ORDER RECEIVED")
-                    .setContentText("new order number: " + new_order_num).build();
+                    .setContentText("new order number: " + new_order_num.replaceAll("[^0-9]", "")).build();
             notif_manager.notify(1, notification);
         }
     }
