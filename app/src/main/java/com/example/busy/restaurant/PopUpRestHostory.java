@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
 
@@ -26,6 +27,14 @@ public class PopUpRestHostory extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //SET THE WINDOW MATRIX TO BE POP-UP SIZE
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+        getWindow().setLayout((int) (width * .8), (int) (height * .6));
+
         setContentView(R.layout.activity_pop_up_rest_hostory);
         all_info = findViewById(R.id.PopUpRestHist_info_TV);
         Intent i = getIntent();
