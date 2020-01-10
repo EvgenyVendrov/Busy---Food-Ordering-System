@@ -68,7 +68,7 @@ public class Make_Order extends AppCompatActivity implements View.OnClickListene
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     user_addres = dataSnapshot.child("Address").getValue(Address_form.class);
-                    order = new OrderForm(ordernum, rest_uid, user_uid, "active", user_addres);
+                    order = new OrderForm(ordernum, rest_uid, user_uid, "unhandled", user_addres);
 
                 }
             }

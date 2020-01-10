@@ -3,6 +3,7 @@ package com.example.busy.restaurant;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -17,10 +18,12 @@ import com.example.busy.restaurant.OrderForm.OrderForm;
 import com.example.busy.restaurant.Rforms.Restaurant_Form;
 import com.example.busy.restaurant.Rforms.dish_form;
 import com.example.busy.restaurant.update.rest_update;
+import com.example.busy.users.Make_Order;
 import com.example.busy.users.Uform.Address_form;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -33,6 +36,7 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
     private ArrayList<OrderForm> activeOrders_list = new ArrayList<>();
     private ArrayAdapter<OrderForm> activeOrders_adapter;
     private String UID;
+    private ArrayList<DataSnapshot> all_needed_data = new ArrayList<>();
 
 
     @Override
@@ -70,8 +74,11 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                 String rest_id = snapshot.child("rest_id").getValue(String.class);
                                 String status = snapshot.child("status").getValue(String.class);
-                                if (!rest_id.equals(UID) && status.equals("active"))
+                                if (!rest_id.equals(UID) && !(status.equals("active") || status.equals("unhandled")
+                                        || status.equals("seen") || status.equals("preparation") || status.equals("on the way")
+                                        || status.equals("received")))
                                     continue;
+                                all_needed_data.add(snapshot);
                                 String order_num = snapshot.child("order_num").getValue(String.class);
                                 String client_id = snapshot.child("client_id").getValue(String.class);
                                 Address_form users_add = snapshot.child("user_address").getValue(Address_form.class);
@@ -87,8 +94,6 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
                             }
                             activeOrders_adapter = new ArrayAdapter<OrderForm>(HOME_restaurant.this, android.R.layout.simple_list_item_1, activeOrders_list);
                             activeOrders_listView.setAdapter(activeOrders_adapter);
-                            //activeOrders_adapter = new ArrayAdapter<OrderForm>(HOME_restaurant.this, R.layout.cutsumefont, activeOrders_list);
-                            //activeOrders_listView.setAdapter(activeOrders_adapter);
                         } else {
                             Toast.makeText(HOME_restaurant.this, "no orders for this rest yet ", Toast.LENGTH_LONG).show();
                         }
@@ -99,8 +104,58 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
                     }
                 });
 
+        //****WORKING ON IT****//
+
+        activeOrders_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                FirebaseDatabase.getInstance().getReference("Orders")
+//                        .addListenerForSingleValueEvent(new ValueEventListener() {
+//                            @Override
+//                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                            }
+//                        });
+                switch (activeOrders_list.get(i).getStatus()) {
+                    case "unhandled":
+                        update_status_DB(activeOrders_list.get(i).getOrder_num(), "seen");
+                        activeOrders_list.get(i).setStatus("seen");
+                        break;
+                    case "seen":
+                        update_status_DB(activeOrders_list.get(i).getOrder_num(), "preparation");
+                        activeOrders_list.get(i).setStatus("preparation");
+                        break;
+                    case "preparation":
+                        update_status_DB(activeOrders_list.get(i).getOrder_num(), "on the way");
+                        activeOrders_list.get(i).setStatus("on the way");
+                        break;
+                    case "on the way":
+                        update_status_DB(activeOrders_list.get(i).getOrder_num(), "received");
+                        activeOrders_list.get(i).setStatus("received");
+                        break;
+                    case "received":
+                        update_status_DB(activeOrders_list.get(i).getOrder_num(), "done");
+                        activeOrders_list.get(i).setStatus("done");
+                        break;
+                    case "done":
+                        activeOrders_list.remove(i);
+                        break;
+                }
+                activeOrders_adapter = new ArrayAdapter<OrderForm>(HOME_restaurant.this, android.R.layout.simple_list_item_1, activeOrders_list);
+                activeOrders_listView.setAdapter(activeOrders_adapter);
+            }
+        });
         //listener to move to the settings activity when the image is clicked
         ImageView restSettings = findViewById(R.id.rest_settings);
+    }
+
+    private void update_status_DB(String order_num, String new_status) {
+        FirebaseDatabase.getInstance().getReference("Orders").child(order_num).child("status").setValue(new_status);
     }
 
     @Override

@@ -84,4 +84,8 @@ public class OrderForm {
     public Address_form getUser_address() {
         return user_address;
     }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

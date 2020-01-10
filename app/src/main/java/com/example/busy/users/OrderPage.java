@@ -42,7 +42,7 @@ public class OrderPage extends AppCompatActivity implements View.OnClickListener
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot snep : dataSnapshot.getChildren()) {
-                        if (snep.child("client_id").getValue().equals(uid) && snep.child("status").getValue().equals("active")) {
+                        if (snep.child("client_id").getValue().equals(uid) && snep.child("status").getValue().equals("unhandled")) {
                             String order_num = snep.child("order_num").getValue(String.class);
                             String rest_id = snep.child("rest_id").getValue(String.class);
                             String client_id = snep.child("client_id").getValue(String.class);
