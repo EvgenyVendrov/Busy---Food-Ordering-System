@@ -62,7 +62,7 @@ public class Make_Order extends AppCompatActivity implements View.OnClickListene
         totalptv = findViewById(R.id.totalOrd_TV_rest);
         Intent i = getIntent();
         rest_uid = (String) i.getSerializableExtra("rest_uid");
-        final String ordernum = rest_uid + user_uid + ((int) Math.random() * 10000);
+        final String ordernum = rest_uid + user_uid + (((int) ((Math.random()) * 10000)));
         users.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

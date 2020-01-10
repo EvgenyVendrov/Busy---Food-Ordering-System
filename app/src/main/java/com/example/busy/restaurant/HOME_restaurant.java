@@ -1,6 +1,11 @@
 package com.example.busy.restaurant;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import com.example.busy.R;
 import com.example.busy.restaurant.OrderForm.OrderForm;
@@ -37,7 +43,6 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
     private ArrayAdapter<OrderForm> activeOrders_adapter;
     private String UID;
     private ArrayList<DataSnapshot> all_needed_data = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,13 +79,13 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                 String rest_id = snapshot.child("rest_id").getValue(String.class);
                                 String status = snapshot.child("status").getValue(String.class);
+                                String client_id = snapshot.child("client_id").getValue(String.class);
                                 if (!rest_id.equals(UID) || !(status.equals("unhandled") || status.equals("seen")
                                         || status.equals("preparation") || status.equals("on the way")
                                         || status.equals("received")))
                                     continue;
                                 all_needed_data.add(snapshot);
                                 String order_num = snapshot.child("order_num").getValue(String.class);
-                                String client_id = snapshot.child("client_id").getValue(String.class);
                                 Address_form users_add = snapshot.child("user_address").getValue(Address_form.class);
                                 OrderForm curr_order = new OrderForm(order_num, rest_id, client_id, status, users_add);
                                 for (DataSnapshot snapshot_dish : snapshot.child("dishs_orderd").getChildren()) {
@@ -89,6 +94,7 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
                                     String dish_desc = snapshot_dish.child("dish_discription").getValue(String.class);
                                     dish_form curr_dish = new dish_form(price, dish_name, dish_desc);
                                     curr_order.addDish(curr_dish);
+                                    notify_order_status(curr_order.getOrder_num());
                                 }
                                 activeOrders_list.add(curr_order);
                             }
@@ -146,6 +152,26 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
         FirebaseDatabase.getInstance().getReference("Orders").child(order_num).child("status").setValue(new_status);
     }
 
+    private void notify_order_status(String new_order_num) {
+        NotificationManager notif_manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String channel_id = "My_Channelld";
+            NotificationChannel channel = new NotificationChannel(channel_id, "channel title",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription("description");
+            notif_manager.createNotificationChannel(channel);
+            NotificationCompat.Builder builder = new
+                    NotificationCompat.Builder(getApplicationContext(), channel_id);
+            builder.setChannelId(channel_id);
+            Notification notification = builder
+                    .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark_focused)
+                    .setWhen(System.currentTimeMillis())
+                    .setAutoCancel(true)
+                    .setContentTitle("NEW ORDER RECEIVED")
+                    .setContentText("new order number: " + new_order_num).build();
+            notif_manager.notify(1, notification);
+        }
+    }
 
 
     @Override
