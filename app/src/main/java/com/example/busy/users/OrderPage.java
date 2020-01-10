@@ -49,6 +49,11 @@ public class OrderPage extends AppCompatActivity implements View.OnClickListener
         ref_orders.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!orders_list.isEmpty()) {
+                    orders_list.clear();
+                    addapter.clear();
+                    listview.clearAnimation();
+                }
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot snep : dataSnapshot.getChildren()) {
 
@@ -121,5 +126,11 @@ public class OrderPage extends AppCompatActivity implements View.OnClickListener
                 startActivity(i);
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

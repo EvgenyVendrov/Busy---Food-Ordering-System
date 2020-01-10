@@ -1,6 +1,9 @@
 package com.example.busy.users;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.busy.R;
 import com.example.busy.restaurant.Restaurant_page;
@@ -64,7 +68,8 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
             }
         });
 
-        this.getData();
+        LocalBroadcastManager.getInstance(this).registerReceiver(mReceiver, new IntentFilter("filter_Intent"));
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -76,10 +81,18 @@ public class Home_users extends AppCompatActivity implements View.OnClickListene
         });
     }
 
-    public void getData() {
+    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            final filter_form fm = (filter_form) intent.getSerializableExtra("filter");
+            getData(fm);
+        }
+    };
 
-        Intent i = getIntent();
-        final filter_form fm = (filter_form) i.getSerializableExtra("filter");
+
+
+
+    public void getData(final filter_form fm) {
 
         Query query = ref_rests.orderByChild("location").equalTo(fm.getCity());// order the database by location
         query.addValueEventListener(new ValueEventListener() {

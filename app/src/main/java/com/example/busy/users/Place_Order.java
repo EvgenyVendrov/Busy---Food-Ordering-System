@@ -83,6 +83,7 @@ public class Place_Order extends AppCompatActivity {
                 ordersdata.child(order_num).setValue(order);
                 Intent i = new Intent(Place_Order.this, OrderPage.class);
                 startActivity(i);
+                finish();
             }
         });
 
