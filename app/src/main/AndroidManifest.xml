@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Admin.appStats"></activity>
+        <activity android:name=".restaurant.PopUpRestHostory"></activity>
+        <activity android:name=".Admin.appStats" />
         <activity android:name=".restaurant.RestStaticstics" />
         <activity android:name=".restaurant.OrderHistoryRest" />
         <activity android:name=".users.OrderHistoryUser" />

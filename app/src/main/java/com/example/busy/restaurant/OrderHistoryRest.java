@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 import com.example.busy.R;
 import com.example.busy.restaurant.OrderForm.OrderForm;
 import com.example.busy.restaurant.Rforms.dish_form;
+import com.example.busy.users.Make_Order;
+import com.example.busy.users.Place_Order;
 import com.example.busy.users.Uform.Address_form;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +28,7 @@ public class OrderHistoryRest extends AppCompatActivity implements View.OnClickL
 
     private ArrayList<OrderForm> activeOrders_list = new ArrayList<>();
     private ArrayAdapter<OrderForm> activeOrders_adapter;
-    private String UID =  FirebaseAuth.getInstance().getCurrentUser().getUid();
+    private String UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
     private ListView activeOrders_listView;
 
     @Override
@@ -74,6 +77,38 @@ public class OrderHistoryRest extends AppCompatActivity implements View.OnClickL
                     public void onCancelled(DatabaseError databaseError) {
                     }
                 });
+        activeOrders_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String ordernum = activeOrders_list.get(i).getOrder_num();
+                String restid = activeOrders_list.get(i).getRest_id();
+                String clientid = activeOrders_list.get(i).getClient_id();
+                String status = activeOrders_list.get(i).getStatus();
+                String City = activeOrders_list.get(i).getUser_address().getCity();
+                String Street = activeOrders_list.get(i).getUser_address().getStreet();
+                String House_num = activeOrders_list.get(i).getUser_address().getHouse_num();
+                String Phone_num = activeOrders_list.get(i).getUser_address().getPhone_num();
+                Intent intent = new Intent(OrderHistoryRest.this, PopUpRestHostory.class);
+                Bundle extras = new Bundle();
+                extras.putString("order_id", ordernum);
+                extras.putString("rest_id", restid);
+                extras.putString("client_id", clientid);
+                extras.putString("status", status);
+                extras.putDouble("price", activeOrders_list.get(i).getTotal_price());
+                extras.putString("City", City);
+                extras.putString("Street", Street);
+                extras.putString("House_num", House_num);
+                extras.putString("Phone_num", Phone_num);
+                ArrayList<String> dishes = new ArrayList<>();
+                for (int j = 0; j < activeOrders_list.get(i).getDishs_orderd().size(); j++) {
+                    dishes.add(activeOrders_list.get(i).getDishs_orderd().get(j).to_string());
+                }
+                extras.putStringArrayList("dishes", dishes);
+                intent.putExtra("extras", extras);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
