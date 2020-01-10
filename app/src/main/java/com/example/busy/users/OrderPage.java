@@ -29,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class OrderPage extends AppCompatActivity implements View.OnClickListener {
     private ListView listview;
@@ -88,6 +89,8 @@ public class OrderPage extends AppCompatActivity implements View.OnClickListener
     }
 
     private void notify_order_status() {
+        Random random = new Random();
+        int m = random.nextInt(9999 - 1000) + 1000;
         NotificationManager notif_manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             String channelld = "My_Channelld";
@@ -104,7 +107,7 @@ public class OrderPage extends AppCompatActivity implements View.OnClickListener
                     .setAutoCancel(true)
                     .setContentTitle("Status Change")
                     .setContentText("your order status has been updated").build();
-            notif_manager.notify(1,notification);
+            notif_manager.notify(m,notification);
         }
     }
 
