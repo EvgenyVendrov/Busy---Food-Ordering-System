@@ -11,32 +11,12 @@
         android:id="@+id/PopUpRestHist_info_TV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="153dp"
-        android:layout_marginTop="240dp"
-        android:layout_marginEnd="200dp"
-        android:layout_marginBottom="440dp"
         android:text="TextView"
         android:textColor="@android:color/black"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/pupUpRestHis_btn_close"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="135dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="188dp"
-        android:layout_marginBottom="300dp"
-        android:onClick="onClick"
-        android:text="close"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PopUpRestHist_info_TV" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,22 +1,20 @@
 package com.example.busy.restaurant;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.busy.R;
 import com.example.busy.restaurant.OrderForm.OrderForm;
 import com.example.busy.restaurant.Rforms.dish_form;
-import com.example.busy.restaurant.update.rest_update;
 import com.example.busy.users.Uform.Address_form;
 
 import java.util.ArrayList;
 
-public class PopUpRestHostory extends AppCompatActivity implements View.OnClickListener {
+public class PopUpRestHostory extends AppCompatActivity {
 
     private TextView all_info;
     ArrayList<String> dishes_str = new ArrayList<>();
@@ -71,12 +69,4 @@ public class PopUpRestHostory extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.pupUpRestHis_btn_close:
-                finish();
-                break;
-        }
-    }
 }
