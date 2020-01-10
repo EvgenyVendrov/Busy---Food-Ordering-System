@@ -24,7 +24,6 @@
         <activity android:name=".Admin.home_admin" />
         <activity android:name=".users.Place_Order" />
         <activity android:name=".users.Make_Order" />
-        <activity android:name=".users.user_orders_history" />
         <activity
             android:name=".users.filter_u"
             android:theme="@style/AppTheme.popupTheme" />
