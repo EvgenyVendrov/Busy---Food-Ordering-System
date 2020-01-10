@@ -39,8 +39,8 @@ public class OrderForm {
 
     @Override
     public String toString() {
-        String strToRet = "Order Number: " + order_num.replaceAll("[^0-9]", "") + ", " + "\n" +
-                "Status: " + status + ", " + "\n" +
+        String strToRet = "Status: " + status.toUpperCase() + ", " + "\n" +
+                "Order Number: " + order_num.replaceAll("[^0-9]", "") + ", " + "\n" +
                 "Client Phone: " + user_address.getPhone_num() + ", " + "\n" +
                 "Client Address: " + user_address.getStreet() + ", " + user_address.getHouse_num() + ", " + user_address.getCity() + "\n";
         strToRet += "Dishes: ";
