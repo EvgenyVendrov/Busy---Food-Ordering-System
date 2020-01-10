@@ -1,7 +1,5 @@
 package com.example.busy.users;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,18 +10,19 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.busy.R;
 import com.example.busy.restaurant.OrderForm.OrderForm;
 import com.example.busy.restaurant.Rforms.dish_form;
 import com.example.busy.users.Uform.Address_form;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 public class Place_Order extends AppCompatActivity {
-    private CheckBox pay_phone,pay_card;
+    private CheckBox pay_phone, pay_card;
     private TextView ordernum_view;
     private TextView totslprice_view;
     private Button orderbtn;
@@ -38,7 +37,7 @@ public class Place_Order extends AppCompatActivity {
     private String Street;
     private String House_num;
     private String Phone_num;
-    private boolean bool=false;
+    private boolean bool = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +49,8 @@ public class Place_Order extends AppCompatActivity {
         pay_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bool=true;
-                if(pay_phone.isChecked()){
+                bool = true;
+                if (pay_phone.isChecked()) {
                     pay_phone.setChecked(false);
                 }
             }
@@ -59,8 +58,8 @@ public class Place_Order extends AppCompatActivity {
         pay_phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bool=false;
-                if(pay_card.isChecked()){
+                bool = false;
+                if (pay_card.isChecked()) {
                     pay_card.setChecked(false);
                 }
             }
@@ -106,19 +105,23 @@ public class Place_Order extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ordersdata.child(order_num).setValue(order);
-                if(bool == false) {
+                if (bool == false) {
                     Intent i = new Intent(Place_Order.this, OrderPage.class);
                     startActivity(i);
                     finish();
-                }
-                else {
+                } else {
                     Intent j = new Intent(Place_Order.this, pay_by_creditCard.class);
                     startActivity(j);
-                    finish();
                 }
             }
         });
 
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
     }
 
     private void string_to_dishes_array() {

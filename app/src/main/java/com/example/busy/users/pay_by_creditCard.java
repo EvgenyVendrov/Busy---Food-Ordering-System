@@ -30,6 +30,7 @@ public class pay_by_creditCard extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(pay_by_creditCard.this,OrderPage.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
