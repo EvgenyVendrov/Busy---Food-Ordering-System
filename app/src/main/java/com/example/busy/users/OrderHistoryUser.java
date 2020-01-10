@@ -1,6 +1,9 @@
 package com.example.busy.users;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -76,6 +79,36 @@ public class OrderHistoryUser extends AppCompatActivity {
 
             }
         });
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(OrderHistoryUser.this, Place_Order.class);
+                OrderForm temp_order = orders_list.get(i);
+                Bundle extras = new Bundle();
+                put_to_extras(temp_order, extras);
+                intent.putExtra("extras", extras);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
+    private void put_to_extras(OrderForm temp_order, Bundle extras) {
+        final String ordernum = temp_order.getRest_id() + temp_order.getClient_id()+ (((int) ((Math.random()) * 10000)));
+        extras.putString("order_id", ordernum);
+        extras.putString("rest_id", temp_order.getRest_id());
+        extras.putString("client_id", temp_order.getClient_id());
+        extras.putString("status", temp_order.getStatus());
+        extras.putDouble("price", temp_order.getTotal_price());
+        extras.putString("City", temp_order.getUser_address().getCity());
+        extras.putString("Street", temp_order.getUser_address().getStreet());
+        extras.putString("House_num", temp_order.getUser_address().getHouse_num());
+        extras.putString("Phone_num", temp_order.getUser_address().getPhone_num());
+        ArrayList<String> dishes = new ArrayList<>();
+        for (int j = 0; j < temp_order.getDishs_orderd().size(); j++) {
+            dishes.add(temp_order.getDishs_orderd().get(j).to_string());
+        }
+        extras.putStringArrayList("dishes", dishes);
     }
 
     @Override
