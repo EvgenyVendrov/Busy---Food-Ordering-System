@@ -4,6 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/marble"
     tools:context=".users.pay_by_creditCard">
 
+    <Button
+        android:id="@+id/pay_btn_CC"
+        android:layout_width="124dp"
+        android:layout_height="61dp"
+        android:fontFamily="serif-monospace"
+        android:text="Pay!"
+        android:textSize="30dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.697" />
 </androidx.constraintlayout.widget.ConstraintLayout>
