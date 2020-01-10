@@ -62,7 +62,7 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
         });
 
         FirebaseDatabase.getInstance().getReference("Orders")
-                .addListenerForSingleValueEvent(new ValueEventListener() {
+                .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (!activeOrders_list.isEmpty()) {
@@ -74,8 +74,8 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                 String rest_id = snapshot.child("rest_id").getValue(String.class);
                                 String status = snapshot.child("status").getValue(String.class);
-                                if (!rest_id.equals(UID) && !(status.equals("active") || status.equals("unhandled")
-                                        || status.equals("seen") || status.equals("preparation") || status.equals("on the way")
+                                if (!rest_id.equals(UID) || !(status.equals("unhandled") || status.equals("seen")
+                                        || status.equals("preparation") || status.equals("on the way")
                                         || status.equals("received")))
                                     continue;
                                 all_needed_data.add(snapshot);
@@ -109,18 +109,6 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
         activeOrders_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                FirebaseDatabase.getInstance().getReference("Orders")
-//                        .addListenerForSingleValueEvent(new ValueEventListener() {
-//                            @Override
-//                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                            }
-//
-//                            @Override
-//                            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                            }
-//                        });
                 switch (activeOrders_list.get(i).getStatus()) {
                     case "unhandled":
                         update_status_DB(activeOrders_list.get(i).getOrder_num(), "seen");
@@ -157,6 +145,8 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
     private void update_status_DB(String order_num, String new_status) {
         FirebaseDatabase.getInstance().getReference("Orders").child(order_num).child("status").setValue(new_status);
     }
+
+
 
     @Override
     public void onClick(View v) {
