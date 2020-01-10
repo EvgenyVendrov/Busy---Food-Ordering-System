@@ -24,12 +24,10 @@ import com.example.busy.restaurant.OrderForm.OrderForm;
 import com.example.busy.restaurant.Rforms.Restaurant_Form;
 import com.example.busy.restaurant.Rforms.dish_form;
 import com.example.busy.restaurant.update.rest_update;
-import com.example.busy.users.Make_Order;
 import com.example.busy.users.Uform.Address_form;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -84,9 +82,8 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
                                         || status.equals("preparation") || status.equals("on the way")
                                         || status.equals("received")))
                                     continue;
-                                if (status.equals("unhandled")) {
+                                if (status.equals("unhandled"))
                                     all_needed_data.add(snapshot);
-                                }
                                 String order_num = snapshot.child("order_num").getValue(String.class);
                                 Address_form users_add = snapshot.child("user_address").getValue(Address_form.class);
                                 OrderForm curr_order = new OrderForm(order_num, rest_id, client_id, status, users_add);
@@ -96,7 +93,8 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
                                     String dish_desc = snapshot_dish.child("dish_discription").getValue(String.class);
                                     dish_form curr_dish = new dish_form(price, dish_name, dish_desc);
                                     curr_order.addDish(curr_dish);
-                                    notify_order_status(curr_order.getOrder_num());
+                                    if (status.equals("unhandled"))
+                                        notify_new_order(curr_order.getOrder_num());
                                 }
                                 activeOrders_list.add(curr_order);
                             }
@@ -154,7 +152,7 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
         FirebaseDatabase.getInstance().getReference("Orders").child(order_num).child("status").setValue(new_status);
     }
 
-    private void notify_order_status(String new_order_num) {
+    private void notify_new_order(String new_order_num) {
         NotificationManager notif_manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String channel_id = "My_Channelld";
@@ -170,7 +168,8 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
                     .setWhen(System.currentTimeMillis())
                     .setAutoCancel(true)
                     .setContentTitle("NEW ORDER RECEIVED")
-                    .setContentText("new order number: " + new_order_num.replaceAll("[^0-9]", "")).build();
+                    .setContentText("new order number: " + new_order_num.replaceAll("[^0-9]", "")).
+                            build();
             notif_manager.notify(1, notification);
         }
     }
