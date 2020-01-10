@@ -2,8 +2,15 @@ package com.example.busy.users;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -29,20 +36,22 @@ public class OrderPage extends AppCompatActivity implements View.OnClickListener
     private ArrayAdapter<OrderForm> addapter;
     private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     private final DatabaseReference ref_orders = FirebaseDatabase.getInstance().getReference("Orders");
-
+    private boolean flag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_page);
 
         orders_list = new ArrayList<>();
+        flag = false;
         listview = findViewById(R.id.ListView_order_page);
         ref_orders.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot snep : dataSnapshot.getChildren()) {
-                        if (snep.child("client_id").getValue().equals(uid) && snep.child("status").getValue().equals("unhandled")) {
+
+                        if (snep.child("client_id").getValue().equals(uid) && !snep.child("status").getValue().equals("done")) {
                             String order_num = snep.child("order_num").getValue(String.class);
                             String rest_id = snep.child("rest_id").getValue(String.class);
                             String client_id = snep.child("client_id").getValue(String.class);
@@ -61,6 +70,10 @@ public class OrderPage extends AppCompatActivity implements View.OnClickListener
                             orders_list.add(order);
                         }
                     }
+                    if (flag == true) {
+                        notify_order_status();
+                    }
+                    flag = true;
                 }
                 addapter = new ArrayAdapter<OrderForm>(OrderPage.this, android.R.layout.simple_list_item_1, orders_list);
                 listview.setAdapter(addapter);
@@ -72,6 +85,27 @@ public class OrderPage extends AppCompatActivity implements View.OnClickListener
 
             }
         });
+    }
+
+    private void notify_order_status() {
+        NotificationManager notif_manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            String channelld = "My_Channelld";
+            NotificationChannel channel = new NotificationChannel(channelld, "channel title",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription("description");
+            notif_manager.createNotificationChannel(channel);
+            NotificationCompat.Builder builder = new
+                    NotificationCompat.Builder(getApplicationContext(), channelld);
+            builder.setChannelId(channelld);
+            Notification notification = builder
+                    .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark_focused)
+                    .setWhen(System.currentTimeMillis())
+                    .setAutoCancel(true)
+                    .setContentTitle("Status Change")
+                    .setContentText("your order status has been updated").build();
+            notif_manager.notify(1,notification);
+        }
     }
 
 
