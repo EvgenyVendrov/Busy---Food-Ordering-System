@@ -33,7 +33,7 @@ public class PopUpRestHostory extends AppCompatActivity implements View.OnClickL
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout((int) (width * .8), (int) (height * .6));
+        getWindow().setLayout((int) (width * .8), (int) (height * .4));
 
         setContentView(R.layout.activity_pop_up_rest_hostory);
         all_info = findViewById(R.id.PopUpRestHist_info_TV);
@@ -75,8 +75,7 @@ public class PopUpRestHostory extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.pupUpRestHis_btn_close:
-                Intent i = new Intent(PopUpRestHostory.this, OrderHistoryRest.class);
-                startActivity(i);
+                finish();
                 break;
         }
     }
