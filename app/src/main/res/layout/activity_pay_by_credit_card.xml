@@ -20,86 +20,71 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.697" />
+        app:layout_constraintVertical_bias="0.877" />
 
     <EditText
         android:id="@+id/ownercard_name_payby_credit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="174dp"
-        android:layout_marginBottom="352dp"
         android:ems="10"
         android:hint="owner name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/pay_btn_CC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.259" />
 
     <EditText
         android:id="@+id/ownercard_id_creditcard_pay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="285dp"
         android:ems="10"
         android:hint="owner id"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/pay_btn_CC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ownercard_name_payby_credit" />
+        app:layout_constraintTop_toBottomOf="@+id/ownercard_name_payby_credit"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/creditcardnumber_pay_creditcard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="174dp"
-        android:layout_marginBottom="218dp"
         android:ems="10"
         android:hint="credit card number"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/pay_btn_CC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ownercard_id_creditcard_pay" />
+        app:layout_constraintTop_toBottomOf="@+id/ownercard_id_creditcard_pay"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/cardexpiredate_pay_by_credit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="171dp"
-        android:layout_marginBottom="153dp"
         android:ems="10"
         android:hint="card expire date"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/pay_btn_CC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creditcardnumber_pay_creditcard" />
+        app:layout_constraintTop_toBottomOf="@+id/creditcardnumber_pay_creditcard"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/digits_bhind_payby_credit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="171dp"
-        android:layout_marginBottom="78dp"
         android:ems="10"
         android:hint="3 digits behind the card"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/pay_btn_CC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardexpiredate_pay_by_credit" />
+        app:layout_constraintTop_toBottomOf="@+id/cardexpiredate_pay_by_credit"
+        app:layout_constraintVertical_bias="0.067" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
