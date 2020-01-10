@@ -110,7 +110,6 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
                     }
                 });
 
-        //****WORKING ON IT****//
 
         activeOrders_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
