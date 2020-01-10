@@ -1,8 +1,5 @@
 package com.example.busy.restaurant;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,12 +9,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.busy.R;
 import com.example.busy.restaurant.OrderForm.OrderForm;
 import com.example.busy.restaurant.Rforms.Restaurant_Form;
 import com.example.busy.restaurant.Rforms.dish_form;
 import com.example.busy.restaurant.update.rest_update;
-import com.example.busy.users.Home_users;
 import com.example.busy.users.Uform.Address_form;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +28,7 @@ import java.util.ArrayList;
 
 public class HOME_restaurant extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView welcometxt;
+    private TextView welcome_txt;
     private ListView activeOrders_listView;
     private ArrayList<OrderForm> activeOrders_list = new ArrayList<>();
     private ArrayAdapter<OrderForm> activeOrders_adapter;
@@ -42,14 +41,14 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_home_restaurant);
 
         activeOrders_listView = findViewById(R.id.activeOrders_rest_listView);
-        welcometxt = findViewById(R.id.infoAboutUser_rest_text);
+        welcome_txt = findViewById(R.id.infoAboutUser_rest_text);
         FirebaseDatabase.getInstance().getReference("Restaurant").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Restaurant_Form curr_user = dataSnapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).getValue(Restaurant_Form.class);
                 String rest_name = curr_user.getName();
                 UID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                welcometxt.setText("welcome, " + rest_name + " owner");
+                welcome_txt.setText("welcome, " + rest_name + " owner");
             }
 
             @Override
@@ -75,12 +74,12 @@ public class HOME_restaurant extends AppCompatActivity implements View.OnClickLi
                                     continue;
                                 String order_num = snapshot.child("order_num").getValue(String.class);
                                 String client_id = snapshot.child("client_id").getValue(String.class);
-                                Address_form users_add = snapshot.child("users_add").getValue(Address_form.class);
-                                OrderForm curr_order = new OrderForm(order_num, rest_id, client_id, status,users_add);
+                                Address_form users_add = snapshot.child("user_address").getValue(Address_form.class);
+                                OrderForm curr_order = new OrderForm(order_num, rest_id, client_id, status, users_add);
                                 for (DataSnapshot snapshot_dish : snapshot.child("dishs_orderd").getChildren()) {
                                     double price = snapshot_dish.child("price").getValue(double.class);
                                     String dish_name = snapshot_dish.child("dish_name").getValue(String.class);
-                                    String dish_desc = snapshot_dish.child("dish_name").getValue(String.class);
+                                    String dish_desc = snapshot_dish.child("dish_discription").getValue(String.class);
                                     dish_form curr_dish = new dish_form(price, dish_name, dish_desc);
                                     curr_order.addDish(curr_dish);
                                 }

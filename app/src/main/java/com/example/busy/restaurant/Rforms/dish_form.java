@@ -16,7 +16,7 @@ public class dish_form {
         return dish_name;
     }
 
-    public String getDish_discription() {
+    public String getDish_description() {
         return dish_discription;
     }
 
