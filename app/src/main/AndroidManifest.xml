@@ -9,8 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".restaurant.PopUpRestHostory"></activity>
+        <activity
+            android:name=".users.pay_by_creditCard"
+            android:theme="@style/AppTheme.popupTheme"></activity>
         <activity android:name=".Admin.appStats" />
+        <activity
+            android:name=".restaurant.PopUpRestHostory"
+            android:theme="@style/AppTheme.popupTheme"></activity>
         <activity android:name=".restaurant.RestStaticstics" />
         <activity android:name=".restaurant.OrderHistoryRest" />
         <activity android:name=".users.OrderHistoryUser" />

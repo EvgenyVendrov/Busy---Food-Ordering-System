@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class Place_Order extends AppCompatActivity {
+    private CheckBox pay_phone,pay_card;
     private TextView ordernum_view;
     private TextView totslprice_view;
     private Button orderbtn;
@@ -36,11 +38,34 @@ public class Place_Order extends AppCompatActivity {
     private String Street;
     private String House_num;
     private String Phone_num;
+    private boolean bool=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place__order);
+
+        pay_card = findViewById(R.id.pay_card_placeOrder);
+        pay_phone = findViewById(R.id.pay_phone_placeOrder);
+        pay_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bool=true;
+                if(pay_phone.isChecked()){
+                    pay_phone.setChecked(false);
+                }
+            }
+        });
+        pay_phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bool=false;
+                if(pay_card.isChecked()){
+                    pay_card.setChecked(false);
+                }
+            }
+        });
+
 
         ordernum_view = findViewById(R.id.orderNum_TV_rest);
         totslprice_view = findViewById(R.id.ordPrice_TV_rest);
@@ -81,9 +106,16 @@ public class Place_Order extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ordersdata.child(order_num).setValue(order);
-                Intent i = new Intent(Place_Order.this, OrderPage.class);
-                startActivity(i);
-                finish();
+                if(bool == false) {
+                    Intent i = new Intent(Place_Order.this, OrderPage.class);
+                    startActivity(i);
+                    finish();
+                }
+                else {
+                    Intent j = new Intent(Place_Order.this, pay_by_creditCard.class);
+                    startActivity(j);
+                    finish();
+                }
             }
         });
 

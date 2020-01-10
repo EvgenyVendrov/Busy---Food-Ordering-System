@@ -92,7 +92,7 @@
         android:id="@+id/city_spinner"
         android:layout_width="241dp"
         android:layout_height="57dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/common_google_signin_btn_text_dark_default"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
