@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/whitebg"
-    tools:context=".users.Place_Order">
+    tools:context=".Orders.Place_Order">
 
     <TextView
         android:id="@+id/orderNum_TV_rest"

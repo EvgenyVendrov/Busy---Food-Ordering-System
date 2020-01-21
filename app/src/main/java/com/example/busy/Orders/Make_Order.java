@@ -1,4 +1,4 @@
-package com.example.busy.users;
+package com.example.busy.Orders;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,13 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.busy.R;
-import com.example.busy.restaurant.OrderForm.OrderForm;
+import com.example.busy.restaurant.Rforms.OrderForm;
 import com.example.busy.restaurant.Rforms.dish_form;
-import com.example.busy.restaurant.Rforms.menu_form;
 import com.example.busy.users.Uform.Address_form;
-import com.example.busy.users.Uform.Users_Form;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -67,7 +64,7 @@ public class Make_Order extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    user_addres = dataSnapshot.child("Address").getValue(Address_form.class);
+                    user_addres = dataSnapshot.child("address").getValue(Address_form.class);
                     order = new OrderForm(ordernum, rest_uid, user_uid, "unhandled", user_addres);
 
                 }
@@ -147,7 +144,7 @@ public class Make_Order extends AppCompatActivity implements View.OnClickListene
                             for (DataSnapshot db : snep.child("main_list").getChildren()) {
                                 price = db.child("price").getValue(double.class);
                                 name_dish = db.child("dish_name").getValue(String.class);
-                                desc_dish = db.child("dish_discription").getValue(String.class);
+                                desc_dish = db.child("dish_description").getValue(String.class);
                                 dish_form temp = new dish_form(price, name_dish, desc_dish);
                                 dish_menu.add(temp);
 
@@ -164,7 +161,7 @@ public class Make_Order extends AppCompatActivity implements View.OnClickListene
                             for (DataSnapshot db : snep.child("starters_list").getChildren()) {
                                 price = db.child("price").getValue(double.class);
                                 name_dish = db.child("dish_name").getValue(String.class);
-                                desc_dish = db.child("dish_discription").getValue(String.class);
+                                desc_dish = db.child("dish_description").getValue(String.class);
                                 dish_form temp = new dish_form(price, name_dish, desc_dish);
                                 dish_menu.add(temp);
 
@@ -181,7 +178,7 @@ public class Make_Order extends AppCompatActivity implements View.OnClickListene
                             for (DataSnapshot db : snep.child("drink_list").getChildren()) {
                                 price = db.child("price").getValue(double.class);
                                 name_dish = db.child("dish_name").getValue(String.class);
-                                desc_dish = db.child("dish_discription").getValue(String.class);
+                                desc_dish = db.child("dish_description").getValue(String.class);
                                 dish_form temp = new dish_form(price, name_dish, desc_dish);
                                 dish_menu.add(temp);
 
@@ -198,7 +195,7 @@ public class Make_Order extends AppCompatActivity implements View.OnClickListene
                             for (DataSnapshot db : snep.child("deserts_list").getChildren()) {
                                 price = db.child("price").getValue(double.class);
                                 name_dish = db.child("dish_name").getValue(String.class);
-                                desc_dish = db.child("dish_discription").getValue(String.class);
+                                desc_dish = db.child("dish_description").getValue(String.class);
                                 dish_form temp = new dish_form(price, name_dish, desc_dish);
                                 dish_menu.add(temp);
 
@@ -214,7 +211,7 @@ public class Make_Order extends AppCompatActivity implements View.OnClickListene
                             dish_menu.addAll(order.getDishs_orderd());
                             dish_addapter = new ArrayAdapter<dish_form>(Make_Order.this, R.layout.cutsumefont, dish_menu);
                         } else {
-                            Toast.makeText(Make_Order.this, "you havnt chose dishes to order", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Make_Order.this, "you haven't chose dishes to order", Toast.LENGTH_SHORT).show();
 
                         }
                     }

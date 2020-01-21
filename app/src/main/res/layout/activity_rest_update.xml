@@ -52,89 +52,88 @@
 
     <TextView
         android:id="@+id/Description_view"
-        android:layout_width="306dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="56dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:text="Description: name"
         android:textAlignment="textStart"
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/isKosher_view"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PS_highlight"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.338" />
 
     <TextView
         android:id="@+id/Name_view"
-        android:layout_width="325dp"
-        android:layout_height="45dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:text="Name: name"
         android:textAlignment="textStart"
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/Logout_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.755" />
+        app:layout_constraintVertical_bias="0.652" />
 
     <TextView
         android:id="@+id/isKosher_view"
-        android:layout_width="316dp"
-        android:layout_height="63dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:text="is Kosher: name"
         android:textAlignment="textStart"
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/Type_view"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.417" />
 
     <TextView
         android:id="@+id/Type_view"
-        android:layout_width="327dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:text="Type: name"
         android:textAlignment="textStart"
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/Location_view"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.496" />
 
     <TextView
         android:id="@+id/Location_view"
-        android:layout_width="330dp"
-        android:layout_height="40dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:text="Location: name"
         android:textAlignment="textStart"
         android:textColor="@color/design_default_color_primary_dark"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/Logout_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.677" />
+        app:layout_constraintVertical_bias="0.573" />
 
     <TextView
         android:id="@+id/Phone_view"
-        android:layout_width="325dp"
-        android:layout_height="45dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:text="Phone: name"
         android:textAlignment="textStart"
         android:textColor="@color/design_default_color_primary_dark"
@@ -142,10 +141,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/Logout_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.833" />
+        app:layout_constraintVertical_bias="0.834" />
 
     <TextView
         android:id="@+id/textView2"
@@ -164,25 +163,24 @@
     <Button
         android:id="@+id/add_tomenu"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text="add dish to menu"
         app:layout_constraintBottom_toTopOf="@+id/Logout_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Phone_view"
-        app:layout_constraintVertical_bias="0.152" />
+        app:layout_constraintVertical_bias="0.571" />
 
     <Button
         android:id="@+id/view_Menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
         android:text="view\edit menu"
         app:layout_constraintBottom_toTopOf="@+id/Logout_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.739"
         app:layout_constraintStart_toEndOf="@+id/add_tomenu"
         app:layout_constraintTop_toBottomOf="@+id/Phone_view"
-        app:layout_constraintVertical_bias="0.152" />
+        app:layout_constraintVertical_bias="0.577" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

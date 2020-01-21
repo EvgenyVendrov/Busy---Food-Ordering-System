@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/marble"
-    tools:context=".restaurant.Signup_Restaurant">
+    tools:context=".Signup_Restaurant">
 
     <EditText
         android:id="@+id/rest_name"

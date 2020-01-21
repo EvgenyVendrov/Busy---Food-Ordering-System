@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/whitebg"
-    tools:context=".users.OrderPage">
+    tools:context=".Orders.OrderPage">
 
     <TextView
         android:id="@+id/headLine_orders_user"

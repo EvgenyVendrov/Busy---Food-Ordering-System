@@ -2,13 +2,13 @@ package com.example.busy.restaurant.Rforms;
 
 public class dish_form {
     private String dish_name;
-    private String dish_discription;
+    private String dish_description;
 
     private double price;
 
-    public dish_form(double price,String dish_name, String dish_discription) {
+    public dish_form(double price,String dish_name, String dish_description) {
         this.dish_name = dish_name;
-        this.dish_discription = dish_discription;
+        this.dish_description = dish_description;
         this.price = price;
     }
 
@@ -17,7 +17,7 @@ public class dish_form {
     }
 
     public String getDish_description() {
-        return dish_discription;
+        return dish_description;
     }
 
     public double getPrice() {
@@ -26,7 +26,7 @@ public class dish_form {
 
     @Override
     public String toString() {
-        String str =   dish_name +" , price: " + price +" " + " , description: " + dish_discription;
+        String str =   dish_name +" , price: " + price +" " + " , description: " + dish_description;
        return  str;
     }
 
@@ -39,14 +39,14 @@ public class dish_form {
         }
     }
     public String to_string(){
-        String str =   dish_name +", price: " + price + ", description: " + dish_discription;
+        String str =   dish_name +", price: " + price + ", description: " + dish_description;
         return  str;
     }
 
     public void setDish_( dish_form temp_dish) {
         this.dish_name = temp_dish.getDish_name();
         this.price = temp_dish.getPrice();
-        this.dish_discription = temp_dish.dish_discription;
+        this.dish_description = temp_dish.dish_description;
     }
 
 

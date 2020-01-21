@@ -8,13 +8,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.busy.R;
-import com.example.busy.restaurant.OrderForm.OrderForm;
+import com.example.busy.restaurant.Rforms.OrderForm;
 import com.example.busy.restaurant.Rforms.dish_form;
 import com.example.busy.users.Uform.Address_form;
 
 import java.util.ArrayList;
 
-public class PopUpRestHostory extends AppCompatActivity {
+public class PopUpRestHistory extends AppCompatActivity {
 
     private TextView all_info;
     ArrayList<String> dishes_str = new ArrayList<>();

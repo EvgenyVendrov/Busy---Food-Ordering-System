@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/marble"
-    tools:context=".users.pay_by_creditCard">
+    tools:context=".Orders.pay_by_creditCard">
 
     <Button
         android:id="@+id/pay_btn_CC"

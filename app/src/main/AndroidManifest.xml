@@ -10,16 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".users.pay_by_creditCard"
+            android:name=".Orders.pay_by_creditCard"
             android:theme="@style/AppTheme.popupTheme"></activity>
         <activity android:name=".Admin.appStats" />
         <activity
-            android:name=".restaurant.PopUpRestHostory"
+            android:name=".restaurant.PopUpRestHistory"
             android:theme="@style/AppTheme.popupTheme"></activity>
         <activity android:name=".restaurant.RestStaticstics" />
         <activity android:name=".restaurant.OrderHistoryRest" />
         <activity android:name=".users.OrderHistoryUser" />
-        <activity android:name=".users.OrderPage" />
+        <activity android:name=".Orders.OrderPage" />
 
         <receiver android:name=".Admin.MyBroadcastReceiver">
             <intent-filter>
@@ -28,8 +28,8 @@
         </receiver>
 
         <activity android:name=".Admin.home_admin" />
-        <activity android:name=".users.Place_Order" />
-        <activity android:name=".users.Make_Order" />
+        <activity android:name=".Orders.Place_Order" />
+        <activity android:name=".Orders.Make_Order" />
         <activity
             android:name=".users.filter_u"
             android:theme="@style/AppTheme.popupTheme" />
@@ -40,14 +40,14 @@
         <activity android:name=".restaurant.update.Edit_Kosher" />
         <activity android:name=".restaurant.update.Edit_Desc" />
         <activity android:name=".restaurant.Add_Dish" />
-        <activity android:name=".restaurant.Signup_Restaurant2" />
-        <activity android:name=".restaurant.Restaurant_page" />
+        <activity android:name=".Signup_Restaurant2" />
+        <activity android:name=".Orders.Restaurant_page" />
         <activity android:name=".restaurant.HOME_restaurant" />
         <activity android:name=".restaurant.update.rest_update" />
         <activity android:name=".users.Profile_Update.Edit_password" />
         <activity android:name=".users.Profile_Update.Edit_name" />
         <activity android:name=".users.Profile_Update.Edit_address" />
-        <activity android:name=".restaurant.Signup_Restaurant" />
+        <activity android:name=".Signup_Restaurant" />
         <activity android:name=".users.personal_settings" />
         <activity android:name=".users.Home_users" />
         <activity android:name=".signUpActivity" />

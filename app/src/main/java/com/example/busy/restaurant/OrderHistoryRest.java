@@ -11,10 +11,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.busy.R;
-import com.example.busy.restaurant.OrderForm.OrderForm;
+import com.example.busy.restaurant.Rforms.OrderForm;
 import com.example.busy.restaurant.Rforms.dish_form;
-import com.example.busy.users.Make_Order;
-import com.example.busy.users.Place_Order;
 import com.example.busy.users.Uform.Address_form;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -88,7 +86,7 @@ public class OrderHistoryRest extends AppCompatActivity implements View.OnClickL
                 String Street = activeOrders_list.get(i).getUser_address().getStreet();
                 String House_num = activeOrders_list.get(i).getUser_address().getHouse_num();
                 String Phone_num = activeOrders_list.get(i).getUser_address().getPhone_num();
-                Intent intent = new Intent(OrderHistoryRest.this, PopUpRestHostory.class);
+                Intent intent = new Intent(OrderHistoryRest.this, PopUpRestHistory.class);
                 Bundle extras = new Bundle();
                 extras.putString("order_id", ordernum);
                 extras.putString("rest_id", restid);

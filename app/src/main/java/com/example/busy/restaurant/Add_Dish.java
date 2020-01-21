@@ -231,6 +231,13 @@ public class Add_Dish extends AppCompatActivity implements View.OnClickListener 
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+
+    @Override
     public void onClick(View v) { //make sure only one chekbox will be chek
         switch (v.getId()) {
             case R.id.starters_box:

@@ -3,6 +3,7 @@ package com.example.busy.restaurant;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -33,7 +34,6 @@ public class Display_Menu extends AppCompatActivity implements View.OnClickListe
     private DatabaseReference ref_menus;
     private TextView menu_name;
     private menu_form data_menu;
-    private Button add_dish_display_menu;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     ArrayList<String> arr;
     addapter_display_menu addapter;
@@ -52,6 +52,7 @@ public class Display_Menu extends AppCompatActivity implements View.OnClickListe
         ref_menus = FirebaseDatabase.getInstance().getReference("menus");
         list = findViewById(R.id.Menu_List);
         arr = new ArrayList<String>();
+        findViewById(R.id.Add_Dish).setOnClickListener(this);
 
 
 
@@ -112,7 +113,7 @@ public class Display_Menu extends AppCompatActivity implements View.OnClickListe
         DataSnapshot maindata = dt.child("starters_list"); //maindata = deserts menu of the current in database
         for (DataSnapshot childdata : maindata.getChildren()) { //loop on all the dishes in desert menu of the user
             String name = childdata.child("dish_name").getValue(String.class); //name of the dish
-            String desc = childdata.child("dish_discription").getValue(String.class); //discription of the dish
+            String desc = childdata.child("dish_description").getValue(String.class); //discription of the dish
             double price = childdata.child("price").getValue(double.class); //price of the dish
             dish_form dish = new dish_form(price, name, desc);
             data_menu.add_start_dish(dish); //add dish to arr disertt menu
@@ -122,7 +123,7 @@ public class Display_Menu extends AppCompatActivity implements View.OnClickListe
         DataSnapshot maindata = dt.child("deserts_list"); //maindata = deserts menu of the current in database
         for (DataSnapshot childdata : maindata.getChildren()) { //loop on all the dishes in desert menu of the user
             String name = childdata.child("dish_name").getValue(String.class); //name of the dish
-            String desc = childdata.child("dish_discription").getValue(String.class); //discription of the dish
+            String desc = childdata.child("dish_description").getValue(String.class); //discription of the dish
             double price = childdata.child("price").getValue(double.class); //price of the dish
             dish_form dish = new dish_form(price, name, desc);
             data_menu.add_desert_dish(dish); //add dish to arr disertt menu
@@ -132,7 +133,7 @@ public class Display_Menu extends AppCompatActivity implements View.OnClickListe
         DataSnapshot maindata = dt.child("drink_list");
         for (DataSnapshot childdata : maindata.getChildren()) {
             String name = childdata.child("dish_name").getValue(String.class);
-            String desc = childdata.child("dish_discription").getValue(String.class);
+            String desc = childdata.child("dish_description").getValue(String.class);
             double price = childdata.child("price").getValue(double.class);
             dish_form dish = new dish_form(price, name, desc);
             data_menu.add_drink(dish);
@@ -143,7 +144,7 @@ public class Display_Menu extends AppCompatActivity implements View.OnClickListe
         DataSnapshot maindata = dt.child("main_list");
         for (DataSnapshot childdata : maindata.getChildren()) {
             String name = childdata.child("dish_name").getValue(String.class);
-            String desc = childdata.child("dish_discription").getValue(String.class);
+            String desc = childdata.child("dish_description").getValue(String.class);
             double price = childdata.child("price").getValue(double.class);
             dish_form dish = new dish_form(price, name, desc);
             data_menu.add_main_dish(dish);
@@ -202,6 +203,9 @@ public class Display_Menu extends AppCompatActivity implements View.OnClickListe
                 }
                 get_menu("Mains");
                 break;
+            case R.id.Add_Dish:
+                Intent i = new Intent(this, Add_Dish.class);
+                startActivity(i);
 
         }
     }

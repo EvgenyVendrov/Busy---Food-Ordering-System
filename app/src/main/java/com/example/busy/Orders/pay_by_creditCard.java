@@ -1,4 +1,4 @@
-package com.example.busy.users;
+package com.example.busy.Orders;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,7 +28,7 @@ public class pay_by_creditCard extends AppCompatActivity {
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(pay_by_creditCard.this,OrderPage.class);
+                Intent intent = new Intent(pay_by_creditCard.this, OrderPage.class);
                 startActivity(intent);
                 finish();
             }
