@@ -1,12 +1,11 @@
 continuous android studio project as part of SW engineering course Ariel Uni:
 
-====>FIREBASE<======
+Busy - is a food ordering system which serves both resturant's and client's (i.e. pepole who are ordering food).
 
-FireBase link: https://console.firebase.google.com/project/busy-abf43/database/busy-abf43/data
+It allows clients to search for resturants by different parameters, view their order history, order from restaurants, be updated by phone notification's about the status of the order, etc...
 
-![לל55555א שם](https://user-images.githubusercontent.com/44900773/92372908-45b7e980-f106-11ea-8c66-03ef07643250.png)
+It allows resturant's to manage their menu, recive and manage orders, be found by different parameters, view their order history, view order's statistics, etc... 
 
-![לל9837983475א שם](https://user-images.githubusercontent.com/44900773/92373097-80218680-f106-11ea-8e7e-c5987b6d6806.png)
 
 ====>CLIENT<======
 
@@ -61,6 +60,14 @@ FireBase link: https://console.firebase.google.com/project/busy-abf43/database/b
 ![לל55555א שם](https://user-images.githubusercontent.com/44900773/92372622-e2c65280-f105-11ea-92c7-e4c0245db33e.png)
 
 ![לל55555א שם](https://user-images.githubusercontent.com/44900773/92372809-23be6700-f106-11ea-92bc-f4267a877305.png)
+
+====>FIREBASE<======
+
+FireBase link: https://console.firebase.google.com/project/busy-abf43/database/busy-abf43/data
+
+![לל55555א שם](https://user-images.githubusercontent.com/44900773/92372908-45b7e980-f106-11ea-8c66-03ef07643250.png)
+
+![לל9837983475א שם](https://user-images.githubusercontent.com/44900773/92373097-80218680-f106-11ea-8e7e-c5987b6d6806.png)
 
 
 
