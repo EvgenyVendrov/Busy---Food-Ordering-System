@@ -49,15 +49,18 @@ It allows resturant's to manage their menu, recive and manage orders, be found b
 
 ![לל55555א שם](https://user-images.githubusercontent.com/44900773/92371494-56fff680-f104-11ea-8498-9dcfd787be1c.png)
 
+*creating a menu from scratch
 ![לל55555א שם](https://user-images.githubusercontent.com/44900773/92371750-b231e900-f104-11ea-9773-5d6291af9cee.png)
 
 ![לל55555א שם](https://user-images.githubusercontent.com/44900773/92371828-cd9cf400-f104-11ea-86b3-0a57e867bf30.png)
 
+*viewing order history
 ![לל55555א שם](https://user-images.githubusercontent.com/44900773/92372007-063ccd80-f105-11ea-876a-5e28625d099c.png)
 
+*viewing restaurant's statistics 
 ![לל55555א שם](https://user-images.githubusercontent.com/44900773/92372205-456b1e80-f105-11ea-83f0-06713adac43f.png)
 
-====>HOW DOES IT WORK IN RT<======
+====>How Does It Work In Real Time:
 
 ![לל55555א שם](https://user-images.githubusercontent.com/44900773/92372356-7cd9cb00-f105-11ea-819d-c94f4771c1af.png)
 
@@ -67,7 +70,7 @@ It allows resturant's to manage their menu, recive and manage orders, be found b
 
 ![לל55555א שם](https://user-images.githubusercontent.com/44900773/92372809-23be6700-f106-11ea-92bc-f4267a877305.png)
 
-====>FIREBASE<======
+====>FIREBASE:
 
 FireBase link: https://console.firebase.google.com/project/busy-abf43/database/busy-abf43/data
 
