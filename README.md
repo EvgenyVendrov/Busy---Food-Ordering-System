@@ -45,8 +45,6 @@ It allows resturant's to manage their menu, recive and manage orders, be found b
 *editing restaurant's info 
 ![PHONE](https://user-images.githubusercontent.com/44900773/92371146-ed7fe800-f103-11ea-83b7-4892c1767314.png)
 
-![PHONE](https://user-images.githubusercontent.com/44900773/92371267-12745b00-f104-11ea-9f34-e285b1ed06d8.png)
-
 ![PHONE](https://user-images.githubusercontent.com/44900773/92371360-2d46cf80-f104-11ea-882a-7968e5065a09.png)
 
 ![לל55555א שם](https://user-images.githubusercontent.com/44900773/92371494-56fff680-f104-11ea-8498-9dcfd787be1c.png)
