@@ -29,11 +29,13 @@ It allows resturant's to manage their menu, recive and manage orders, be found b
 
 ![ללא שם7](https://user-images.githubusercontent.com/44900773/92368888-fae7a300-f100-11ea-869e-2c7c84e3ed5a.png)
 
+*calling the restaurant from the application
 ![ללא שם8](https://user-images.githubusercontent.com/44900773/92369204-5ca80d00-f101-11ea-9a33-c008dfc64581.png)
 
+*viewing order history
 ![ללא שם9](https://user-images.githubusercontent.com/44900773/92369441-b0b2f180-f101-11ea-80fa-14fae7145f4f.png)
 
-====>RESTAURANT<======
+====>RESTAURANT:
 
 ![PHONE](https://user-images.githubusercontent.com/44900773/92370876-8feb9b80-f103-11ea-9df2-7bb237f17279.png)
 
