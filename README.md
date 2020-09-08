@@ -37,10 +37,12 @@ It allows resturant's to manage their menu, recive and manage orders, be found b
 
 ====>RESTAURANT:
 
+*signing up
 ![PHONE](https://user-images.githubusercontent.com/44900773/92370876-8feb9b80-f103-11ea-9df2-7bb237f17279.png)
 
 ![PHONE](https://user-images.githubusercontent.com/44900773/92371075-d50fcd80-f103-11ea-87fd-2393c8fb4cc4.png)
 
+*editing restaurant's info 
 ![PHONE](https://user-images.githubusercontent.com/44900773/92371146-ed7fe800-f103-11ea-83b7-4892c1767314.png)
 
 ![PHONE](https://user-images.githubusercontent.com/44900773/92371267-12745b00-f104-11ea-9f34-e285b1ed06d8.png)
