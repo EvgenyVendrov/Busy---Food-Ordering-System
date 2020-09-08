@@ -6,6 +6,7 @@ It allows clients to search for resturants by different parameters, view their o
 
 It allows resturant's to manage their menu, recive and manage orders, be found by different parameters, view their order history, view order's statistics, etc... 
 
+all data is managed in firebase realtime database (https://console.firebase.google.com/project/busy-abf43/database/busy-abf43/data)
 
 ====>CLIENT:
 
@@ -71,8 +72,6 @@ It allows resturant's to manage their menu, recive and manage orders, be found b
 ![לל55555א שם](https://user-images.githubusercontent.com/44900773/92372809-23be6700-f106-11ea-92bc-f4267a877305.png)
 
 ====>FIREBASE:
-
-FireBase link: https://console.firebase.google.com/project/busy-abf43/database/busy-abf43/data
 
 ![לל55555א שם](https://user-images.githubusercontent.com/44900773/92372908-45b7e980-f106-11ea-8c66-03ef07643250.png)
 
