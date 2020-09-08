@@ -17,6 +17,7 @@ It allows resturant's to manage their menu, recive and manage orders, be found b
 
 ![3ללא שם](https://user-images.githubusercontent.com/44900773/92367957-c45d5880-f0ff-11ea-9d91-85ebe6e120a9.png)
 
+*searching for a restaurant by different parameters
 ![4ללא שם](https://user-images.githubusercontent.com/44900773/92368294-3635a200-f100-11ea-8282-1534484abac1.png)
 
 ![ללא שם png5](https://user-images.githubusercontent.com/44900773/92368415-5feec900-f100-11ea-8ae0-9cc5d31a976c.png)
