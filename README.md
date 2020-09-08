@@ -7,8 +7,9 @@ It allows clients to search for resturants by different parameters, view their o
 It allows resturant's to manage their menu, recive and manage orders, be found by different parameters, view their order history, view order's statistics, etc... 
 
 
-====>CLIENT<======
+====>CLIENT:
 
+*signing up
 ![ללא שם](https://user-images.githubusercontent.com/44900773/92367690-69c3fc80-f0ff-11ea-9303-e6d5023834a5.png)
 
 ![2ללא שם](https://user-images.githubusercontent.com/44900773/92367854-a3950300-f0ff-11ea-9772-6614ab4ddd9f.png)
